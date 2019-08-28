@@ -11,6 +11,7 @@
     <artifactId>base-web</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>base-web</name>
+    <packaging>jar</packaging>
     <description>view and model</description>
 
     <properties>

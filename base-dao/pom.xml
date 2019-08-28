@@ -11,6 +11,7 @@
     <artifactId>base-dao</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>base-dao</name>
+    <packaging>jar</packaging>
     <description>bean and mapper</description>
 
     <properties>

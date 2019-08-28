@@ -11,6 +11,7 @@
     <artifactId>base-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>base-service</name>
+    <packaging>jar</packaging>
     <description>service</description>
 
     <properties>
