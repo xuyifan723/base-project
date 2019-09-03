@@ -3,6 +3,9 @@ package com.xuyifan.basedao.mapper;
 
 import com.xuyifan.basedao.bean.User;
 
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+@Mapper
 public interface UserMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -16,7 +19,7 @@ public interface UserMapper {
 
     int updateByPrimaryKey(User record);
 
-    User getUserByLoginName(String loginName);
+    User getUserByLoginName(@Param("loginName") String loginName);
 
-    User getUser(String loginName, String password);
+    User getUser(@Param("loginName") String loginName, @Param("password") String password);
 }

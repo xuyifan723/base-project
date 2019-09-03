@@ -1,6 +1,12 @@
 package com.xuyifan.basecontroller.view;
 
+import com.xuyifan.basedao.bean.User;
+import com.xuyifan.baseservice.user.UserService;
+import com.xuyifan.commonutils.common.ResultBean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -10,9 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
  * @Version 1.0
  */
 @RestController
+@RequestMapping("/user")
 public class BaseController {
-    @GetMapping("/base")
-    public Object get(){
-        return "key";
+    @Autowired
+    private UserService userService;
+    @GetMapping("/user")
+    public Object get(@RequestParam("id") int id){
+        User userById = userService.getUserById(id);
+        return new ResultBean(userById);
     }
 }

@@ -7,8 +7,8 @@ package com.xuyifan.commonutils.common;
  * @Version 1.0
  */
 public class ResultBean {
-    private int code;
-    private String msg;
+    private int code=0;
+    private String msg="ok";
     private Object object;
     public ResultBean() {
     }
@@ -16,6 +16,9 @@ public class ResultBean {
         this.code = code;
         this.msg = msg;
         this.object = object;
+    }
+    public ResultBean(Object data){
+        this.object=data;
     }
 
 
