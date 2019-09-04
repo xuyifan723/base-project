@@ -20,9 +20,14 @@ import org.springframework.web.bind.annotation.RestController;
 public class BaseController {
     @Autowired
     private UserService userService;
-    @GetMapping("/user")
-    public Object get(@RequestParam("id") int id){
-        User userById = userService.getUserById(id);
-        return new ResultBean(userById);
+    @GetMapping("/login")
+    public Object get(@RequestParam("username") String username,@RequestParam("password") String password){
+        boolean relust = userService.validateUser(username, password);
+        if (relust){
+            return  new ResultBean();
+        }else {
+           return new ResultBean().error("用户名或者密码错误");
+        }
+
     }
 }

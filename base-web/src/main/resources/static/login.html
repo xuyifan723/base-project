@@ -11,7 +11,7 @@
 </head>
 <body class="login-wrap">
     <div class="login-container">
-        <form class="login-form">
+        <form class="login-form layui-form" action="">
             <div class="input-group">
                 <input type="text" id="username" class="input-field">
                 <label for="username" class="input-label">
@@ -24,10 +24,12 @@
                     <span class="label-title">密码</span>
                 </label>
             </div>
-            <button type="button" class="login-button">登录<i class="ai ai-enter"></i></button>
+            <button type="button" class="login-button" lay-submit="" lay-filter="login">登录<i class="ai ai-enter"></i></button>
         </form>
     </div>
 </body>
+<script src="assets/utils/jquery-3.4.1.min.js"></script>
 <script src="assets/layui.js"></script>
+<script src="assets/utils/dataUtils.js"></script>
 <script src="index.js" data-main="login"></script>
 </html>

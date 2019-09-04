@@ -7,10 +7,14 @@ package com.xuyifan.commonutils.common;
  * @Version 1.0
  */
 public class ResultBean {
-    private int code=0;
-    private String msg="ok";
+    public final static Integer ERROR_CODE=5000;
+    public final static Integer SUCCESS_CODE=2000;
+    private int code;
+    private String msg;
     private Object object;
     public ResultBean() {
+        this.code=this.SUCCESS_CODE;
+        this.msg="ok";
     }
     public ResultBean(int code, String msg, Object object) {
         this.code = code;
@@ -18,8 +22,37 @@ public class ResultBean {
         this.object = object;
     }
     public ResultBean(Object data){
+        this.code=this.SUCCESS_CODE;
+        this.msg="ok";
         this.object=data;
     }
+    public ResultBean error(String msg){
+        this.code=this.ERROR_CODE;
+        this.msg=msg;
+        return this;
+    }
 
+    public int getCode() {
+        return code;
+    }
 
+    public void setCode(int code) {
+        this.code = code;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
+
+    public Object getObject() {
+        return object;
+    }
+
+    public void setObject(Object object) {
+        this.object = object;
+    }
 }

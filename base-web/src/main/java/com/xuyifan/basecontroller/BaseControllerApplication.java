@@ -9,7 +9,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.xuyifan.basedao.*","com.xuyifan.baseservice.*"
+@ComponentScan(basePackages = {"com.xuyifan.basedao.*","com.xuyifan.baseservice.*","com.xuyifan.basecontroller.*"
 })
 @MapperScan("com.xuyifan.basedao.mapper")
 public class BaseControllerApplication {

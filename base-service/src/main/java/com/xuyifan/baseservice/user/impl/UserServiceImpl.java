@@ -25,13 +25,18 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUserByLoginName(String loginName) {
-        User user=new User();
-        user.setLoginName(loginName);
-        return null;
+        User user = userMapper.getUserByLoginName(loginName);
+        return user;
     }
 
     @Override
     public boolean validateUser(String loginName, String password) {
-        return false;
+        User user = userMapper.getUser(loginName, password);
+        if (user==null){
+            return false;
+        }else {
+            return true;
+        }
+
     }
 }
