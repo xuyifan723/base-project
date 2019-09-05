@@ -11,11 +11,13 @@ var new_element=document.createElement("script");
 new_element.setAttribute("type","text/javascript");
 new_element.setAttribute("src","/data_manager/assets/utils/Apiservice.js");
 document.body.appendChild(new_element);
+var userTokenName='Authorization';
 function Data_POST(url,params,func){
     $.ajax({
         type:"post",
         url:url,
         contentType:'application/json',
+        headers:{userTokenName:  sessionStorage.getItem(userTokenName)},
 // data: "para="+para,  此处data可以为 a=1&b=2类型的字符串 或 json数据。
         data:JSON.stringify(params),
         dataType:"json",
@@ -49,6 +51,7 @@ function Data_GET(url,params,func){
         type:"get",
         url:url,
         dataType:"json",
+        headers:{userTokenName:  sessionStorage.getItem(userTokenName)},
         success:function (data)
         {
             func(data)

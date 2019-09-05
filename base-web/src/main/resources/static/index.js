@@ -33,3 +33,14 @@
     }).extend(app).use(entry || 'home');
 
 })();
+layui.use('laytpl', function(){
+    var laytpl = layui.laytpl;
+ /*Data_POST()*/
+    var getTpl = user_Html.innerHTML
+        ,view = document.getElementById('userinfo');
+    laytpl(getTpl).render(data, function(html){
+        view.innerHTML = html;
+    });
+
+
+})

@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class CookieUtil {
     //存用户的cookie名称
-    public static final String USER_COOKIE_NAME = "Data_User";
+    public static final String USER_COOKIE_NAME = "Authorization";
     //用户存的过期时间为30分钟
     public static final Long EXPIRE_TIME = 1000 * 60 * 30L;
 

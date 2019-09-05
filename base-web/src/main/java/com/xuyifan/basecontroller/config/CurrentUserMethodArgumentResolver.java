@@ -2,7 +2,11 @@ package com.xuyifan.basecontroller.config;
 
 
 import com.xuyifan.basecontroller.annotation.CurrentUser;
+import com.xuyifan.basedao.bean.User;
+import com.xuyifan.baseservice.user.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.MethodParameter;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.support.WebDataBinderFactory;
 import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.context.request.RequestAttributes;
@@ -17,6 +21,8 @@ import org.springframework.web.multipart.support.MissingServletRequestPartExcept
  * @Version 1.0
  */
 public class CurrentUserMethodArgumentResolver implements HandlerMethodArgumentResolver {
+    @Autowired
+    private UserService userService;
     @Override
     public boolean supportsParameter(MethodParameter methodParameter) {
         return methodParameter.getParameterType().isAssignableFrom(String.class) && methodParameter.hasParameterAnnotation(CurrentUser.class);
@@ -26,7 +32,11 @@ public class CurrentUserMethodArgumentResolver implements HandlerMethodArgumentR
     public Object resolveArgument(MethodParameter methodParameter, ModelAndViewContainer modelAndViewContainer, NativeWebRequest nativeWebRequest, WebDataBinderFactory webDataBinderFactory) throws Exception {
         String userInfo = (String) nativeWebRequest.getAttribute("currentUser", RequestAttributes.SCOPE_REQUEST);
         if (userInfo != null) {
-            return userInfo;
+            User user = userService.getUserByLoginName(userInfo);
+            if (user==null){
+                throw  new MissingServletRequestPartException("currentUser");
+            }
+            return user;
         }
         throw new MissingServletRequestPartException("currentUser");
 

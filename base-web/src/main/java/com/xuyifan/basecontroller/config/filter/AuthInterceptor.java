@@ -3,10 +3,13 @@ package com.xuyifan.basecontroller.config.filter;
 import com.alibaba.excel.util.StringUtils;
 import com.xuyifan.basecontroller.annotation.IgnoreSecurity;
 import com.xuyifan.basecontroller.exception.UserException;
+import com.xuyifan.commonutils.common.CookieUtil;
 import com.xuyifan.commonutils.common.TokenUtils;
+import com.xuyifan.commonutils.exception.BizException;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Method;
@@ -26,15 +29,21 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
         }
         HandlerMethod handlerMethod = (HandlerMethod) handler;
         Method method = handlerMethod.getMethod();
-        String requestPath = request.getRequestURI();
+        //String requestPath = request.getRequestURI();
         if (method.isAnnotationPresent(IgnoreSecurity.class)) {
             return true;
         }
-        String token = request.getHeader(TokenUtils.TOKEN_NAME);
+        String user = CookieUtil.getUser(request);
+        if (!StringUtils.isEmpty(user)) {
+            CookieUtil.addUser(httpServletResponse, user);
+        }else {
+            throw new BizException("用户不存在");
+        }
+       /* String token = request.getHeader(TokenUtils.TOKEN_NAME);
         if (StringUtils.isEmpty(token)) {
             throw  new UserException("没有token");
-        }
-        request.setAttribute("currentUser", "key_"+token);
+        }*/
+        request.setAttribute("currentUser", user);
         return true;
 
     }
