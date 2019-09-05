@@ -11,5 +11,5 @@ import com.xuyifan.basedao.bean.User;
 public interface UserService {
     public User getUserById(int id);
     public User getUserByLoginName(String loginName);
-    public boolean validateUser(String loginName,String password);
+    public User validateUser(String loginName,String password);
 }

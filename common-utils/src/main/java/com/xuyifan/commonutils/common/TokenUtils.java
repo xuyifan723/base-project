@@ -9,7 +9,7 @@ import org.apache.commons.lang.StringUtils;
  * @Version 1.0
  */
 public class TokenUtils {
-    public static final String TOKEN_NAME="USER_TOKEN";
+    public static final String TOKEN_NAME="loginName";
     public static String getToken(String userName){
         String user=userName+"_"+System.currentTimeMillis();
         String token = AESUtil.encrypt(user);

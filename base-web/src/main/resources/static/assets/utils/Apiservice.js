@@ -1,1 +1,1 @@
-var USER_LOGIN="user/login";   //用户登录接口
+var USER_LOGIN="gateway/login";   //用户登录接口

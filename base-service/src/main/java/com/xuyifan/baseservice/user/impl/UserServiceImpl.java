@@ -3,6 +3,7 @@ package com.xuyifan.baseservice.user.impl;
 import com.xuyifan.basedao.bean.User;
 import com.xuyifan.basedao.mapper.UserMapper;
 import com.xuyifan.baseservice.user.UserService;
+import com.xuyifan.commonutils.common.AESUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
+
     @Override
     public User getUserById(int id) {
         User user = userMapper.selectByPrimaryKey(id);
@@ -30,13 +32,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean validateUser(String loginName, String password) {
+    public User validateUser(String loginName, String password) {
         User user = userMapper.getUser(loginName, password);
-        if (user==null){
-            return false;
-        }else {
-            return true;
-        }
+        user.setLoginName(AESUtil.encrypt(user.getLoginName()));
+        user.setPassword(AESUtil.encrypt(user.getPassword()));
+        return user;
 
     }
 }

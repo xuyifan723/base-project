@@ -15,6 +15,7 @@ function Data_POST(url,params,func){
     $.ajax({
         type:"post",
         url:url,
+        contentType:'application/json',
 // data: "para="+para,  此处data可以为 a=1&b=2类型的字符串 或 json数据。
         data:JSON.stringify(params),
         dataType:"json",
@@ -59,9 +60,10 @@ function Data_GET(url,params,func){
 }
 
 //设置cookie
-var setCookie = function (name, value, day) {
+var setCookie = function (name, value, min) {
+    //分钟
     //当设置的时间等于0时，不设置expires属性，cookie在浏览器关闭后删除
-    var expires = day * 24 * 60 * 60 * 1000;
+    var expires = min  * 60 * 1000;
     var exp = new Date();
     exp.setTime(exp.getTime() + expires);
     document.cookie = name + "=" + value + ";expires=" + exp.toUTCString();

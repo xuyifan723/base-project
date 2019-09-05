@@ -11,7 +11,7 @@ public class ResultBean {
     public final static Integer SUCCESS_CODE=2000;
     private int code;
     private String msg;
-    private Object object;
+    private Object data;
     public ResultBean() {
         this.code=this.SUCCESS_CODE;
         this.msg="ok";
@@ -19,12 +19,12 @@ public class ResultBean {
     public ResultBean(int code, String msg, Object object) {
         this.code = code;
         this.msg = msg;
-        this.object = object;
+        this.data = object;
     }
     public ResultBean(Object data){
         this.code=this.SUCCESS_CODE;
         this.msg="ok";
-        this.object=data;
+        this.data=data;
     }
     public ResultBean error(String msg){
         this.code=this.ERROR_CODE;
@@ -48,11 +48,11 @@ public class ResultBean {
         this.msg = msg;
     }
 
-    public Object getObject() {
-        return object;
+    public Object getData() {
+        return data;
     }
 
-    public void setObject(Object object) {
-        this.object = object;
+    public void setData(Object data) {
+        this.data = data;
     }
 }
