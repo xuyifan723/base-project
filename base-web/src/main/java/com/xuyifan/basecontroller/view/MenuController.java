@@ -21,10 +21,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class MenuController {
     @Autowired
     private MenuService menuService;
-    @GetMapping("getLists")
+    @GetMapping("/getLists")
     public ResultBean getMenuList(@CurrentUser User user){
         System.out.println(user.getLoginName());
       menuService.selectByPrimaryKey(1);
-      return null;
+      return new ResultBean();
     }
 }

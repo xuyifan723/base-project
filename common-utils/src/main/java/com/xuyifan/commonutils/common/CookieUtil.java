@@ -26,6 +26,9 @@ public class CookieUtil {
      * @return
      */
     public static String getCookie(String name, HttpServletRequest request) {
+ /*       String cookie1 = request.getHeader("Cookie");
+        String[] cookie = cookie1.split(";");*/
+
         Cookie[] cookies = request.getCookies();
         String userValue = "";
         for (Cookie cookie : cookies) {
@@ -83,8 +86,16 @@ public class CookieUtil {
      */
     public static void addUser(HttpServletResponse response, String username) {
         String userInfo = username + "__" + System.currentTimeMillis();
-        Cookie cookie = new Cookie(USER_COOKIE_NAME, userInfo);
+        Cookie cookie = new Cookie(USER_COOKIE_NAME, AESUtil.encrypt(userInfo));
         response.addCookie(cookie);
+        response.setHeader("userinfo",AESUtil.encrypt(userInfo));
+    }
+
+    public static void main(String[] args) {
+        String userInfo =  "xuyifan"+ "__" + System.currentTimeMillis();
+        String encrypt = AESUtil.encrypt(userInfo);
+        System.out.println(encrypt);
+
     }
 
 }

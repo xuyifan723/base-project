@@ -4,6 +4,7 @@ import com.xuyifan.basecontroller.bean.UserBean;
 import com.xuyifan.basedao.bean.User;
 import com.xuyifan.baseservice.user.UserService;
 import com.xuyifan.commonutils.common.CookieUtil;
+import com.xuyifan.commonutils.common.HearUserUtils;
 import com.xuyifan.commonutils.common.ResultBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,7 +30,7 @@ public class GateWayController {
     public ResultBean login(HttpServletResponse response, @RequestBody UserBean userBean){
         User user = userService.validateUser(userBean.getUsername(),userBean.getPassword());
         if (user!=null){
-            CookieUtil.addUser(response,user.getLoginName());
+            HearUserUtils.setUser(response,userBean.getUsername());
             return  new ResultBean(user);
         }else {
             return new ResultBean().error("用户名或者密码错误");

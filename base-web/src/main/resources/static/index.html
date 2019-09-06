@@ -106,6 +106,23 @@
         <div class="mobile-mask"></div>
     </div>
     <script src="assets/layui.js"></script>
+    <script src="assets/utils/jquery-3.4.1.min.js"></script>
+    <script src="assets/utils/dataUtils.js"></script>
     <script src="index.js" data-main="home"></script>
 </body>
+<script type="application/javascript">
+    layui.use('laytpl', function(){
+        var laytpl = layui.laytpl;
+        Data_GET(MENU_USER_LISTS,{},function (data) {
+            console.log(data);
+        })
+        var getTpl = user_Html.innerHTML
+            ,view = document.getElementById('userinfo');
+        laytpl(getTpl).render(data, function(html){
+            view.innerHTML = html;
+        });
+
+
+    })
+</script>
 </html>

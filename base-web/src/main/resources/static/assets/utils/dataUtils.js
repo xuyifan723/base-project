@@ -11,18 +11,18 @@ var new_element=document.createElement("script");
 new_element.setAttribute("type","text/javascript");
 new_element.setAttribute("src","/data_manager/assets/utils/Apiservice.js");
 document.body.appendChild(new_element);
-var userTokenName='Authorization';
+var userTokenName='authCode';
 function Data_POST(url,params,func){
     $.ajax({
         type:"post",
         url:url,
         contentType:'application/json',
-        headers:{userTokenName:  sessionStorage.getItem(userTokenName)},
-// data: "para="+para,  此处data可以为 a=1&b=2类型的字符串 或 json数据。
+        headers:{'authCode': sessionStorage.getItem(userTokenName)},
         data:JSON.stringify(params),
         dataType:"json",
-        success:function (data)
-        {
+        success:function (data, textStatus, request) {
+           var code = request.getResponseHeader(userTokenName);
+            sessionStorage.setItem(userTokenName,code);
            func(data)
         },
         error:function (XMLHttpRequest, textStatus, errorThrown) {
@@ -51,9 +51,10 @@ function Data_GET(url,params,func){
         type:"get",
         url:url,
         dataType:"json",
-        headers:{userTokenName:  sessionStorage.getItem(userTokenName)},
-        success:function (data)
-        {
+        headers:{'authCode':  sessionStorage.getItem(userTokenName)},
+        success:function (data, textStatus, request){
+            var code = request.getResponseHeader(userTokenName);
+            sessionStorage.setItem(userTokenName,code);
             func(data)
         },
         error:function (XMLHttpRequest, textStatus, errorThrown) {
@@ -75,7 +76,3 @@ var setCookie = function (name, value, min) {
 var delCookie = function (name) {
     setCookie(name, ' ', -1);
 };
-
-function deletecookie() {
-    delCookie('userName',' ',-1)
-}

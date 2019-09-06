@@ -4,7 +4,9 @@ import com.alibaba.excel.util.StringUtils;
 import com.xuyifan.basecontroller.annotation.IgnoreSecurity;
 import com.xuyifan.basecontroller.exception.UserException;
 import com.xuyifan.commonutils.common.CookieUtil;
+import com.xuyifan.commonutils.common.HearUserUtils;
 import com.xuyifan.commonutils.common.TokenUtils;
+import com.xuyifan.commonutils.common.ValidateUtils;
 import com.xuyifan.commonutils.exception.BizException;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
@@ -29,20 +31,12 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
         }
         HandlerMethod handlerMethod = (HandlerMethod) handler;
         Method method = handlerMethod.getMethod();
-        //String requestPath = request.getRequestURI();
         if (method.isAnnotationPresent(IgnoreSecurity.class)) {
             return true;
         }
-        String user = CookieUtil.getUser(request);
-        if (!StringUtils.isEmpty(user)) {
-            CookieUtil.addUser(httpServletResponse, user);
-        }else {
-            throw new BizException("用户不存在");
-        }
-       /* String token = request.getHeader(TokenUtils.TOKEN_NAME);
-        if (StringUtils.isEmpty(token)) {
-            throw  new UserException("没有token");
-        }*/
+        String user = HearUserUtils.getUser(request);
+        ValidateUtils.validate(user,"用户没有登录");
+        HearUserUtils.setUser(httpServletResponse,user);
         request.setAttribute("currentUser", user);
         return true;
 
