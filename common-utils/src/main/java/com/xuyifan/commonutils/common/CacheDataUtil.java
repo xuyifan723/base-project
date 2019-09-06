@@ -10,13 +10,13 @@ import java.util.Map;
  * @Version 1.0
  */
 public class CacheDataUtil {
-    public static final Map<String,Object> CACHEDATA=new  HashMap();
+    public static final Map<Integer,Object> CACHEDATA=new  HashMap();
 
-    public static <T> T getValue(String key,Class<T> tClass){
+    public static <T> T getValue(Integer key,Class<T> tClass){
         T o = (T)CACHEDATA.get(key);
         return o;
     }
-    public static void setValue(String key,Object value){
+    public static void setValue(Integer key,Object value){
         CACHEDATA.put(key,value);
     }
 }

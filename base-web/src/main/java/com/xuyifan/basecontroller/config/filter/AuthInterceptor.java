@@ -34,10 +34,10 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
         if (method.isAnnotationPresent(IgnoreSecurity.class)) {
             return true;
         }
-        String user = HearUserUtils.getUser(request);
-        ValidateUtils.validate(user,"用户没有登录");
-        HearUserUtils.setUser(httpServletResponse,user);
-        request.setAttribute("currentUser", user);
+        Integer userId = HearUserUtils.getUser(request);
+        ValidateUtils.validate(userId,"用户没有登录");
+        HearUserUtils.setUser(httpServletResponse,userId);
+        request.setAttribute("currentUser", userId);
         return true;
 
     }

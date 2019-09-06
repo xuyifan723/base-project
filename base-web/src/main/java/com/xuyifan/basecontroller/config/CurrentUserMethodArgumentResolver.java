@@ -30,9 +30,9 @@ public class CurrentUserMethodArgumentResolver implements HandlerMethodArgumentR
 
     @Override
     public Object resolveArgument(MethodParameter methodParameter, ModelAndViewContainer modelAndViewContainer, NativeWebRequest nativeWebRequest, WebDataBinderFactory webDataBinderFactory) throws Exception {
-        String userInfo = (String) nativeWebRequest.getAttribute("currentUser", RequestAttributes.SCOPE_REQUEST);
-        if (userInfo != null) {
-            User user = userService.getUserByLoginName(userInfo);
+        Integer userId = (Integer) nativeWebRequest.getAttribute("currentUser", RequestAttributes.SCOPE_REQUEST);
+        if (userId != null) {
+            User user = userService.getUserById(userId);
             if (user==null){
                 throw  new MissingServletRequestPartException("currentUser");
             }

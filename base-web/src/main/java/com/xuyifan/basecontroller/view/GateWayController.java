@@ -30,7 +30,7 @@ public class GateWayController {
     public ResultBean login(HttpServletResponse response, @RequestBody UserBean userBean){
         User user = userService.validateUser(userBean.getUsername(),userBean.getPassword());
         if (user!=null){
-            HearUserUtils.setUser(response,userBean.getUsername());
+            HearUserUtils.setUser(response,user.getId());
             return  new ResultBean(user);
         }else {
             return new ResultBean().error("用户名或者密码错误");
