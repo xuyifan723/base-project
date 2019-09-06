@@ -6,7 +6,6 @@ import com.xuyifan.basedao.bean.User;
 import com.xuyifan.baseservice.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.MethodParameter;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.support.WebDataBinderFactory;
 import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.context.request.RequestAttributes;
@@ -25,7 +24,8 @@ public class CurrentUserMethodArgumentResolver implements HandlerMethodArgumentR
     private UserService userService;
     @Override
     public boolean supportsParameter(MethodParameter methodParameter) {
-        return methodParameter.getParameterType().isAssignableFrom(String.class) && methodParameter.hasParameterAnnotation(CurrentUser.class);
+        //使用注解为CurrentUser 参数类型为user
+        return methodParameter.getParameterType().isAssignableFrom(User.class) && methodParameter.hasParameterAnnotation(CurrentUser.class);
     }
 
     @Override

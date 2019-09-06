@@ -25,6 +25,6 @@ public class MenuController {
     public ResultBean getMenuList(@CurrentUser User user){
         System.out.println(user.getLoginName());
       menuService.selectByPrimaryKey(1);
-      return new ResultBean();
+      return new ResultBean(user);
     }
 }
