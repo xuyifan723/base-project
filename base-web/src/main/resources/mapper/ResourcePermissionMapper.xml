@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xuyifan.basedao.mapper.ResourcePermissionMapper">
+  <resultMap id="BaseResultMap" type="com.xuyifan.basedao.bean.ResourcePermission">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="operator_type" jdbcType="VARCHAR" property="operatorType" />
+    <result column="operator_id" jdbcType="INTEGER" property="operatorId" />
+    <result column="resource_type" jdbcType="VARCHAR" property="resourceType" />
+    <result column="resource_id" jdbcType="INTEGER" property="resourceId" />
+    <result column="permission_type" jdbcType="VARCHAR" property="permissionType" />
+    <result column="permission_action" jdbcType="INTEGER" property="permissionAction" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+    <result column="created" jdbcType="VARCHAR" property="created" />
+    <result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
+    <result column="updated" jdbcType="VARCHAR" property="updated" />
+    <result column="updated_time" jdbcType="TIMESTAMP" property="updatedTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, operator_type, operator_id, resource_type, resource_id, permission_type, permission_action, 
+    version, created, created_time, updated, updated_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from resource_permission
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from resource_permission
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xuyifan.basedao.bean.ResourcePermission">
+    insert into resource_permission (id, operator_type, operator_id, 
+      resource_type, resource_id, permission_type, 
+      permission_action, version, created, 
+      created_time, updated, updated_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{operatorType,jdbcType=VARCHAR}, #{operatorId,jdbcType=INTEGER}, 
+      #{resourceType,jdbcType=VARCHAR}, #{resourceId,jdbcType=INTEGER}, #{permissionType,jdbcType=VARCHAR}, 
+      #{permissionAction,jdbcType=INTEGER}, #{version,jdbcType=INTEGER}, #{created,jdbcType=VARCHAR}, 
+      #{createdTime,jdbcType=TIMESTAMP}, #{updated,jdbcType=VARCHAR}, #{updatedTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xuyifan.basedao.bean.ResourcePermission">
+    insert into resource_permission
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="operatorType != null">
+        operator_type,
+      </if>
+      <if test="operatorId != null">
+        operator_id,
+      </if>
+      <if test="resourceType != null">
+        resource_type,
+      </if>
+      <if test="resourceId != null">
+        resource_id,
+      </if>
+      <if test="permissionType != null">
+        permission_type,
+      </if>
+      <if test="permissionAction != null">
+        permission_action,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+      <if test="created != null">
+        created,
+      </if>
+      <if test="createdTime != null">
+        created_time,
+      </if>
+      <if test="updated != null">
+        updated,
+      </if>
+      <if test="updatedTime != null">
+        updated_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="operatorType != null">
+        #{operatorType,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null">
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="resourceType != null">
+        #{resourceType,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceId != null">
+        #{resourceId,jdbcType=INTEGER},
+      </if>
+      <if test="permissionType != null">
+        #{permissionType,jdbcType=VARCHAR},
+      </if>
+      <if test="permissionAction != null">
+        #{permissionAction,jdbcType=INTEGER},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=INTEGER},
+      </if>
+      <if test="created != null">
+        #{created,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTime != null">
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updated != null">
+        #{updated,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedTime != null">
+        #{updatedTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xuyifan.basedao.bean.ResourcePermission">
+    update resource_permission
+    <set>
+      <if test="operatorType != null">
+        operator_type = #{operatorType,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null">
+        operator_id = #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="resourceType != null">
+        resource_type = #{resourceType,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceId != null">
+        resource_id = #{resourceId,jdbcType=INTEGER},
+      </if>
+      <if test="permissionType != null">
+        permission_type = #{permissionType,jdbcType=VARCHAR},
+      </if>
+      <if test="permissionAction != null">
+        permission_action = #{permissionAction,jdbcType=INTEGER},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=INTEGER},
+      </if>
+      <if test="created != null">
+        created = #{created,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTime != null">
+        created_time = #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updated != null">
+        updated = #{updated,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedTime != null">
+        updated_time = #{updatedTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xuyifan.basedao.bean.ResourcePermission">
+    update resource_permission
+    set operator_type = #{operatorType,jdbcType=VARCHAR},
+      operator_id = #{operatorId,jdbcType=INTEGER},
+      resource_type = #{resourceType,jdbcType=VARCHAR},
+      resource_id = #{resourceId,jdbcType=INTEGER},
+      permission_type = #{permissionType,jdbcType=VARCHAR},
+      permission_action = #{permissionAction,jdbcType=INTEGER},
+      version = #{version,jdbcType=INTEGER},
+      created = #{created,jdbcType=VARCHAR},
+      created_time = #{createdTime,jdbcType=TIMESTAMP},
+      updated = #{updated,jdbcType=VARCHAR},
+      updated_time = #{updatedTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
