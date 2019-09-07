@@ -1,0 +1,15 @@
+package %beanPackage%;
+
+import lombok.Data;
+
+/**
+ * @author ${USERNAME}
+ * @Ddecription ${TABLEComment}
+ * @date ${DATE}
+ * @Version ${VERSION}
+ */
+@Data
+public class %TABLE%Bean {
+    private String username;
+    private String password;
+}
