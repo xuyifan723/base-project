@@ -1,5 +1,8 @@
 package com.xuyifan.commonutils.generator;
 
+import com.xuyifan.commonutils.generator.bean.TableColumn;
+import com.xuyifan.commonutils.generator.bean.TableName;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -7,7 +10,7 @@ import java.util.Map;
 
 /**
  * @author Xu yifan
- * @Ddecription 待写
+ * @Ddecription 数据处理类
  * @date 2019/9/7 17:03
  * @Version 1.0
  */
@@ -31,6 +34,13 @@ public class DataHandle {
     public void setColData(Map<String, List<TableColumn>> colData) {
         this.colData = colData;
     }
+    /**
+     * 功能描述:初始化，将字段名按照表名分配在一起
+     * @Param: []
+     * @Return: void
+     * @Author: Xu yifan
+     * @Date: 2019/9/9 8:35
+     */
     public void init (){
         GenerCode generCode=new GenerCode();
        this.tableName = generCode.getTableName(CommonParams.getTableNameSql);

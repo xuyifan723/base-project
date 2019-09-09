@@ -1,12 +1,13 @@
 package com.xuyifan.commonutils.generator;
 
+import com.xuyifan.commonutils.generator.bean.TableColumn;
+import com.xuyifan.commonutils.generator.bean.TableName;
 import com.xuyifan.commonutils.generator.config.ConfigureParams;
+import com.xuyifan.commonutils.generator.temp.BeanTemp;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author Xu yifan
@@ -15,6 +16,13 @@ import java.util.Map;
  * @Version 1.0
  */
 public class GenerCode {
+    /**
+     * 功能描述:通过sql获取表名，字段名，字段类型和注释
+     * @Param: [sql]
+     * @Return: java.util.List<com.xuyifan.commonutils.generator.bean.TableColumn>
+     * @Author: Xu yifan
+     * @Date: 2019/9/9 8:34
+     */
     public List<TableColumn> getTableColumn(String sql){
         List<TableColumn> data=new ArrayList<>();
         try{
@@ -39,6 +47,13 @@ public class GenerCode {
         }
         return data;
     }
+    /**
+     * 功能描述:通过sql获取表名和注释
+     * @Param: [sql]
+     * @Return: java.util.List<com.xuyifan.commonutils.generator.bean.TableName>
+     * @Author: Xu yifan
+     * @Date: 2019/9/9 8:34
+     */
     public List<TableName> getTableName(String sql){
         List<TableName> data=new ArrayList<>();
         try {
@@ -67,13 +82,9 @@ public class GenerCode {
     dataHandle.init();
         for (TableName table : dataHandle.getTableName()) {
             StringHandle handle=new StringHandle();
-            handle.setUserName("xuyifan");
-            handle.setVersion("1.0");
-            handle.setTableName(table);
-            handle.setBeanPackage(ConfigureParams.beanPackage);
-            handle.setColumns(dataHandle.getColData().get(table.getTableName()));
+
             BeanTemp beanTemp =new BeanTemp(handle);
-            beanTemp.readFile();
+
         }
     }
 

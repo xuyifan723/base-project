@@ -1,4 +1,4 @@
-package com.xuyifan.commonutils.generator;
+package com.xuyifan.commonutils.generator.temp;
 
 /**
  * @author Xu yifan

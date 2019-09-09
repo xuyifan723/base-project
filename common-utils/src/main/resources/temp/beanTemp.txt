@@ -9,7 +9,7 @@ import lombok.Data;
  * @Version ${VERSION}
  */
 @Data
-public class %TABLE%Bean {
+public class %JTABLE%Bean {
     private String username;
     private String password;
 }
