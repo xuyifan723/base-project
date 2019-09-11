@@ -3,10 +3,7 @@ package com.xuyifan.commonutils.generator;
 import com.xuyifan.commonutils.generator.bean.TableColumn;
 import com.xuyifan.commonutils.generator.bean.TableName;
 import com.xuyifan.commonutils.generator.config.ConfigureParams;
-import com.xuyifan.commonutils.generator.temp.BeanTemp;
-import com.xuyifan.commonutils.generator.temp.MapperTemp;
-import com.xuyifan.commonutils.generator.temp.ServiceImplTemp;
-import com.xuyifan.commonutils.generator.temp.ServiceTemp;
+import com.xuyifan.commonutils.generator.temp.*;
 
 import java.io.IOException;
 import java.sql.*;
@@ -95,6 +92,8 @@ public class GenerCode {
             serviceImplTemp.writeFile();
             ServiceTemp serviceTemp=new ServiceTemp(table,dataHandle.getColData().get(table.getTableName()));
             serviceTemp.writeFile();
+            ControllerTemp controllerTemp=new ControllerTemp(table,dataHandle.getColData().get(table.getTableName()));
+            controllerTemp.writeFile();
             System.out.println("****************************");
         }
     }

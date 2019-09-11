@@ -1,7 +1,7 @@
 package com.xuyifan.basecontroller.config;
 
 
-import com.xuyifan.basecontroller.annotation.CurrentUser;
+import com.xuyifan.commonutils.annotation.CurrentUser;
 import com.xuyifan.basedao.bean.User;
 import com.xuyifan.baseservice.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

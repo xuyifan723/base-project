@@ -1,23 +1,89 @@
-package %controllerPackage%;
-
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.beans.factory.annotation.Autowired;
-
-public class %javaTableName%Controller {
+/**
+ * @author %{USERNAME}%
+ * @Ddecription %{TABLECOMMENT}%
+ * @date %{DATE}%
+ * @Version %{VERSION}%
+ */
+@RestController
+@RequestMapping("/%{TABLENAMELOW}%")
+public class %{TABLENAMEUP}%Controller {
     @Autowired
-    private %javaTableName%Service %javaTableNameLow%Service;
-
-
-
-
-
-
-
-
-
-
-
-
-
+    private %{TABLENAMEUP}%Service %{TABLENAMELOW}%Service;
+    /**
+     * 功能描述:通过id删除记录
+     * @Param: [id]
+     * @Author: %{USERNAME}%
+     * @Date: %{DATE}%
+     */
+    @GetMapping("/delete")
+    public Object deleteByPrimaryKey(Integer id){
+        int num=%{TABLENAMELOW}%Service.deleteByPrimaryKey(id);
+       return new ResultBean();
+    }
+    /**
+     * 功能描述:插入全部数据
+     * @Param: [%{TABLENAMEUP}%Bean]
+     * @Author: %{USERNAME}%
+     * @Date: %{DATE}%
+     */
+    @PostMapping("/addAll")
+    public Object insert(@RequestBody %{TABLENAMEUP}%Bean record){
+       int num=%{TABLENAMELOW}%Service.insert(record);
+       return new ResultBean();
+    }
+    /**
+     * 功能描述:插入非空数据
+     * @Param: [%{TABLENAMEUP}%Bean]
+     * @Author: %{USERNAME}%
+     * @Date: %{DATE}%
+     */
+    @PostMapping("/add")
+    public Object insertSelective(@RequestBody %{TABLENAMEUP}%Bean record){
+       int num=%{TABLENAMELOW}%Service.insertSelective(record);
+       return new ResultBean();
+     }
+    /**
+     * 功能描述:通过id查询记录
+     * @Param: [id]
+     * @Author: %{USERNAME}%
+     * @Date: %{DATE}%
+     */
+    @GetMapping("/get")
+    public Object selectByPrimaryKey(Integer id){
+       %{TABLENAMEUP}%Bean bean=%{TABLENAMELOW}%Service.selectByPrimaryKey(id);
+       return  new ResultBean(bean);
+     }
+    /**
+     * 功能描述:通过非空参数搜索list
+     * @Param: [%{TABLENAMEUP}%Bean]
+     * @Author: %{USERNAME}%
+     * @Date: %{DATE}%
+     */
+    @PostMapping("/getList")
+    public Object selectListBySelective(@RequestBody %{TABLENAMEUP}%Bean record){
+            List<%{TABLENAMEUP}%Bean> list=%{TABLENAMELOW}%Service.selectListBySelective(record);
+        return  new ResultBean(list);
+     }
+     /**
+      * 功能描述:通过id更新非空参数
+      * @Param: [%{TABLENAMEUP}%Bean]
+      * @Author: %{USERNAME}%
+      * @Date: %{DATE}%
+      */
+    @PostMapping("/update")
+    public Object updateByPrimaryKeySelective(@RequestBody %{TABLENAMEUP}%Bean record){
+         int num= %{TABLENAMELOW}%Service.updateByPrimaryKeySelective(record);
+      return  new ResultBean();
+    }
+    /**
+     * 功能描述:通过id更新记录
+     * @Param: [%{TABLENAMEUP}%Bean]
+     * @Author: %{USERNAME}%
+     * @Date: %{DATE}%
+     */
+    @PostMapping("/updateAll")
+    public Object updateByPrimaryKey(@RequestBody %{TABLENAMEUP}%Bean record){
+       int num=%{TABLENAMELOW}%Service.updateByPrimaryKey(record);
+      return new ResultBean();
+    }
 }

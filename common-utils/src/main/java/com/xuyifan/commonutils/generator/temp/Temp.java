@@ -128,25 +128,35 @@ public abstract class Temp {
             regex.put("DATE", format);
         }
         regex.put("TABLENAMEUP",StringHandle.toClassUpStr(tableName.getTableName()));
+        regex.put("TABLENAME",tableName.getTableName());
         regex.put("TABLECOMMENT",tableName.getComment());
         regex.put("TABLENAMELOW",StringHandle.toClassLowStr(tableName.getTableName()));
         regex.put("PACKAGENAME",packageName);
         return this.regex;
+    }
+    public File getFile(){
+        String url=null;
+        if (this.fileSuffix.endsWith("xml")){
+             url = this.projectUrl;
+        }else {
+             url = this.projectUrl + "/src/main/java/" + this.packageName.replaceAll("\\.", "/");
+        }
+        File file = new File(url);
+        if (!file.exists()) {
+            file.mkdirs();
+        }
+        File writeName = new File(url + "/" + StringHandle.toClassUpStr(this.tableName.getTableName()) + this.fileSuffix); // 相对路径，如果没有则要建立一个新的output.txt文件
+        return writeName;
     }
     /**
      * 写入TXT文件
      */
     public void writeFile() throws IOException {
         this.handle();
-        String url = this.projectUrl + "/src/main/java/" + this.packageName.replaceAll("\\.", "/");
         FileWriter writer = null;
         BufferedWriter out = null;
         try {
-            File file = new File(url);
-            if (!file.exists()) {
-                file.mkdirs();
-            }
-            File writeName = new File(url + "/" + StringHandle.toClassUpStr(this.tableName.getTableName()) + this.fileSuffix); // 相对路径，如果没有则要建立一个新的output.txt文件
+            File writeName = getFile();
             writeName.createNewFile(); // 创建新文件,有同名的文件的话直接覆盖
             writer = new FileWriter(writeName);
             out = new BufferedWriter(writer);

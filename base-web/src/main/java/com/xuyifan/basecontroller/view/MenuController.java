@@ -1,14 +1,11 @@
 package com.xuyifan.basecontroller.view;
 
-import com.xuyifan.basecontroller.annotation.CurrentUser;
+import com.xuyifan.commonutils.annotation.CurrentUser;
 import com.xuyifan.basedao.bean.User;
 import com.xuyifan.baseservice.menu.MenuService;
 import com.xuyifan.commonutils.common.ResultBean;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author Xu yifan
@@ -22,7 +19,7 @@ public class MenuController {
     @Autowired
     private MenuService menuService;
     @GetMapping("/getLists")
-    public ResultBean getMenuList(@CurrentUser User user){
+    public ResultBean getMenuList(@CurrentUser User user ){
         System.out.println(user.getLoginName());
       menuService.selectByPrimaryKey(1);
       return new ResultBean(user);

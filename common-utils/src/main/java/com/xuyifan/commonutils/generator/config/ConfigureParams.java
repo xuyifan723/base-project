@@ -17,7 +17,7 @@ public class ConfigureParams {
     public  static String daoPackage="com.xuyifan.base.dao";
     public static  String beanProjectUrl="F:\\tmp";
     public static  String beanPackage="com.xuyifan.base.bean";
-    public  static String mapperFile="F:\\tmp\\resources";
+    public  static String mapperFile="F:\\tmp\\resources\\mapper";
 
     public static  String url = "jdbc:mysql://127.0.0.1:3306/data_manager?serverTimezone=Asia/Shanghai";
     public static  String name = "com.mysql.cj.jdbc.Driver";

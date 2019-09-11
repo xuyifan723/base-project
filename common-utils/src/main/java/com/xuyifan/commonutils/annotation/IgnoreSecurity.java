@@ -1,15 +1,15 @@
-package com.xuyifan.basecontroller.annotation;
+package com.xuyifan.commonutils.annotation;
 
 import java.lang.annotation.*;
 /**
- * 用户注解
+ * 忽略用户验证
  * @Param:
  * @Return:
  * @Author: Xu yifan
  * @Date: 2019/8/12 16:23
  */
-@Target(ElementType.PARAMETER)
+@Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface CurrentUser {
+public @interface IgnoreSecurity {
 }
