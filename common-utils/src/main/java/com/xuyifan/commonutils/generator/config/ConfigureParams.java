@@ -11,6 +11,8 @@ public class ConfigureParams {
     public  static String controllerPackage="com.xuyifan.base.controller";
     public  static String serProjectUrl="F:\\tmp";
     public static  String servicePackage="com.xuyifan.base.service";
+    public  static String serImplProjectUrl="F:\\tmp";
+    public static  String serviceImplPackage="com.xuyifan.base.service.impl";
     public static  String daoProjectUrl="F:\\tmp";
     public  static String daoPackage="com.xuyifan.base.dao";
     public static  String beanProjectUrl="F:\\tmp";

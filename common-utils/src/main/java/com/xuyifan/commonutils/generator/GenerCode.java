@@ -4,7 +4,11 @@ import com.xuyifan.commonutils.generator.bean.TableColumn;
 import com.xuyifan.commonutils.generator.bean.TableName;
 import com.xuyifan.commonutils.generator.config.ConfigureParams;
 import com.xuyifan.commonutils.generator.temp.BeanTemp;
+import com.xuyifan.commonutils.generator.temp.MapperTemp;
+import com.xuyifan.commonutils.generator.temp.ServiceImplTemp;
+import com.xuyifan.commonutils.generator.temp.ServiceTemp;
 
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,8 +39,9 @@ public class GenerCode {
                 TableColumn column=new TableColumn();
                 column.setTableName(rs.getString(1));
                 column.setColName(rs.getString(2));
-                column.setColType(rs.getString(3));
-                column.setComment(rs.getString(4));
+                column.setComment(rs.getString(3));
+                column.setColType(rs.getString(4));
+
                 data.add(column);
             }
             rs.close();
@@ -77,14 +82,20 @@ public class GenerCode {
         return data;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
     DataHandle dataHandle=new DataHandle();
     dataHandle.init();
         for (TableName table : dataHandle.getTableName()) {
-            StringHandle handle=new StringHandle();
-
-            BeanTemp beanTemp =new BeanTemp(handle);
-
+            System.out.println("****************************");
+            BeanTemp beanTemp =new BeanTemp(table,dataHandle.getColData().get(table.getTableName()));
+            beanTemp.writeFile();
+            MapperTemp mapperTemp=new MapperTemp(table,dataHandle.getColData().get(table.getTableName()));
+            mapperTemp.writeFile();
+            ServiceImplTemp serviceImplTemp=new ServiceImplTemp(table,dataHandle.getColData().get(table.getTableName()));
+            serviceImplTemp.writeFile();
+            ServiceTemp serviceTemp=new ServiceTemp(table,dataHandle.getColData().get(table.getTableName()));
+            serviceTemp.writeFile();
+            System.out.println("****************************");
         }
     }
 

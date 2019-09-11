@@ -1,0 +1,91 @@
+
+/**
+ * @author %{USERNAME}%
+ * @Ddecription %{TABLECOMMENT}%服务
+ * @date %{DATE}%
+ * @Version %{VERSION}%
+ */
+@Service
+public class %{TABLENAMEUP}%ServiceImpl implements %{TABLENAMEUP}%Service {
+    @Autowired
+    private %{TABLENAMEUP}%Mapper %{TABLENAMELOW}%Mapper;
+
+
+    /**
+     * 功能描述:通过id删除记录
+     * @Param: [id]
+     * @Return: int
+     * @Author: %{USERNAME}%
+     * @Date: %{DATE}%
+     */
+    @Override
+    public int deleteByPrimaryKey(Integer id){
+       return %{TABLENAMELOW}%Mapper.deleteByPrimaryKey(id);
+    }
+    /**
+     * 功能描述:插入全部数据
+     * @Param: [%{TABLENAMEUP}%Bean]
+     * @Return: int
+     * @Author: %{USERNAME}%
+     * @Date: %{DATE}%
+     */
+    @Override
+    public int insert(%{TABLENAMEUP}%Bean record){
+       return %{TABLENAMELOW}%Mapper.insert(record);
+    }
+    /**
+     * 功能描述:插入非空数据
+     * @Param: [%{TABLENAMEUP}%Bean]
+     * @Return: int
+     * @Author: %{USERNAME}%
+     * @Date: %{DATE}%
+     */
+    @Override
+    public int insertSelective(%{TABLENAMEUP}%Bean record){
+       return %{TABLENAMELOW}%Mapper.insertSelective(record);
+     }
+    /**
+     * 功能描述:通过id查询记录
+     * @Param: [id]
+     * @Return: %{TABLENAMEUP}%Bean
+     * @Author: %{USERNAME}%
+     * @Date: %{DATE}%
+     */
+    @Override
+    public %{TABLENAMEUP}%Bean selectByPrimaryKey(Integer id){
+       return %{TABLENAMELOW}%Mapper.selectByPrimaryKey(id);
+     }
+    /**
+     * 功能描述:通过非空参数搜索list
+     * @Param: [%{TABLENAMEUP}%Bean]
+     * @Return: List<%{TABLENAMEUP}%Bean>
+     * @Author: %{USERNAME}%
+     * @Date: %{DATE}%
+     */
+    @Override
+    public List<%{TABLENAMEUP}%Bean> selectListBySelective(%{TABLENAMEUP}%Bean record){
+       return %{TABLENAMELOW}%Mapper.selectListBySelective(record);
+     }
+     /**
+      * 功能描述:通过id更新非空参数
+      * @Param: [%{TABLENAMEUP}%Bean]
+      * @Return: int
+      * @Author: %{USERNAME}%
+      * @Date: %{DATE}%
+      */
+    @Override
+    public int updateByPrimaryKeySelective(%{TABLENAMEUP}%Bean record){
+      return %{TABLENAMELOW}%Mapper.updateByPrimaryKeySelective(record);
+    }
+    /**
+     * 功能描述:通过id更新记录
+     * @Param: [%{TABLENAMEUP}%Bean]
+     * @Return: int
+     * @Author: %{USERNAME}%
+     * @Date: %{DATE}%
+     */
+    @Override
+    public int updateByPrimaryKey(%{TABLENAMEUP}%Bean record){
+      return %{TABLENAMELOW}%Mapper.updateByPrimaryKey(record);
+    }
+}

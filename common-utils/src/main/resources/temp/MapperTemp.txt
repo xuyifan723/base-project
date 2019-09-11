@@ -1,0 +1,22 @@
+/**
+ * @author %{USERNAME}%
+ * @Ddecription %{TABLECOMMENT}%mapper
+ * @date %{DATE}%
+ * @Version %{VERSION}%
+ */
+public interface %{TABLENAMEUP}%Mapper {
+    //通过id删除记录
+    int deleteByPrimaryKey(Integer id);
+    //插入全部数据
+    int insert(%{TABLENAMEUP}%Bean record);
+    //插入非空数据
+    int insertSelective(%{TABLENAMEUP}%Bean record);
+    //通过id查询记录
+    %{TABLENAMEUP}%Bean selectByPrimaryKey(Integer id);
+    //通过非空参数搜索list
+    List<%{TABLENAMEUP}%Bean> selectListBySelective(%{TABLENAMEUP}%Bean record);
+    //通过id更新非空参数
+    int updateByPrimaryKeySelective(%{TABLENAMEUP}%Bean record);
+    //通过id更新记录
+    int updateByPrimaryKey(%{TABLENAMEUP}%Bean record);
+}

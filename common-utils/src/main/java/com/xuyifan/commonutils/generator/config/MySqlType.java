@@ -14,14 +14,11 @@ public class MySqlType extends DataBaseType {
         this.init();
     }
 
-    private Map<String,String> typeData;
-    public String getType(String type){
-         return typeData.get(type);
-    }
     private void init (){
-       this.typeData =new HashMap<>();
+       Map typeData =new HashMap<>();
        typeData.put("varchar","String");
         typeData.put("int","Integer");
         typeData.put("datetime","Date");
+        this.setTypeData(typeData);
     }
 }

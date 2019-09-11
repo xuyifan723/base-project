@@ -19,7 +19,13 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
-
+/**
+ * 功能描述:
+ * @Param: [id]
+ * @Return: com.xuyifan.basedao.bean.User
+ * @Author: Xu yifan
+ * @Date: 2019/9/11 14:07
+ */
     @Override
     public User getUserById(int id) {
         User userInfo = CacheDataUtil.getValue(id, User.class);

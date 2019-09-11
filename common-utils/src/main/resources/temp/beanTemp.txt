@@ -1,15 +1,10 @@
-package %beanPackage%;
-
-import lombok.Data;
-
 /**
- * @author ${USERNAME}
- * @Ddecription ${TABLEComment}
- * @date ${DATE}
- * @Version ${VERSION}
+ * @author %{USERNAME}%
+ * @Ddecription %{TABLECOMMENT}%
+ * @date %{DATE}%
+ * @Version %{VERSION}%
  */
 @Data
-public class %JTABLE%Bean {
-    private String username;
-    private String password;
+public class %{TABLENAMEUP}%Bean {
+    %{FORCOLUMN}%
 }

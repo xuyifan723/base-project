@@ -4,10 +4,11 @@ import com.xuyifan.commonutils.generator.StringHandle;
 import com.xuyifan.commonutils.generator.bean.TableColumn;
 import com.xuyifan.commonutils.generator.bean.TableName;
 import com.xuyifan.commonutils.generator.config.ConfigureParams;
+import com.xuyifan.commonutils.generator.config.DataBaseTpyeFactory;
+import com.xuyifan.commonutils.generator.config.DataBaseType;
 
-import java.io.*;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Xu yifan
@@ -15,59 +16,59 @@ import java.util.List;
  * @date 2019/9/6 16:06
  * @Version 1.0
  */
-public class BeanTemp {
-    private StringHandle handle;
-    private List<String> tempData = new ArrayList<>(); //模板数据
-    private List<String> importPackage = new ArrayList<>();
-    private List<String> data = new ArrayList<>();
-    private TableName tableName;
-    private List<TableColumn> columns;
+public class BeanTemp extends Temp {
+    private String fileSuffix="Bean.java";
+    private String tempName="beanTemp.txt";
+    public BeanTemp(TableName tableName, List<TableColumn> columns) {
+        super(tableName, columns);
+        super.getTemp(this.tempName);
+        super.setFileSuffix(this.fileSuffix);
+        super.setProjectUrl(ConfigureParams.beanProjectUrl);
+        super.setPackageName(ConfigureParams.beanPackage);
 
-    public BeanTemp(StringHandle handle) {
-        this.handle = handle;
     }
-
-    public void init() {
-    }
-    public void getTemp() throws IOException {
-        InputStream path = this.getClass().getResourceAsStream("/temp/beanTemp.txt");
-        BufferedReader br = new BufferedReader(new InputStreamReader(path));
-        try {
-            String line;
-            while ((line = br.readLine()) != null) {
-                this.tempData.add(line);
+    public void handleColumn(){
+        boolean flag=true;
+        List<String> importPackage = this.getImportPackage();
+        List<String> data = this.getData();
+        DataBaseType mysql = DataBaseTpyeFactory.getType("mysql");
+        for (TableColumn column : this.getColumns()) {
+          StringBuffer temp=new StringBuffer();
+          temp.append("    private ");
+            String type = mysql.getType(column.getColType());
+            temp.append(type);
+            if ("Date".equals(type)&&flag){
+                importPackage.add("import java.util.Date;");
+                flag=false;
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }finally {
-            br.close();
-            path.close();
+            temp.append(" ");
+            temp.append(StringHandle.toClassLowStr(column.getColName()));
+            temp.append(";");
+            temp.append("   //"+column.getComment());
+            data.add(temp.toString());
         }
     }
 
-    /**
-     * 写入TXT文件
-     */
-    public void writeFile() {
-        String url = ConfigureParams.beanProjectUrl+"/src/main/java/"+ ConfigureParams.beanPackage.replaceAll("\\.", "/");
-        try {
-            File file = new File(url);
-            if (!file.exists()) {
-                file.mkdirs();
+
+    @Override
+    public void handle() {
+        List<String> importPackage = this.getImportPackage();
+        List<String> data = this.getData();
+        importPackage.add("import lombok.Data;");
+        Map<String, String> regexMap = this.getRegexMap();
+        for (String tempStr : this.getTempData()) {
+            if (StringHandle.validateStr(tempStr,"FORCOLUMN")){
+                handleColumn();
+            }else {
+                String temp = StringHandle.handleStr(tempStr, regexMap);
+                data.add(temp);
+
             }
-            File writeName = new File(url+"/"+StringHandle.toClassUpStr(this.tableName.getTableName())+"Bean.java"); // 相对路径，如果没有则要建立一个新的output.txt文件
-            writeName.createNewFile(); // 创建新文件,有同名的文件的话直接覆盖
-            try (FileWriter writer = new FileWriter(writeName);
-                 BufferedWriter out = new BufferedWriter(writer)
-            ) {
-                out.write("我会写入文件啦1\r\n"); // \r\n即为换行
-                out.write("我会写入文件啦2\r\n"); // \r\n即为换行
-                out.flush(); // 把缓存区内容压入文件
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+
         }
+
     }
+
 
     public static void main(String[] args) {
         String beanPackage = "com.xuyifan.bean.dao";
