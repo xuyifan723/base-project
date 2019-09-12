@@ -1,8 +1,8 @@
 package com.xuyifan.basecontroller.view;
 
 import com.xuyifan.basedao.bean.UserBean;
+import com.xuyifan.baseservice.service.ResMenuService;
 import com.xuyifan.commonutils.annotation.CurrentUser;
-import com.xuyifan.baseservice.menu.MenuService;
 import com.xuyifan.commonutils.common.ResultBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/menu")
 public class MenuController {
     @Autowired
-    private MenuService menuService;
+    private ResMenuService menuService;
     @GetMapping("/getLists")
     public ResultBean getMenuList(@CurrentUser UserBean user ){
         System.out.println(user.getLoginName());

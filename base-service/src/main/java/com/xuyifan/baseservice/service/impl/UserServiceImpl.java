@@ -1,15 +1,15 @@
-package com.xuyifan.baseservice.impl;
+package com.xuyifan.baseservice.service.impl;
 import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.xuyifan.baseservice.UserService;
+import com.xuyifan.baseservice.service.UserService;
 import com.xuyifan.basedao.mapper.UserMapper;
 import com.xuyifan.basedao.bean.UserBean;
 
 /**
  * @author Xu yifan
  * @Ddecription 服务
- * @date 2019-09-12 16:26:56
+ * @date 2019-09-12 16:50:08
  * @Version 1.0
  */
 @Service
@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService {
      * @Param: [id]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2019-09-12 16:26:56
+     * @Date: 2019-09-12 16:50:08
      */
     @Override
     public int deleteByPrimaryKey(Integer id){
@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService {
      * @Param: [UserBean]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2019-09-12 16:26:56
+     * @Date: 2019-09-12 16:50:08
      */
     @Override
     public int insert(UserBean record){
@@ -45,7 +45,7 @@ public class UserServiceImpl implements UserService {
      * @Param: [UserBean]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2019-09-12 16:26:56
+     * @Date: 2019-09-12 16:50:08
      */
     @Override
     public int insertSelective(UserBean record){
@@ -56,7 +56,7 @@ public class UserServiceImpl implements UserService {
      * @Param: [id]
      * @Return: UserBean
      * @Author: Xu yifan
-     * @Date: 2019-09-12 16:26:56
+     * @Date: 2019-09-12 16:50:08
      */
     @Override
     public UserBean selectByPrimaryKey(Integer id){
@@ -67,7 +67,7 @@ public class UserServiceImpl implements UserService {
      * @Param: [UserBean]
      * @Return: List<UserBean>
      * @Author: Xu yifan
-     * @Date: 2019-09-12 16:26:56
+     * @Date: 2019-09-12 16:50:08
      */
     @Override
     public List<UserBean> selectListBySelective(UserBean record){
@@ -78,7 +78,7 @@ public class UserServiceImpl implements UserService {
       * @Param: [UserBean]
       * @Return: int
       * @Author: Xu yifan
-      * @Date: 2019-09-12 16:26:56
+      * @Date: 2019-09-12 16:50:08
       */
     @Override
     public int updateByPrimaryKeySelective(UserBean record){
@@ -89,7 +89,7 @@ public class UserServiceImpl implements UserService {
      * @Param: [UserBean]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2019-09-12 16:26:56
+     * @Date: 2019-09-12 16:50:08
      */
     @Override
     public int updateByPrimaryKey(UserBean record){

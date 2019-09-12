@@ -5,7 +5,7 @@ package com.xuyifan.basecontroller.view;
 
 import com.xuyifan.basecontroller.bean.UserInterBean;
 import com.xuyifan.basedao.bean.UserBean;
-import com.xuyifan.baseservice.user.UserService;
+import com.xuyifan.baseservice.service.UserService;
 import com.xuyifan.commonutils.common.HearUserUtils;
 import com.xuyifan.commonutils.common.ResultBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 /**
  * @author Xu yifan
@@ -29,9 +30,11 @@ public class GateWayController {
     @Autowired
     private UserService userService;
     @PostMapping("/login")
-    public ResultBean login(HttpServletResponse response, @RequestBody UserInterBean userBean){
-        UserBean user = userService.validateUser(userBean.getUsername(),userBean.getPassword());
-        if (user!=null){
+    public ResultBean login(HttpServletResponse response, @RequestBody UserBean userBean){
+
+        List<UserBean> users = userService.selectListBySelective(userBean);
+        if (users!=null&&users.size()>0){
+            UserBean user=users.get(0);
             HearUserUtils.setUser(response,user.getId());
             return  new ResultBean(user);
         }else {
@@ -39,9 +42,10 @@ public class GateWayController {
         }
     }
     @PostMapping("/getUserInfo")
-    public ResultBean getUserInfo(@RequestBody UserInterBean userBean){
-        UserBean user = userService.validateUser(userBean.getUsername(),userBean.getPassword());
-        if (user!=null){
+    public ResultBean getUserInfo(@RequestBody UserBean userBean){
+        List<UserBean> users = userService.selectListBySelective(userBean);
+        if (users!=null&&users.size()>0){
+            UserBean user=users.get(0);
             return  new ResultBean(user);
         }else {
             return new ResultBean().error("用户名或者密码错误");

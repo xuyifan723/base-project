@@ -10,9 +10,9 @@ public class ConfigureParams {
     public static String conProjectUrl="F:\\myworkspace\\base-project\\base-web";
     public  static String controllerPackage="com.xuyifan.basecontroller.view";
     public  static String serProjectUrl="F:\\myworkspace\\base-project\\base-service";
-    public static  String servicePackage="com.xuyifan.baseservice";
+    public static  String servicePackage="com.xuyifan.baseservice.service";
     public  static String serImplProjectUrl="F:\\myworkspace\\base-project\\base-service";
-    public static  String serviceImplPackage="com.xuyifan.baseservice.impl";
+    public static  String serviceImplPackage="com.xuyifan.baseservice.service.impl";
     public static  String daoProjectUrl="F:\\myworkspace\\base-project\\base-dao";
     public  static String daoPackage="com.xuyifan.basedao.mapper";
     public static  String beanProjectUrl="F:\\myworkspace\\base-project\\base-dao";

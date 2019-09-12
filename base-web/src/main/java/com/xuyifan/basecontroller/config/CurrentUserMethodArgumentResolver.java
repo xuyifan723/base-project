@@ -2,8 +2,8 @@ package com.xuyifan.basecontroller.config;
 
 
 import com.xuyifan.basedao.bean.UserBean;
+import com.xuyifan.baseservice.service.UserService;
 import com.xuyifan.commonutils.annotation.CurrentUser;
-import com.xuyifan.baseservice.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.MethodParameter;
 import org.springframework.web.bind.support.WebDataBinderFactory;
@@ -32,7 +32,7 @@ public class CurrentUserMethodArgumentResolver implements HandlerMethodArgumentR
     public Object resolveArgument(MethodParameter methodParameter, ModelAndViewContainer modelAndViewContainer, NativeWebRequest nativeWebRequest, WebDataBinderFactory webDataBinderFactory) throws Exception {
         Integer userId = (Integer) nativeWebRequest.getAttribute("currentUser", RequestAttributes.SCOPE_REQUEST);
         if (userId != null) {
-            UserBean user = userService.getUserById(userId);
+            UserBean user = userService.selectByPrimaryKey(userId);
             if (user==null){
                 throw  new MissingServletRequestPartException("currentUser");
             }
