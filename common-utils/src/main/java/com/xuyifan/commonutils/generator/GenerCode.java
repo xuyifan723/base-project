@@ -94,6 +94,8 @@ public class GenerCode {
             serviceTemp.writeFile();
             ControllerTemp controllerTemp=new ControllerTemp(table,dataHandle.getColData().get(table.getTableName()));
             controllerTemp.writeFile();
+            MapperFileTemp mapperFileTemp=new MapperFileTemp(table,dataHandle.getColData().get(table.getTableName()));
+            mapperFileTemp.writeFile();
             System.out.println("****************************");
         }
     }

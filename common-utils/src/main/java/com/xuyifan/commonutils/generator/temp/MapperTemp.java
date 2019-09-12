@@ -27,11 +27,8 @@ public class MapperTemp extends Temp{
 
     @Override
     public void handle() {
-        List<String> importPackage = this.getImportPackage();
         List<String> data = this.getData();
-        importPackage.add("import java.util.List;");
-        importPackage.add("import "+ConfigureParams.beanPackage+"."+StringHandle.toClassUpStr(this.getTableName().getTableName())+"Bean;");
-        Map<String, String> regexMap = this.getRegexMap();
+       Map<String, String> regexMap = this.getRegexMap();
         for (String tempStr : this.getTempData()) {
                 String temp = StringHandle.handleStr(tempStr, regexMap);
                 data.add(temp);

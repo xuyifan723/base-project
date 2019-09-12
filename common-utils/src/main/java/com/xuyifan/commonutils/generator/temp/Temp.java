@@ -160,8 +160,9 @@ public abstract class Temp {
             writeName.createNewFile(); // 创建新文件,有同名的文件的话直接覆盖
             writer = new FileWriter(writeName);
             out = new BufferedWriter(writer);
-
-            out.write("package " + this.packageName + ";\r\n");
+            if (!this.fileSuffix.endsWith("xml")){
+                out.write("package " + this.packageName + ";\r\n");
+            }
             for (String ip : this.getImportPackage()) {
                 out.write(ip + "\r\n");
             }
