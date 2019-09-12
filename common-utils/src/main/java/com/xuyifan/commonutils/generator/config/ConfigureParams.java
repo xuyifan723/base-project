@@ -27,7 +27,7 @@ public class ConfigureParams {
 
     public  static String devUserName="Xu yifan";
     public  static String version="1.0";
-
-    public static String[] tableList={"user","data_source","res_menu","resource_permission"};
+//,"data_source","res_menu","resource_permission"
+    public static String[] tableList={"user"};
 
 }
