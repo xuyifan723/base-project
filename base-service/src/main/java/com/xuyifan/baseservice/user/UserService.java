@@ -1,6 +1,6 @@
 package com.xuyifan.baseservice.user;
 
-import com.xuyifan.basedao.bean.User;
+import com.xuyifan.basedao.bean.UserBean;
 
 /**
  * @author Xu yifan
@@ -9,7 +9,7 @@ import com.xuyifan.basedao.bean.User;
  * @Version 1.0
  */
 public interface UserService {
-    public User getUserById(int id);
-    public User getUserByLoginName(String loginName);
-    public User validateUser(String loginName,String password);
+    public UserBean getUserById(int id);
+    public UserBean getUserByLoginName(String loginName);
+    public UserBean validateUser(String loginName,String password);
 }

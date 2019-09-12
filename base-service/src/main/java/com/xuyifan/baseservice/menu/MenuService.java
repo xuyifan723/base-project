@@ -1,6 +1,7 @@
 package com.xuyifan.baseservice.menu;
 
-import com.xuyifan.basedao.bean.ResMenu;
+
+import com.xuyifan.basedao.bean.ResMenuBean;
 
 /**
  * @author Xu yifan
@@ -11,13 +12,13 @@ import com.xuyifan.basedao.bean.ResMenu;
 public interface MenuService {
     int deleteByPrimaryKey(Integer id);
 
-    int insert(ResMenu record);
+    int insert(ResMenuBean record);
 
-    int insertSelective(ResMenu record);
+    int insertSelective(ResMenuBean record);
 
-    ResMenu selectByPrimaryKey(Integer id);
+    ResMenuBean selectByPrimaryKey(Integer id);
 
-    int updateByPrimaryKeySelective(ResMenu record);
+    int updateByPrimaryKeySelective(ResMenuBean record);
 
-    int updateByPrimaryKey(ResMenu record);
+    int updateByPrimaryKey(ResMenuBean record);
 }

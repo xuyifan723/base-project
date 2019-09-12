@@ -1,6 +1,7 @@
 package com.xuyifan.baseservice.menu.impl;
 
-import com.xuyifan.basedao.bean.ResMenu;
+
+import com.xuyifan.basedao.bean.ResMenuBean;
 import com.xuyifan.basedao.mapper.ResMenuMapper;
 import com.xuyifan.baseservice.menu.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,27 +24,27 @@ public class MenuServiceImpl implements MenuService {
     }
 
     @Override
-    public int insert(ResMenu record) {
+    public int insert(ResMenuBean record) {
         return resMenuMapper.insert( record);
     }
 
     @Override
-    public int insertSelective(ResMenu record) {
+    public int insertSelective(ResMenuBean record) {
         return resMenuMapper.insertSelective( record);
     }
 
     @Override
-    public ResMenu selectByPrimaryKey(Integer id) {
+    public ResMenuBean selectByPrimaryKey(Integer id) {
         return resMenuMapper.selectByPrimaryKey( id);
     }
 
     @Override
-    public int updateByPrimaryKeySelective(ResMenu record) {
+    public int updateByPrimaryKeySelective(ResMenuBean record) {
         return resMenuMapper.updateByPrimaryKeySelective( record);
     }
 
     @Override
-    public int updateByPrimaryKey(ResMenu record) {
+    public int updateByPrimaryKey(ResMenuBean record) {
         return resMenuMapper.updateByPrimaryKey( record);
     }
 }

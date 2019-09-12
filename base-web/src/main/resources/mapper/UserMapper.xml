@@ -1,62 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xuyifan.basedao.mapper.UserMapper">
-
-  <resultMap id="BaseResultMap" type="com.xuyifan.basedao.bean.User">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="user_name" jdbcType="VARCHAR" property="userName" />
-    <result column="login_name" jdbcType="VARCHAR" property="loginName" />
-    <result column="password" jdbcType="VARCHAR" property="password" />
-    <result column="version" jdbcType="INTEGER" property="version" />
-    <result column="created" jdbcType="VARCHAR" property="created" />
-    <result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
-    <result column="updated" jdbcType="VARCHAR" property="updated" />
-    <result column="updated_time" jdbcType="TIMESTAMP" property="updatedTime" />
+  <resultMap id="BaseResultMap" type="com.xuyifan.basedao.bean.UserBean">
+    <id column="id" property="id" />
+    <result column="created" property="created" />
+    <result column="created_time" property="createdTime" />
+    <result column="login_name" property="loginName" />
+    <result column="password" property="password" />
+    <result column="updated" property="updated" />
+    <result column="updated_time" property="updatedTime" />
+    <result column="user_name" property="userName" />
+    <result column="version" property="version" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, user_name, login_name, password, version, created, created_time, updated, updated_time
+created,created_time,id,login_name,password,updated,updated_time,user_name,version
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from user
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id}
   </select>
-  <select id="getUserByLoginName" resultType="com.xuyifan.basedao.bean.User">
-    select
-    <include refid="Base_Column_List" />
-    from user
-    where login_name=#{loginName}
-  </select>
-  <select id="getUser" resultType="com.xuyifan.basedao.bean.User">
-    select
-    <include refid="Base_Column_List" />
-    from user
-    where login_name=#{loginName}
-    and password=#{password}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from user
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.xuyifan.basedao.bean.User">
-    insert into user (id, user_name, login_name,
-      password, version, created,
-      created_time, updated, updated_time
-      )
-    values (#{id,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{loginName,jdbcType=VARCHAR},
-      #{password,jdbcType=VARCHAR}, #{version,jdbcType=INTEGER}, #{created,jdbcType=VARCHAR},
-      #{createdTime,jdbcType=TIMESTAMP}, #{updated,jdbcType=VARCHAR}, #{updatedTime,jdbcType=TIMESTAMP}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.xuyifan.basedao.bean.User">
-    insert into user
-    <trim prefix="(" suffix=")" suffixOverrides=",">
+
+    <select id="selectListBySelective" parameterType="com.xuyifan.basedao.bean.UserBean" resultMap="BaseResultMap">
+      select
+      <include refid="Base_Column_List" />
+      from user
+      <where>
+      <if test="created != null">
+      created = #{created}
+      </if>
+      <if test="createdTime != null">
+      and createdTime = #{createdTime}
+      </if>
       <if test="id != null">
-        id,
+      and id = #{id}
+      </if>
+      <if test="loginName != null">
+      and loginName = #{loginName}
+      </if>
+      <if test="password != null">
+      and password = #{password}
+      </if>
+      <if test="updated != null">
+      and updated = #{updated}
+      </if>
+      <if test="updatedTime != null">
+      and updatedTime = #{updatedTime}
       </if>
       <if test="userName != null">
-        user_name,
+      and userName = #{userName}
+      </if>
+      <if test="version != null">
+      and version = #{version}
+      </if>
+      </where>
+    </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user
+    where id = #{id}
+  </delete>
+  <insert id="insert" parameterType="com.xuyifan.basedao.bean.UserBean">
+    insert into user (
+    <include refid="Base_Column_List" />
+    )
+    values (
+#{created},#{createdTime},#{id},#{loginName},#{password},#{updated},#{updatedTime},#{userName},#{version}
+     )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xuyifan.basedao.bean.UserBean">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="created != null">
+        created,
+      </if>
+      <if test="createdTime != null">
+        created_time,
+      </if>
+      <if test="id != null">
+        id,
       </if>
       <if test="loginName != null">
         login_name,
@@ -64,92 +87,94 @@
       <if test="password != null">
         password,
       </if>
-      <if test="version != null">
-        version,
-      </if>
-      <if test="created != null">
-        created,
-      </if>
-      <if test="createdTime != null">
-        created_time,
-      </if>
       <if test="updated != null">
         updated,
       </if>
       <if test="updatedTime != null">
         updated_time,
       </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
       <if test="userName != null">
-        #{userName,jdbcType=VARCHAR},
-      </if>
-      <if test="loginName != null">
-        #{loginName,jdbcType=VARCHAR},
-      </if>
-      <if test="password != null">
-        #{password,jdbcType=VARCHAR},
+        user_name,
       </if>
       <if test="version != null">
-        #{version,jdbcType=INTEGER},
+        version,
       </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="created != null">
-        #{created,jdbcType=VARCHAR},
+        #{created},
       </if>
       <if test="createdTime != null">
-        #{createdTime,jdbcType=TIMESTAMP},
+        #{createdTime},
+      </if>
+      <if test="id != null">
+        #{id},
+      </if>
+      <if test="loginName != null">
+        #{loginName},
+      </if>
+      <if test="password != null">
+        #{password},
       </if>
       <if test="updated != null">
-        #{updated,jdbcType=VARCHAR},
+        #{updated},
       </if>
       <if test="updatedTime != null">
-        #{updatedTime,jdbcType=TIMESTAMP},
+        #{updatedTime},
+      </if>
+      <if test="userName != null">
+        #{userName},
+      </if>
+      <if test="version != null">
+        #{version},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.xuyifan.basedao.bean.User">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xuyifan.basedao.bean.UserBean">
     update user
     <set>
-      <if test="userName != null">
-        user_name = #{userName,jdbcType=VARCHAR},
-      </if>
-      <if test="loginName != null">
-        login_name = #{loginName,jdbcType=VARCHAR},
-      </if>
-      <if test="password != null">
-        password = #{password,jdbcType=VARCHAR},
-      </if>
-      <if test="version != null">
-        version = #{version,jdbcType=INTEGER},
-      </if>
       <if test="created != null">
-        created = #{created,jdbcType=VARCHAR},
+        created = #{created},
       </if>
       <if test="createdTime != null">
-        created_time = #{createdTime,jdbcType=TIMESTAMP},
+        created_time = #{createdTime},
+      </if>
+      <if test="id != null">
+        id = #{id},
+      </if>
+      <if test="loginName != null">
+        login_name = #{loginName},
+      </if>
+      <if test="password != null">
+        password = #{password},
       </if>
       <if test="updated != null">
-        updated = #{updated,jdbcType=VARCHAR},
+        updated = #{updated},
       </if>
       <if test="updatedTime != null">
-        updated_time = #{updatedTime,jdbcType=TIMESTAMP},
+        updated_time = #{updatedTime},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName},
+      </if>
+      <if test="version != null">
+        version = #{version},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.xuyifan.basedao.bean.User">
+  <update id="updateByPrimaryKey" parameterType="com.xuyifan.basedao.bean.UserBean">
     update user
-    set user_name = #{userName,jdbcType=VARCHAR},
-      login_name = #{loginName,jdbcType=VARCHAR},
-      password = #{password,jdbcType=VARCHAR},
-      version = #{version,jdbcType=INTEGER},
-      created = #{created,jdbcType=VARCHAR},
-      created_time = #{createdTime,jdbcType=TIMESTAMP},
-      updated = #{updated,jdbcType=VARCHAR},
-      updated_time = #{updatedTime,jdbcType=TIMESTAMP}
+    set
+created= #{created}
+,created_time= #{createdTime}
+,id= #{id}
+,login_name= #{loginName}
+,password= #{password}
+,updated= #{updated}
+,updated_time= #{updatedTime}
+,user_name= #{userName}
+,version= #{version}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

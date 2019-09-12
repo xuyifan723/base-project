@@ -1,12 +1,16 @@
 package com.xuyifan.baseservice.user.impl;
 
-import com.xuyifan.basedao.bean.User;
+
+import com.xuyifan.basedao.bean.UserBean;
 import com.xuyifan.basedao.mapper.UserMapper;
 import com.xuyifan.baseservice.user.UserService;
 import com.xuyifan.commonutils.common.AESUtil;
 import com.xuyifan.commonutils.common.CacheDataUtil;
+import com.xuyifan.commonutils.exception.BizException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 
 /**
@@ -27,8 +31,8 @@ public class UserServiceImpl implements UserService {
  * @Date: 2019/9/11 14:07
  */
     @Override
-    public User getUserById(int id) {
-        User userInfo = CacheDataUtil.getValue(id, User.class);
+    public UserBean getUserById(int id) {
+        UserBean userInfo = CacheDataUtil.getValue(id, UserBean.class);
         if (userInfo==null){
              userInfo = userMapper.selectByPrimaryKey(id);
             CacheDataUtil.setValue(userInfo.getId(),userInfo);
@@ -37,21 +41,36 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getUserByLoginName(String loginName) {
-        User userInfo = userMapper.getUserByLoginName(loginName);
-        CacheDataUtil.setValue(userInfo.getId(),userInfo);
-        return userInfo;
+    public UserBean getUserByLoginName(String loginName) {
+        UserBean userBean=new UserBean();
+        userBean.setLoginName(loginName);
+        List<UserBean> userInfos = userMapper.selectListBySelective(userBean);
+        if (userInfos.size()>0){
+            userBean=userInfos.get(0);
+        }else {
+            throw new BizException();
+        }
+        CacheDataUtil.setValue(userBean.getId(),userBean);
+        return userBean;
     }
 
     @Override
-    public User validateUser(String loginName, String password) {
-        User user = userMapper.getUser(loginName, password);
-        if (user!=null){
-            CacheDataUtil.setValue(user.getId(),user);
+    public UserBean validateUser(String loginName, String password) {
+        UserBean userBean=new UserBean();
+        userBean.setLoginName(loginName);
+        userBean.setPassword(password);
+        List<UserBean> users = userMapper.selectListBySelective(userBean);
+        if (users.size()>0){
+            userBean=users.get(0);
+        }else {
+            throw new BizException();
         }
-        user.setLoginName(AESUtil.encrypt(user.getLoginName()));
-        user.setPassword(AESUtil.encrypt(user.getPassword()));
-        return user;
+        if (userBean!=null){
+            CacheDataUtil.setValue(userBean.getId(),userBean);
+        }
+        userBean.setLoginName(AESUtil.encrypt(userBean.getLoginName()));
+        userBean.setPassword(AESUtil.encrypt(userBean.getPassword()));
+        return userBean;
 
     }
 }

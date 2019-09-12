@@ -1,72 +1,102 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xuyifan.basedao.mapper.DataSourceMapper">
-  <resultMap id="BaseResultMap" type="com.xuyifan.basedao.bean.DataSource">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="username" jdbcType="INTEGER" property="username" />
-    <result column="password" jdbcType="VARCHAR" property="password" />
-    <result column="url" jdbcType="VARCHAR" property="url" />
-    <result column="driver_name" jdbcType="VARCHAR" property="driverName" />
-    <result column="version" jdbcType="INTEGER" property="version" />
-    <result column="created" jdbcType="VARCHAR" property="created" />
-    <result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
-    <result column="updated" jdbcType="VARCHAR" property="updated" />
-    <result column="updated_time" jdbcType="TIMESTAMP" property="updatedTime" />
+  <resultMap id="BaseResultMap" type="com.xuyifan.basedao.bean.DataSourceBean">
+    <id column="id" property="id" />
+    <result column="created" property="created" />
+    <result column="created_time" property="createdTime" />
+    <result column="driver_name" property="driverName" />
+    <result column="name" property="name" />
+    <result column="password" property="password" />
+    <result column="updated" property="updated" />
+    <result column="updated_time" property="updatedTime" />
+    <result column="url" property="url" />
+    <result column="username" property="username" />
+    <result column="version" property="version" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, name, username, password, url, driver_name, version, created, created_time, updated, 
-    updated_time
+created,created_time,driver_name,id,name,password,updated,updated_time,url,username,version
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from data_source
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id}
   </select>
+
+    <select id="selectListBySelective" parameterType="com.xuyifan.basedao.bean.DataSourceBean" resultMap="BaseResultMap">
+      select
+      <include refid="Base_Column_List" />
+      from data_source
+      <where>
+      <if test="created != null">
+      created = #{created}
+      </if>
+      <if test="createdTime != null">
+      and createdTime = #{createdTime}
+      </if>
+      <if test="driverName != null">
+      and driverName = #{driverName}
+      </if>
+      <if test="id != null">
+      and id = #{id}
+      </if>
+      <if test="name != null">
+      and name = #{name}
+      </if>
+      <if test="password != null">
+      and password = #{password}
+      </if>
+      <if test="updated != null">
+      and updated = #{updated}
+      </if>
+      <if test="updatedTime != null">
+      and updatedTime = #{updatedTime}
+      </if>
+      <if test="url != null">
+      and url = #{url}
+      </if>
+      <if test="username != null">
+      and username = #{username}
+      </if>
+      <if test="version != null">
+      and version = #{version}
+      </if>
+      </where>
+    </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from data_source
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id}
   </delete>
-  <insert id="insert" parameterType="com.xuyifan.basedao.bean.DataSource">
-    insert into data_source (id, name, username, 
-      password, url, driver_name, 
-      version, created, created_time, 
-      updated, updated_time)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{username,jdbcType=INTEGER}, 
-      #{password,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, #{driverName,jdbcType=VARCHAR}, 
-      #{version,jdbcType=INTEGER}, #{created,jdbcType=VARCHAR}, #{createdTime,jdbcType=TIMESTAMP}, 
-      #{updated,jdbcType=VARCHAR}, #{updatedTime,jdbcType=TIMESTAMP})
+  <insert id="insert" parameterType="com.xuyifan.basedao.bean.DataSourceBean">
+    insert into data_source (
+    <include refid="Base_Column_List" />
+    )
+    values (
+#{created},#{createdTime},#{driverName},#{id},#{name},#{password},#{updated},#{updatedTime},#{url},#{username},#{version}
+     )
   </insert>
-  <insert id="insertSelective" parameterType="com.xuyifan.basedao.bean.DataSource">
+  <insert id="insertSelective" parameterType="com.xuyifan.basedao.bean.DataSourceBean">
     insert into data_source
     <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="created != null">
+        created,
+      </if>
+      <if test="createdTime != null">
+        created_time,
+      </if>
+      <if test="driverName != null">
+        driver_name,
+      </if>
       <if test="id != null">
         id,
       </if>
       <if test="name != null">
         name,
       </if>
-      <if test="username != null">
-        username,
-      </if>
       <if test="password != null">
         password,
-      </if>
-      <if test="url != null">
-        url,
-      </if>
-      <if test="driverName != null">
-        driver_name,
-      </if>
-      <if test="version != null">
-        version,
-      </if>
-      <if test="created != null">
-        created,
-      </if>
-      <if test="createdTime != null">
-        created_time,
       </if>
       <if test="updated != null">
         updated,
@@ -74,91 +104,105 @@
       <if test="updatedTime != null">
         updated_time,
       </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="name != null">
-        #{name,jdbcType=VARCHAR},
+      <if test="url != null">
+        url,
       </if>
       <if test="username != null">
-        #{username,jdbcType=INTEGER},
-      </if>
-      <if test="password != null">
-        #{password,jdbcType=VARCHAR},
-      </if>
-      <if test="url != null">
-        #{url,jdbcType=VARCHAR},
-      </if>
-      <if test="driverName != null">
-        #{driverName,jdbcType=VARCHAR},
+        username,
       </if>
       <if test="version != null">
-        #{version,jdbcType=INTEGER},
+        version,
       </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="created != null">
-        #{created,jdbcType=VARCHAR},
+        #{created},
       </if>
       <if test="createdTime != null">
-        #{createdTime,jdbcType=TIMESTAMP},
+        #{createdTime},
+      </if>
+      <if test="driverName != null">
+        #{driverName},
+      </if>
+      <if test="id != null">
+        #{id},
+      </if>
+      <if test="name != null">
+        #{name},
+      </if>
+      <if test="password != null">
+        #{password},
       </if>
       <if test="updated != null">
-        #{updated,jdbcType=VARCHAR},
+        #{updated},
       </if>
       <if test="updatedTime != null">
-        #{updatedTime,jdbcType=TIMESTAMP},
+        #{updatedTime},
+      </if>
+      <if test="url != null">
+        #{url},
+      </if>
+      <if test="username != null">
+        #{username},
+      </if>
+      <if test="version != null">
+        #{version},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.xuyifan.basedao.bean.DataSource">
+  <update id="updateByPrimaryKeySelective" parameterType="com.xuyifan.basedao.bean.DataSourceBean">
     update data_source
     <set>
-      <if test="name != null">
-        name = #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="username != null">
-        username = #{username,jdbcType=INTEGER},
-      </if>
-      <if test="password != null">
-        password = #{password,jdbcType=VARCHAR},
-      </if>
-      <if test="url != null">
-        url = #{url,jdbcType=VARCHAR},
-      </if>
-      <if test="driverName != null">
-        driver_name = #{driverName,jdbcType=VARCHAR},
-      </if>
-      <if test="version != null">
-        version = #{version,jdbcType=INTEGER},
-      </if>
       <if test="created != null">
-        created = #{created,jdbcType=VARCHAR},
+        created = #{created},
       </if>
       <if test="createdTime != null">
-        created_time = #{createdTime,jdbcType=TIMESTAMP},
+        created_time = #{createdTime},
+      </if>
+      <if test="driverName != null">
+        driver_name = #{driverName},
+      </if>
+      <if test="id != null">
+        id = #{id},
+      </if>
+      <if test="name != null">
+        name = #{name},
+      </if>
+      <if test="password != null">
+        password = #{password},
       </if>
       <if test="updated != null">
-        updated = #{updated,jdbcType=VARCHAR},
+        updated = #{updated},
       </if>
       <if test="updatedTime != null">
-        updated_time = #{updatedTime,jdbcType=TIMESTAMP},
+        updated_time = #{updatedTime},
+      </if>
+      <if test="url != null">
+        url = #{url},
+      </if>
+      <if test="username != null">
+        username = #{username},
+      </if>
+      <if test="version != null">
+        version = #{version},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.xuyifan.basedao.bean.DataSource">
+  <update id="updateByPrimaryKey" parameterType="com.xuyifan.basedao.bean.DataSourceBean">
     update data_source
-    set name = #{name,jdbcType=VARCHAR},
-      username = #{username,jdbcType=INTEGER},
-      password = #{password,jdbcType=VARCHAR},
-      url = #{url,jdbcType=VARCHAR},
-      driver_name = #{driverName,jdbcType=VARCHAR},
-      version = #{version,jdbcType=INTEGER},
-      created = #{created,jdbcType=VARCHAR},
-      created_time = #{createdTime,jdbcType=TIMESTAMP},
-      updated = #{updated,jdbcType=VARCHAR},
-      updated_time = #{updatedTime,jdbcType=TIMESTAMP}
+    set
+created= #{created}
+,created_time= #{createdTime}
+,driver_name= #{driverName}
+,id= #{id}
+,name= #{name}
+,password= #{password}
+,updated= #{updated}
+,updated_time= #{updatedTime}
+,url= #{url}
+,username= #{username}
+,version= #{version}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>
