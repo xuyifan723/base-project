@@ -1,8 +1,8 @@
 package com.xuyifan.basecontroller.config;
 
 
+import com.xuyifan.basedao.bean.UserBean;
 import com.xuyifan.commonutils.annotation.CurrentUser;
-import com.xuyifan.basedao.bean.User;
 import com.xuyifan.baseservice.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.MethodParameter;
@@ -25,14 +25,14 @@ public class CurrentUserMethodArgumentResolver implements HandlerMethodArgumentR
     @Override
     public boolean supportsParameter(MethodParameter methodParameter) {
         //使用注解为CurrentUser 参数类型为user
-        return methodParameter.getParameterType().isAssignableFrom(User.class) && methodParameter.hasParameterAnnotation(CurrentUser.class);
+        return methodParameter.getParameterType().isAssignableFrom(UserBean.class) && methodParameter.hasParameterAnnotation(CurrentUser.class);
     }
 
     @Override
     public Object resolveArgument(MethodParameter methodParameter, ModelAndViewContainer modelAndViewContainer, NativeWebRequest nativeWebRequest, WebDataBinderFactory webDataBinderFactory) throws Exception {
         Integer userId = (Integer) nativeWebRequest.getAttribute("currentUser", RequestAttributes.SCOPE_REQUEST);
         if (userId != null) {
-            User user = userService.getUserById(userId);
+            UserBean user = userService.getUserById(userId);
             if (user==null){
                 throw  new MissingServletRequestPartException("currentUser");
             }

@@ -9,7 +9,7 @@ import lombok.Data;
  * @Version 1.0
  */
 @Data
-public class UserBean {
+public class UserInterBean {
     private String username;
     private String password;
 }

@@ -1,9 +1,11 @@
 package com.xuyifan.basecontroller.view;
 
-import com.xuyifan.basecontroller.bean.UserBean;
-import com.xuyifan.basedao.bean.User;
+
+
+
+import com.xuyifan.basecontroller.bean.UserInterBean;
+import com.xuyifan.basedao.bean.UserBean;
 import com.xuyifan.baseservice.user.UserService;
-import com.xuyifan.commonutils.common.CookieUtil;
 import com.xuyifan.commonutils.common.HearUserUtils;
 import com.xuyifan.commonutils.common.ResultBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +29,8 @@ public class GateWayController {
     @Autowired
     private UserService userService;
     @PostMapping("/login")
-    public ResultBean login(HttpServletResponse response, @RequestBody UserBean userBean){
-        User user = userService.validateUser(userBean.getUsername(),userBean.getPassword());
+    public ResultBean login(HttpServletResponse response, @RequestBody UserInterBean userBean){
+        UserBean user = userService.validateUser(userBean.getUsername(),userBean.getPassword());
         if (user!=null){
             HearUserUtils.setUser(response,user.getId());
             return  new ResultBean(user);
@@ -37,8 +39,8 @@ public class GateWayController {
         }
     }
     @PostMapping("/getUserInfo")
-    public ResultBean getUserInfo(@RequestBody UserBean userBean){
-        User user = userService.validateUser(userBean.getUsername(),userBean.getPassword());
+    public ResultBean getUserInfo(@RequestBody UserInterBean userBean){
+        UserBean user = userService.validateUser(userBean.getUsername(),userBean.getPassword());
         if (user!=null){
             return  new ResultBean(user);
         }else {

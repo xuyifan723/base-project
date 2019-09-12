@@ -1,7 +1,7 @@
 package com.xuyifan.basecontroller.view;
 
+import com.xuyifan.basedao.bean.UserBean;
 import com.xuyifan.commonutils.annotation.CurrentUser;
-import com.xuyifan.basedao.bean.User;
 import com.xuyifan.baseservice.menu.MenuService;
 import com.xuyifan.commonutils.common.ResultBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ public class MenuController {
     @Autowired
     private MenuService menuService;
     @GetMapping("/getLists")
-    public ResultBean getMenuList(@CurrentUser User user ){
+    public ResultBean getMenuList(@CurrentUser UserBean user ){
         System.out.println(user.getLoginName());
       menuService.selectByPrimaryKey(1);
       return new ResultBean(user);
