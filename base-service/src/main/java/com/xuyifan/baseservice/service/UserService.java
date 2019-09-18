@@ -6,7 +6,7 @@ import com.xuyifan.basedao.bean.UserBean;
 /**
  * @author Xu yifan
  * @Ddecription 服务
- * @date 2019-09-12 16:50:08
+ * @date 2019-09-17 14:01:33
  * @Version 1.0
  */
 public interface UserService {
@@ -15,7 +15,7 @@ public interface UserService {
      * @Param: [id]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2019-09-12 16:50:08
+     * @Date: 2019-09-17 14:01:33
      */
     public int deleteByPrimaryKey(Integer id);
     /**
@@ -23,7 +23,7 @@ public interface UserService {
      * @Param: [UserBean]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2019-09-12 16:50:08
+     * @Date: 2019-09-17 14:01:33
      */
     public int insert(UserBean record);
     /**
@@ -31,7 +31,7 @@ public interface UserService {
      * @Param: [UserBean]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2019-09-12 16:50:08
+     * @Date: 2019-09-17 14:01:33
      */
     public int insertSelective(UserBean record);
     /**
@@ -39,7 +39,7 @@ public interface UserService {
      * @Param: [id]
      * @Return: UserBean
      * @Author: Xu yifan
-     * @Date: 2019-09-12 16:50:08
+     * @Date: 2019-09-17 14:01:33
      */
     public UserBean selectByPrimaryKey(Integer id);
     /**
@@ -47,7 +47,7 @@ public interface UserService {
      * @Param: [UserBean]
      * @Return: List<UserBean>
      * @Author: Xu yifan
-     * @Date: 2019-09-12 16:50:08
+     * @Date: 2019-09-17 14:01:33
      */
     public List<UserBean> selectListBySelective(UserBean record);
      /**
@@ -55,7 +55,7 @@ public interface UserService {
       * @Param: [UserBean]
       * @Return: int
       * @Author: Xu yifan
-      * @Date: 2019-09-12 16:50:08
+      * @Date: 2019-09-17 14:01:33
       */
     public int updateByPrimaryKeySelective(UserBean record);
     /**
@@ -63,7 +63,7 @@ public interface UserService {
      * @Param: [UserBean]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2019-09-12 16:50:08
+     * @Date: 2019-09-17 14:01:33
      */
     public int updateByPrimaryKey(UserBean record);
 }

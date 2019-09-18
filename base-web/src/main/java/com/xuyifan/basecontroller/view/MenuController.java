@@ -1,5 +1,7 @@
 package com.xuyifan.basecontroller.view;
 
+import com.xuyifan.basecontroller.bean.MenuBean;
+import com.xuyifan.basedao.bean.ResMenuBean;
 import com.xuyifan.basedao.bean.UserBean;
 import com.xuyifan.baseservice.service.ResMenuService;
 import com.xuyifan.commonutils.annotation.CurrentUser;
@@ -21,7 +23,8 @@ public class MenuController {
     @GetMapping("/getLists")
     public ResultBean getMenuList(@CurrentUser UserBean user ){
         System.out.println(user.getLoginName());
-      menuService.selectByPrimaryKey(1);
-      return new ResultBean(user);
+
+        ResMenuBean resMenuBean = menuService.selectByPrimaryKey(1);
+        return new ResultBean(resMenuBean);
     }
 }

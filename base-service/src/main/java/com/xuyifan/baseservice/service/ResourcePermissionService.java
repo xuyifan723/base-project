@@ -6,7 +6,7 @@ import com.xuyifan.basedao.bean.ResourcePermissionBean;
 /**
  * @author Xu yifan
  * @Ddecription 服务
- * @date 2019-09-12 16:50:08
+ * @date 2019-09-17 14:01:13
  * @Version 1.0
  */
 public interface ResourcePermissionService {
@@ -15,7 +15,7 @@ public interface ResourcePermissionService {
      * @Param: [id]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2019-09-12 16:50:08
+     * @Date: 2019-09-17 14:01:13
      */
     public int deleteByPrimaryKey(Integer id);
     /**
@@ -23,7 +23,7 @@ public interface ResourcePermissionService {
      * @Param: [ResourcePermissionBean]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2019-09-12 16:50:08
+     * @Date: 2019-09-17 14:01:13
      */
     public int insert(ResourcePermissionBean record);
     /**
@@ -31,7 +31,7 @@ public interface ResourcePermissionService {
      * @Param: [ResourcePermissionBean]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2019-09-12 16:50:08
+     * @Date: 2019-09-17 14:01:13
      */
     public int insertSelective(ResourcePermissionBean record);
     /**
@@ -39,7 +39,7 @@ public interface ResourcePermissionService {
      * @Param: [id]
      * @Return: ResourcePermissionBean
      * @Author: Xu yifan
-     * @Date: 2019-09-12 16:50:08
+     * @Date: 2019-09-17 14:01:13
      */
     public ResourcePermissionBean selectByPrimaryKey(Integer id);
     /**
@@ -47,7 +47,7 @@ public interface ResourcePermissionService {
      * @Param: [ResourcePermissionBean]
      * @Return: List<ResourcePermissionBean>
      * @Author: Xu yifan
-     * @Date: 2019-09-12 16:50:08
+     * @Date: 2019-09-17 14:01:13
      */
     public List<ResourcePermissionBean> selectListBySelective(ResourcePermissionBean record);
      /**
@@ -55,7 +55,7 @@ public interface ResourcePermissionService {
       * @Param: [ResourcePermissionBean]
       * @Return: int
       * @Author: Xu yifan
-      * @Date: 2019-09-12 16:50:08
+      * @Date: 2019-09-17 14:01:13
       */
     public int updateByPrimaryKeySelective(ResourcePermissionBean record);
     /**
@@ -63,7 +63,7 @@ public interface ResourcePermissionService {
      * @Param: [ResourcePermissionBean]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2019-09-12 16:50:08
+     * @Date: 2019-09-17 14:01:13
      */
     public int updateByPrimaryKey(ResourcePermissionBean record);
 }

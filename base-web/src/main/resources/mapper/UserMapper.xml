@@ -31,13 +31,13 @@ created,created_time,id,login_name,password,updated,updated_time,user_name,versi
       created = #{created}
       </if>
       <if test="createdTime != null">
-      and createdTime = #{createdTime}
+      and created_time = #{createdTime}
       </if>
       <if test="id != null">
       and id = #{id}
       </if>
       <if test="loginName != null">
-      and loginName = #{loginName}
+      and login_name = #{loginName}
       </if>
       <if test="password != null">
       and password = #{password}
@@ -46,10 +46,10 @@ created,created_time,id,login_name,password,updated,updated_time,user_name,versi
       and updated = #{updated}
       </if>
       <if test="updatedTime != null">
-      and updatedTime = #{updatedTime}
+      and updated_time = #{updatedTime}
       </if>
       <if test="userName != null">
-      and userName = #{userName}
+      and user_name = #{userName}
       </if>
       <if test="version != null">
       and version = #{version}

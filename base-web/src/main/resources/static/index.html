@@ -115,12 +115,13 @@
         var laytpl = layui.laytpl;
         Data_GET(MENU_USER_LISTS,{},function (data) {
             console.log(data);
+            var getTpl = user_Html.innerHTML
+                ,view = document.getElementById('userinfo');
+            laytpl(getTpl).render(data, function(html){
+                view.innerHTML = html;
+            });
         })
-        var getTpl = user_Html.innerHTML
-            ,view = document.getElementById('userinfo');
-        laytpl(getTpl).render(data, function(html){
-            view.innerHTML = html;
-        });
+
 
 
     })

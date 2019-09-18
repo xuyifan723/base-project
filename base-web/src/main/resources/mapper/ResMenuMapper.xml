@@ -32,7 +32,7 @@ created,created_time,id,level,name,parent_id,updated,updated_time,url,version
       created = #{created}
       </if>
       <if test="createdTime != null">
-      and createdTime = #{createdTime}
+      and created_time = #{createdTime}
       </if>
       <if test="id != null">
       and id = #{id}
@@ -44,13 +44,13 @@ created,created_time,id,level,name,parent_id,updated,updated_time,url,version
       and name = #{name}
       </if>
       <if test="parentId != null">
-      and parentId = #{parentId}
+      and parent_id = #{parentId}
       </if>
       <if test="updated != null">
       and updated = #{updated}
       </if>
       <if test="updatedTime != null">
-      and updatedTime = #{updatedTime}
+      and updated_time = #{updatedTime}
       </if>
       <if test="url != null">
       and url = #{url}

@@ -6,7 +6,7 @@ import com.xuyifan.basedao.bean.ResMenuBean;
 /**
  * @author Xu yifan
  * @Ddecription 服务
- * @date 2019-09-12 16:50:08
+ * @date 2019-09-17 14:01:13
  * @Version 1.0
  */
 public interface ResMenuService {
@@ -15,7 +15,7 @@ public interface ResMenuService {
      * @Param: [id]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2019-09-12 16:50:08
+     * @Date: 2019-09-17 14:01:13
      */
     public int deleteByPrimaryKey(Integer id);
     /**
@@ -23,7 +23,7 @@ public interface ResMenuService {
      * @Param: [ResMenuBean]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2019-09-12 16:50:08
+     * @Date: 2019-09-17 14:01:13
      */
     public int insert(ResMenuBean record);
     /**
@@ -31,7 +31,7 @@ public interface ResMenuService {
      * @Param: [ResMenuBean]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2019-09-12 16:50:08
+     * @Date: 2019-09-17 14:01:13
      */
     public int insertSelective(ResMenuBean record);
     /**
@@ -39,7 +39,7 @@ public interface ResMenuService {
      * @Param: [id]
      * @Return: ResMenuBean
      * @Author: Xu yifan
-     * @Date: 2019-09-12 16:50:08
+     * @Date: 2019-09-17 14:01:13
      */
     public ResMenuBean selectByPrimaryKey(Integer id);
     /**
@@ -47,7 +47,7 @@ public interface ResMenuService {
      * @Param: [ResMenuBean]
      * @Return: List<ResMenuBean>
      * @Author: Xu yifan
-     * @Date: 2019-09-12 16:50:08
+     * @Date: 2019-09-17 14:01:13
      */
     public List<ResMenuBean> selectListBySelective(ResMenuBean record);
      /**
@@ -55,7 +55,7 @@ public interface ResMenuService {
       * @Param: [ResMenuBean]
       * @Return: int
       * @Author: Xu yifan
-      * @Date: 2019-09-12 16:50:08
+      * @Date: 2019-09-17 14:01:13
       */
     public int updateByPrimaryKeySelective(ResMenuBean record);
     /**
@@ -63,7 +63,7 @@ public interface ResMenuService {
      * @Param: [ResMenuBean]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2019-09-12 16:50:08
+     * @Date: 2019-09-17 14:01:13
      */
     public int updateByPrimaryKey(ResMenuBean record);
 }

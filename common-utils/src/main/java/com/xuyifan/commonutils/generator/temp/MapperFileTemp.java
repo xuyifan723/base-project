@@ -139,7 +139,7 @@ public class MapperFileTemp extends Temp {
                 flag=false;
                 temp.append("      ");
             }
-            temp.append(colName);
+            temp.append(column.getColName());
             temp.append(" = #{");
             temp.append(colName);
             temp.append("}\n      </if>");

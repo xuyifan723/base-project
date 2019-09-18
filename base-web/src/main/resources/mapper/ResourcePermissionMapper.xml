@@ -34,34 +34,34 @@ created,created_time,id,operator_id,operator_type,permission_action,permission_t
       created = #{created}
       </if>
       <if test="createdTime != null">
-      and createdTime = #{createdTime}
+      and created_time = #{createdTime}
       </if>
       <if test="id != null">
       and id = #{id}
       </if>
       <if test="operatorId != null">
-      and operatorId = #{operatorId}
+      and operator_id = #{operatorId}
       </if>
       <if test="operatorType != null">
-      and operatorType = #{operatorType}
+      and operator_type = #{operatorType}
       </if>
       <if test="permissionAction != null">
-      and permissionAction = #{permissionAction}
+      and permission_action = #{permissionAction}
       </if>
       <if test="permissionType != null">
-      and permissionType = #{permissionType}
+      and permission_type = #{permissionType}
       </if>
       <if test="resourceId != null">
-      and resourceId = #{resourceId}
+      and resource_id = #{resourceId}
       </if>
       <if test="resourceType != null">
-      and resourceType = #{resourceType}
+      and resource_type = #{resourceType}
       </if>
       <if test="updated != null">
       and updated = #{updated}
       </if>
       <if test="updatedTime != null">
-      and updatedTime = #{updatedTime}
+      and updated_time = #{updatedTime}
       </if>
       <if test="version != null">
       and version = #{version}

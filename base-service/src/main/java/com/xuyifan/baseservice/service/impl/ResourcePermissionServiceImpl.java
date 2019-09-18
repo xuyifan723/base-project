@@ -9,7 +9,7 @@ import com.xuyifan.basedao.bean.ResourcePermissionBean;
 /**
  * @author Xu yifan
  * @Ddecription 服务
- * @date 2019-09-12 16:50:08
+ * @date 2019-09-17 14:01:13
  * @Version 1.0
  */
 @Service
@@ -23,7 +23,7 @@ public class ResourcePermissionServiceImpl implements ResourcePermissionService 
      * @Param: [id]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2019-09-12 16:50:08
+     * @Date: 2019-09-17 14:01:13
      */
     @Override
     public int deleteByPrimaryKey(Integer id){
@@ -34,7 +34,7 @@ public class ResourcePermissionServiceImpl implements ResourcePermissionService 
      * @Param: [ResourcePermissionBean]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2019-09-12 16:50:08
+     * @Date: 2019-09-17 14:01:13
      */
     @Override
     public int insert(ResourcePermissionBean record){
@@ -45,7 +45,7 @@ public class ResourcePermissionServiceImpl implements ResourcePermissionService 
      * @Param: [ResourcePermissionBean]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2019-09-12 16:50:08
+     * @Date: 2019-09-17 14:01:13
      */
     @Override
     public int insertSelective(ResourcePermissionBean record){
@@ -56,7 +56,7 @@ public class ResourcePermissionServiceImpl implements ResourcePermissionService 
      * @Param: [id]
      * @Return: ResourcePermissionBean
      * @Author: Xu yifan
-     * @Date: 2019-09-12 16:50:08
+     * @Date: 2019-09-17 14:01:13
      */
     @Override
     public ResourcePermissionBean selectByPrimaryKey(Integer id){
@@ -67,7 +67,7 @@ public class ResourcePermissionServiceImpl implements ResourcePermissionService 
      * @Param: [ResourcePermissionBean]
      * @Return: List<ResourcePermissionBean>
      * @Author: Xu yifan
-     * @Date: 2019-09-12 16:50:08
+     * @Date: 2019-09-17 14:01:13
      */
     @Override
     public List<ResourcePermissionBean> selectListBySelective(ResourcePermissionBean record){
@@ -78,7 +78,7 @@ public class ResourcePermissionServiceImpl implements ResourcePermissionService 
       * @Param: [ResourcePermissionBean]
       * @Return: int
       * @Author: Xu yifan
-      * @Date: 2019-09-12 16:50:08
+      * @Date: 2019-09-17 14:01:13
       */
     @Override
     public int updateByPrimaryKeySelective(ResourcePermissionBean record){
@@ -89,7 +89,7 @@ public class ResourcePermissionServiceImpl implements ResourcePermissionService 
      * @Param: [ResourcePermissionBean]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2019-09-12 16:50:08
+     * @Date: 2019-09-17 14:01:13
      */
     @Override
     public int updateByPrimaryKey(ResourcePermissionBean record){

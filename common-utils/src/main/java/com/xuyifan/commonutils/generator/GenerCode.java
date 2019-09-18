@@ -79,23 +79,38 @@ public class GenerCode {
         return data;
     }
 
+    public static boolean validateFileType(String file){
+        for (String fileType : ConfigureParams.updateFile) {
+            if (file.equals(fileType)){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static void main(String[] args) throws IOException {
     DataHandle dataHandle=new DataHandle();
     dataHandle.init();
         for (TableName table : dataHandle.getTableName()) {
             System.out.println("****************************");
-            BeanTemp beanTemp =new BeanTemp(table,dataHandle.getColData().get(table.getTableName()));
-            beanTemp.writeFile();
-            MapperTemp mapperTemp=new MapperTemp(table,dataHandle.getColData().get(table.getTableName()));
-            mapperTemp.writeFile();
-            ServiceImplTemp serviceImplTemp=new ServiceImplTemp(table,dataHandle.getColData().get(table.getTableName()));
-            serviceImplTemp.writeFile();
-            ServiceTemp serviceTemp=new ServiceTemp(table,dataHandle.getColData().get(table.getTableName()));
-            serviceTemp.writeFile();
-            ControllerTemp controllerTemp=new ControllerTemp(table,dataHandle.getColData().get(table.getTableName()));
-            controllerTemp.writeFile();
-            MapperFileTemp mapperFileTemp=new MapperFileTemp(table,dataHandle.getColData().get(table.getTableName()));
-            mapperFileTemp.writeFile();
+            if (GenerCode.validateFileType(ConfigureParams.BEAN_NAME)){
+                BeanTemp beanTemp =new BeanTemp(table,dataHandle.getColData().get(table.getTableName()));
+                beanTemp.writeFile();
+                MapperTemp mapperTemp=new MapperTemp(table,dataHandle.getColData().get(table.getTableName()));
+                mapperTemp.writeFile();
+                MapperFileTemp mapperFileTemp=new MapperFileTemp(table,dataHandle.getColData().get(table.getTableName()));
+                mapperFileTemp.writeFile();
+            }
+            if (GenerCode.validateFileType(ConfigureParams.SERVICE_NAME)){
+                ServiceImplTemp serviceImplTemp=new ServiceImplTemp(table,dataHandle.getColData().get(table.getTableName()));
+                serviceImplTemp.writeFile();
+                ServiceTemp serviceTemp=new ServiceTemp(table,dataHandle.getColData().get(table.getTableName()));
+                serviceTemp.writeFile();
+            }
+            if (GenerCode.validateFileType(ConfigureParams.CONTROLLER_NAME)){
+                ControllerTemp controllerTemp=new ControllerTemp(table,dataHandle.getColData().get(table.getTableName()));
+                controllerTemp.writeFile();
+            }
             System.out.println("****************************");
         }
     }

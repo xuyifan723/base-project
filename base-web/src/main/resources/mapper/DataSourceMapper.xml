@@ -33,10 +33,10 @@ created,created_time,driver_name,id,name,password,updated,updated_time,url,usern
       created = #{created}
       </if>
       <if test="createdTime != null">
-      and createdTime = #{createdTime}
+      and created_time = #{createdTime}
       </if>
       <if test="driverName != null">
-      and driverName = #{driverName}
+      and driver_name = #{driverName}
       </if>
       <if test="id != null">
       and id = #{id}
@@ -51,7 +51,7 @@ created,created_time,driver_name,id,name,password,updated,updated_time,url,usern
       and updated = #{updated}
       </if>
       <if test="updatedTime != null">
-      and updatedTime = #{updatedTime}
+      and updated_time = #{updatedTime}
       </if>
       <if test="url != null">
       and url = #{url}

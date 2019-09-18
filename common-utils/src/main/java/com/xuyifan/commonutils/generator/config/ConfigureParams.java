@@ -28,6 +28,10 @@ public class ConfigureParams {
     public  static String devUserName="Xu yifan";
     public  static String version="1.0";
 //,"data_source","res_menu","resource_permission"
-    public static String[] tableList={"user"};
+public static String[] tableList={"user"};
+   public static String[] updateFile={ConfigureParams.BEAN_NAME,ConfigureParams.SERVICE_NAME,ConfigureParams.CONTROLLER_NAME};
+    public final static String BEAN_NAME="BEANNAME";
+    public final static String SERVICE_NAME="SERVICENAME";
+    public final static String CONTROLLER_NAME="CONTROLLERNAME";
 
 }
