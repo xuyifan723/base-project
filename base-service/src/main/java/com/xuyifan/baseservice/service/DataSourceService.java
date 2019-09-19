@@ -6,7 +6,7 @@ import com.xuyifan.basedao.bean.DataSourceBean;
 /**
  * @author Xu yifan
  * @Ddecription 数据源服务
- * @date 2019-09-17 14:01:12
+ * @date 2019-09-19 08:44:48
  * @Version 1.0
  */
 public interface DataSourceService {
@@ -15,7 +15,7 @@ public interface DataSourceService {
      * @Param: [id]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2019-09-17 14:01:12
+     * @Date: 2019-09-19 08:44:48
      */
     public int deleteByPrimaryKey(Integer id);
     /**
@@ -23,7 +23,7 @@ public interface DataSourceService {
      * @Param: [DataSourceBean]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2019-09-17 14:01:12
+     * @Date: 2019-09-19 08:44:48
      */
     public int insert(DataSourceBean record);
     /**
@@ -31,7 +31,7 @@ public interface DataSourceService {
      * @Param: [DataSourceBean]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2019-09-17 14:01:12
+     * @Date: 2019-09-19 08:44:48
      */
     public int insertSelective(DataSourceBean record);
     /**
@@ -39,7 +39,7 @@ public interface DataSourceService {
      * @Param: [id]
      * @Return: DataSourceBean
      * @Author: Xu yifan
-     * @Date: 2019-09-17 14:01:12
+     * @Date: 2019-09-19 08:44:48
      */
     public DataSourceBean selectByPrimaryKey(Integer id);
     /**
@@ -47,7 +47,7 @@ public interface DataSourceService {
      * @Param: [DataSourceBean]
      * @Return: List<DataSourceBean>
      * @Author: Xu yifan
-     * @Date: 2019-09-17 14:01:12
+     * @Date: 2019-09-19 08:44:48
      */
     public List<DataSourceBean> selectListBySelective(DataSourceBean record);
      /**
@@ -55,7 +55,7 @@ public interface DataSourceService {
       * @Param: [DataSourceBean]
       * @Return: int
       * @Author: Xu yifan
-      * @Date: 2019-09-17 14:01:12
+      * @Date: 2019-09-19 08:44:48
       */
     public int updateByPrimaryKeySelective(DataSourceBean record);
     /**
@@ -63,7 +63,7 @@ public interface DataSourceService {
      * @Param: [DataSourceBean]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2019-09-17 14:01:12
+     * @Date: 2019-09-19 08:44:48
      */
     public int updateByPrimaryKey(DataSourceBean record);
 }

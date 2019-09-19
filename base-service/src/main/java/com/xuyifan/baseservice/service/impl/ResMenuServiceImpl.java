@@ -9,7 +9,7 @@ import com.xuyifan.basedao.bean.ResMenuBean;
 /**
  * @author Xu yifan
  * @Ddecription 服务
- * @date 2019-09-17 14:01:13
+ * @date 2019-09-19 08:44:48
  * @Version 1.0
  */
 @Service
@@ -23,7 +23,7 @@ public class ResMenuServiceImpl implements ResMenuService {
      * @Param: [id]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2019-09-17 14:01:13
+     * @Date: 2019-09-19 08:44:48
      */
     @Override
     public int deleteByPrimaryKey(Integer id){
@@ -34,7 +34,7 @@ public class ResMenuServiceImpl implements ResMenuService {
      * @Param: [ResMenuBean]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2019-09-17 14:01:13
+     * @Date: 2019-09-19 08:44:48
      */
     @Override
     public int insert(ResMenuBean record){
@@ -45,7 +45,7 @@ public class ResMenuServiceImpl implements ResMenuService {
      * @Param: [ResMenuBean]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2019-09-17 14:01:13
+     * @Date: 2019-09-19 08:44:48
      */
     @Override
     public int insertSelective(ResMenuBean record){
@@ -56,7 +56,7 @@ public class ResMenuServiceImpl implements ResMenuService {
      * @Param: [id]
      * @Return: ResMenuBean
      * @Author: Xu yifan
-     * @Date: 2019-09-17 14:01:13
+     * @Date: 2019-09-19 08:44:48
      */
     @Override
     public ResMenuBean selectByPrimaryKey(Integer id){
@@ -67,7 +67,7 @@ public class ResMenuServiceImpl implements ResMenuService {
      * @Param: [ResMenuBean]
      * @Return: List<ResMenuBean>
      * @Author: Xu yifan
-     * @Date: 2019-09-17 14:01:13
+     * @Date: 2019-09-19 08:44:48
      */
     @Override
     public List<ResMenuBean> selectListBySelective(ResMenuBean record){
@@ -78,7 +78,7 @@ public class ResMenuServiceImpl implements ResMenuService {
       * @Param: [ResMenuBean]
       * @Return: int
       * @Author: Xu yifan
-      * @Date: 2019-09-17 14:01:13
+      * @Date: 2019-09-19 08:44:48
       */
     @Override
     public int updateByPrimaryKeySelective(ResMenuBean record){
@@ -89,7 +89,7 @@ public class ResMenuServiceImpl implements ResMenuService {
      * @Param: [ResMenuBean]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2019-09-17 14:01:13
+     * @Date: 2019-09-19 08:44:48
      */
     @Override
     public int updateByPrimaryKey(ResMenuBean record){

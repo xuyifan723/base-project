@@ -9,7 +9,7 @@ import com.xuyifan.basedao.bean.UserBean;
 /**
  * @author Xu yifan
  * @Ddecription 服务
- * @date 2019-09-17 14:01:33
+ * @date 2019-09-19 08:44:48
  * @Version 1.0
  */
 @Service
@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService {
      * @Param: [id]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2019-09-17 14:01:33
+     * @Date: 2019-09-19 08:44:48
      */
     @Override
     public int deleteByPrimaryKey(Integer id){
@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService {
      * @Param: [UserBean]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2019-09-17 14:01:33
+     * @Date: 2019-09-19 08:44:48
      */
     @Override
     public int insert(UserBean record){
@@ -45,7 +45,7 @@ public class UserServiceImpl implements UserService {
      * @Param: [UserBean]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2019-09-17 14:01:33
+     * @Date: 2019-09-19 08:44:48
      */
     @Override
     public int insertSelective(UserBean record){
@@ -56,7 +56,7 @@ public class UserServiceImpl implements UserService {
      * @Param: [id]
      * @Return: UserBean
      * @Author: Xu yifan
-     * @Date: 2019-09-17 14:01:33
+     * @Date: 2019-09-19 08:44:48
      */
     @Override
     public UserBean selectByPrimaryKey(Integer id){
@@ -67,7 +67,7 @@ public class UserServiceImpl implements UserService {
      * @Param: [UserBean]
      * @Return: List<UserBean>
      * @Author: Xu yifan
-     * @Date: 2019-09-17 14:01:33
+     * @Date: 2019-09-19 08:44:48
      */
     @Override
     public List<UserBean> selectListBySelective(UserBean record){
@@ -78,7 +78,7 @@ public class UserServiceImpl implements UserService {
       * @Param: [UserBean]
       * @Return: int
       * @Author: Xu yifan
-      * @Date: 2019-09-17 14:01:33
+      * @Date: 2019-09-19 08:44:48
       */
     @Override
     public int updateByPrimaryKeySelective(UserBean record){
@@ -89,7 +89,7 @@ public class UserServiceImpl implements UserService {
      * @Param: [UserBean]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2019-09-17 14:01:33
+     * @Date: 2019-09-19 08:44:48
      */
     @Override
     public int updateByPrimaryKey(UserBean record){

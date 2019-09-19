@@ -9,7 +9,7 @@ import com.xuyifan.basedao.bean.DataSourceBean;
 /**
  * @author Xu yifan
  * @Ddecription 数据源服务
- * @date 2019-09-17 14:01:12
+ * @date 2019-09-19 08:44:48
  * @Version 1.0
  */
 @Service
@@ -23,7 +23,7 @@ public class DataSourceServiceImpl implements DataSourceService {
      * @Param: [id]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2019-09-17 14:01:12
+     * @Date: 2019-09-19 08:44:48
      */
     @Override
     public int deleteByPrimaryKey(Integer id){
@@ -34,7 +34,7 @@ public class DataSourceServiceImpl implements DataSourceService {
      * @Param: [DataSourceBean]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2019-09-17 14:01:12
+     * @Date: 2019-09-19 08:44:48
      */
     @Override
     public int insert(DataSourceBean record){
@@ -45,7 +45,7 @@ public class DataSourceServiceImpl implements DataSourceService {
      * @Param: [DataSourceBean]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2019-09-17 14:01:12
+     * @Date: 2019-09-19 08:44:48
      */
     @Override
     public int insertSelective(DataSourceBean record){
@@ -56,7 +56,7 @@ public class DataSourceServiceImpl implements DataSourceService {
      * @Param: [id]
      * @Return: DataSourceBean
      * @Author: Xu yifan
-     * @Date: 2019-09-17 14:01:12
+     * @Date: 2019-09-19 08:44:48
      */
     @Override
     public DataSourceBean selectByPrimaryKey(Integer id){
@@ -67,7 +67,7 @@ public class DataSourceServiceImpl implements DataSourceService {
      * @Param: [DataSourceBean]
      * @Return: List<DataSourceBean>
      * @Author: Xu yifan
-     * @Date: 2019-09-17 14:01:12
+     * @Date: 2019-09-19 08:44:48
      */
     @Override
     public List<DataSourceBean> selectListBySelective(DataSourceBean record){
@@ -78,7 +78,7 @@ public class DataSourceServiceImpl implements DataSourceService {
       * @Param: [DataSourceBean]
       * @Return: int
       * @Author: Xu yifan
-      * @Date: 2019-09-17 14:01:12
+      * @Date: 2019-09-19 08:44:48
       */
     @Override
     public int updateByPrimaryKeySelective(DataSourceBean record){
@@ -89,7 +89,7 @@ public class DataSourceServiceImpl implements DataSourceService {
      * @Param: [DataSourceBean]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2019-09-17 14:01:12
+     * @Date: 2019-09-19 08:44:48
      */
     @Override
     public int updateByPrimaryKey(DataSourceBean record){

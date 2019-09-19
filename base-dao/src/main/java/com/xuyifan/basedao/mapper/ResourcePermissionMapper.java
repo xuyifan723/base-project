@@ -4,7 +4,7 @@ import com.xuyifan.basedao.bean.ResourcePermissionBean;
 /**
  * @author Xu yifan
  * @Ddecription mapper
- * @date 2019-09-17 14:01:13
+ * @date 2019-09-19 08:44:48
  * @Version 1.0
  */
 public interface ResourcePermissionMapper {

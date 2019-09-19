@@ -65,7 +65,7 @@ public class DataHandle {
             tableName.append(")");
             tableColName.append(")");
         }
-
+        tableColName.append(" order by TABLE_NAME desc, ORDINAL_POSITION");
         this.tableName = generCode.getTableName(tableName.toString());
         List<TableColumn> tableColumn = generCode.getTableColumn(tableColName.toString());
         for (TableColumn column : tableColumn) {

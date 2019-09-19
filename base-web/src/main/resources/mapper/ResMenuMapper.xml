@@ -3,18 +3,18 @@
 <mapper namespace="com.xuyifan.basedao.mapper.ResMenuMapper">
   <resultMap id="BaseResultMap" type="com.xuyifan.basedao.bean.ResMenuBean">
     <id column="id" property="id" />
+    <result column="name" property="name" />
+    <result column="url" property="url" />
+    <result column="level" property="level" />
+    <result column="parent_id" property="parentId" />
+    <result column="version" property="version" />
     <result column="created" property="created" />
     <result column="created_time" property="createdTime" />
-    <result column="level" property="level" />
-    <result column="name" property="name" />
-    <result column="parent_id" property="parentId" />
     <result column="updated" property="updated" />
     <result column="updated_time" property="updatedTime" />
-    <result column="url" property="url" />
-    <result column="version" property="version" />
   </resultMap>
   <sql id="Base_Column_List">
-created,created_time,id,level,name,parent_id,updated,updated_time,url,version
+id,name,url,level,parent_id,version,created,created_time,updated,updated_time
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select
@@ -28,35 +28,35 @@ created,created_time,id,level,name,parent_id,updated,updated_time,url,version
       <include refid="Base_Column_List" />
       from res_menu
       <where>
-      <if test="created != null">
-      created = #{created}
-      </if>
-      <if test="createdTime != null">
-      and created_time = #{createdTime}
-      </if>
       <if test="id != null">
-      and id = #{id}
-      </if>
-      <if test="level != null">
-      and level = #{level}
+      id = #{id}
       </if>
       <if test="name != null">
       and name = #{name}
       </if>
+      <if test="url != null">
+      and url = #{url}
+      </if>
+      <if test="level != null">
+      and level = #{level}
+      </if>
       <if test="parentId != null">
       and parent_id = #{parentId}
+      </if>
+      <if test="version != null">
+      and version = #{version}
+      </if>
+      <if test="created != null">
+      and created = #{created}
+      </if>
+      <if test="createdTime != null">
+      and created_time = #{createdTime}
       </if>
       <if test="updated != null">
       and updated = #{updated}
       </if>
       <if test="updatedTime != null">
       and updated_time = #{updatedTime}
-      </if>
-      <if test="url != null">
-      and url = #{url}
-      </if>
-      <if test="version != null">
-      and version = #{version}
       </if>
       </where>
     </select>
@@ -70,29 +70,35 @@ created,created_time,id,level,name,parent_id,updated,updated_time,url,version
     <include refid="Base_Column_List" />
     )
     values (
-#{created},#{createdTime},#{id},#{level},#{name},#{parentId},#{updated},#{updatedTime},#{url},#{version}
+#{id},#{name},#{url},#{level},#{parentId},#{version},#{created},#{createdTime},#{updated},#{updatedTime}
      )
   </insert>
   <insert id="insertSelective" parameterType="com.xuyifan.basedao.bean.ResMenuBean">
     insert into res_menu
     <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+      <if test="level != null">
+        level,
+      </if>
+      <if test="parentId != null">
+        parent_id,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
       <if test="created != null">
         created,
       </if>
       <if test="createdTime != null">
         created_time,
-      </if>
-      <if test="id != null">
-        id,
-      </if>
-      <if test="level != null">
-        level,
-      </if>
-      <if test="name != null">
-        name,
-      </if>
-      <if test="parentId != null">
-        parent_id,
       </if>
       <if test="updated != null">
         updated,
@@ -100,31 +106,31 @@ created,created_time,id,level,name,parent_id,updated,updated_time,url,version
       <if test="updatedTime != null">
         updated_time,
       </if>
-      <if test="url != null">
-        url,
-      </if>
-      <if test="version != null">
-        version,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id},
+      </if>
+      <if test="name != null">
+        #{name},
+      </if>
+      <if test="url != null">
+        #{url},
+      </if>
+      <if test="level != null">
+        #{level},
+      </if>
+      <if test="parentId != null">
+        #{parentId},
+      </if>
+      <if test="version != null">
+        #{version},
+      </if>
       <if test="created != null">
         #{created},
       </if>
       <if test="createdTime != null">
         #{createdTime},
-      </if>
-      <if test="id != null">
-        #{id},
-      </if>
-      <if test="level != null">
-        #{level},
-      </if>
-      <if test="name != null">
-        #{name},
-      </if>
-      <if test="parentId != null">
-        #{parentId},
       </if>
       <if test="updated != null">
         #{updated},
@@ -132,34 +138,34 @@ created,created_time,id,level,name,parent_id,updated,updated_time,url,version
       <if test="updatedTime != null">
         #{updatedTime},
       </if>
-      <if test="url != null">
-        #{url},
-      </if>
-      <if test="version != null">
-        #{version},
-      </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.xuyifan.basedao.bean.ResMenuBean">
     update res_menu
     <set>
+      <if test="id != null">
+        id = #{id},
+      </if>
+      <if test="name != null">
+        name = #{name},
+      </if>
+      <if test="url != null">
+        url = #{url},
+      </if>
+      <if test="level != null">
+        level = #{level},
+      </if>
+      <if test="parentId != null">
+        parent_id = #{parentId},
+      </if>
+      <if test="version != null">
+        version = #{version},
+      </if>
       <if test="created != null">
         created = #{created},
       </if>
       <if test="createdTime != null">
         created_time = #{createdTime},
-      </if>
-      <if test="id != null">
-        id = #{id},
-      </if>
-      <if test="level != null">
-        level = #{level},
-      </if>
-      <if test="name != null">
-        name = #{name},
-      </if>
-      <if test="parentId != null">
-        parent_id = #{parentId},
       </if>
       <if test="updated != null">
         updated = #{updated},
@@ -167,28 +173,22 @@ created,created_time,id,level,name,parent_id,updated,updated_time,url,version
       <if test="updatedTime != null">
         updated_time = #{updatedTime},
       </if>
-      <if test="url != null">
-        url = #{url},
-      </if>
-      <if test="version != null">
-        version = #{version},
-      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.xuyifan.basedao.bean.ResMenuBean">
     update res_menu
     set
-created= #{created}
-,created_time= #{createdTime}
-,id= #{id}
-,level= #{level}
+id= #{id}
 ,name= #{name}
+,url= #{url}
+,level= #{level}
 ,parent_id= #{parentId}
+,version= #{version}
+,created= #{created}
+,created_time= #{createdTime}
 ,updated= #{updated}
 ,updated_time= #{updatedTime}
-,url= #{url}
-,version= #{version}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

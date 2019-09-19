@@ -3,17 +3,17 @@
 <mapper namespace="com.xuyifan.basedao.mapper.UserMapper">
   <resultMap id="BaseResultMap" type="com.xuyifan.basedao.bean.UserBean">
     <id column="id" property="id" />
-    <result column="created" property="created" />
-    <result column="created_time" property="createdTime" />
+    <result column="user_name" property="userName" />
     <result column="login_name" property="loginName" />
     <result column="password" property="password" />
+    <result column="version" property="version" />
+    <result column="created" property="created" />
+    <result column="created_time" property="createdTime" />
     <result column="updated" property="updated" />
     <result column="updated_time" property="updatedTime" />
-    <result column="user_name" property="userName" />
-    <result column="version" property="version" />
   </resultMap>
   <sql id="Base_Column_List">
-created,created_time,id,login_name,password,updated,updated_time,user_name,version
+id,user_name,login_name,password,version,created,created_time,updated,updated_time
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select
@@ -27,14 +27,11 @@ created,created_time,id,login_name,password,updated,updated_time,user_name,versi
       <include refid="Base_Column_List" />
       from user
       <where>
-      <if test="created != null">
-      created = #{created}
-      </if>
-      <if test="createdTime != null">
-      and created_time = #{createdTime}
-      </if>
       <if test="id != null">
-      and id = #{id}
+      id = #{id}
+      </if>
+      <if test="userName != null">
+      and user_name = #{userName}
       </if>
       <if test="loginName != null">
       and login_name = #{loginName}
@@ -42,17 +39,20 @@ created,created_time,id,login_name,password,updated,updated_time,user_name,versi
       <if test="password != null">
       and password = #{password}
       </if>
+      <if test="version != null">
+      and version = #{version}
+      </if>
+      <if test="created != null">
+      and created = #{created}
+      </if>
+      <if test="createdTime != null">
+      and created_time = #{createdTime}
+      </if>
       <if test="updated != null">
       and updated = #{updated}
       </if>
       <if test="updatedTime != null">
       and updated_time = #{updatedTime}
-      </if>
-      <if test="userName != null">
-      and user_name = #{userName}
-      </if>
-      <if test="version != null">
-      and version = #{version}
       </if>
       </where>
     </select>
@@ -66,20 +66,17 @@ created,created_time,id,login_name,password,updated,updated_time,user_name,versi
     <include refid="Base_Column_List" />
     )
     values (
-#{created},#{createdTime},#{id},#{loginName},#{password},#{updated},#{updatedTime},#{userName},#{version}
+#{id},#{userName},#{loginName},#{password},#{version},#{created},#{createdTime},#{updated},#{updatedTime}
      )
   </insert>
   <insert id="insertSelective" parameterType="com.xuyifan.basedao.bean.UserBean">
     insert into user
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="created != null">
-        created,
-      </if>
-      <if test="createdTime != null">
-        created_time,
-      </if>
       <if test="id != null">
         id,
+      </if>
+      <if test="userName != null">
+        user_name,
       </if>
       <if test="loginName != null">
         login_name,
@@ -87,28 +84,28 @@ created,created_time,id,login_name,password,updated,updated_time,user_name,versi
       <if test="password != null">
         password,
       </if>
+      <if test="version != null">
+        version,
+      </if>
+      <if test="created != null">
+        created,
+      </if>
+      <if test="createdTime != null">
+        created_time,
+      </if>
       <if test="updated != null">
         updated,
       </if>
       <if test="updatedTime != null">
         updated_time,
       </if>
-      <if test="userName != null">
-        user_name,
-      </if>
-      <if test="version != null">
-        version,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="created != null">
-        #{created},
-      </if>
-      <if test="createdTime != null">
-        #{createdTime},
-      </if>
       <if test="id != null">
         #{id},
+      </if>
+      <if test="userName != null">
+        #{userName},
       </if>
       <if test="loginName != null">
         #{loginName},
@@ -116,31 +113,31 @@ created,created_time,id,login_name,password,updated,updated_time,user_name,versi
       <if test="password != null">
         #{password},
       </if>
+      <if test="version != null">
+        #{version},
+      </if>
+      <if test="created != null">
+        #{created},
+      </if>
+      <if test="createdTime != null">
+        #{createdTime},
+      </if>
       <if test="updated != null">
         #{updated},
       </if>
       <if test="updatedTime != null">
         #{updatedTime},
       </if>
-      <if test="userName != null">
-        #{userName},
-      </if>
-      <if test="version != null">
-        #{version},
-      </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.xuyifan.basedao.bean.UserBean">
     update user
     <set>
-      <if test="created != null">
-        created = #{created},
-      </if>
-      <if test="createdTime != null">
-        created_time = #{createdTime},
-      </if>
       <if test="id != null">
         id = #{id},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName},
       </if>
       <if test="loginName != null">
         login_name = #{loginName},
@@ -148,17 +145,20 @@ created,created_time,id,login_name,password,updated,updated_time,user_name,versi
       <if test="password != null">
         password = #{password},
       </if>
+      <if test="version != null">
+        version = #{version},
+      </if>
+      <if test="created != null">
+        created = #{created},
+      </if>
+      <if test="createdTime != null">
+        created_time = #{createdTime},
+      </if>
       <if test="updated != null">
         updated = #{updated},
       </if>
       <if test="updatedTime != null">
         updated_time = #{updatedTime},
-      </if>
-      <if test="userName != null">
-        user_name = #{userName},
-      </if>
-      <if test="version != null">
-        version = #{version},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -166,15 +166,15 @@ created,created_time,id,login_name,password,updated,updated_time,user_name,versi
   <update id="updateByPrimaryKey" parameterType="com.xuyifan.basedao.bean.UserBean">
     update user
     set
-created= #{created}
-,created_time= #{createdTime}
-,id= #{id}
+id= #{id}
+,user_name= #{userName}
 ,login_name= #{loginName}
 ,password= #{password}
+,version= #{version}
+,created= #{created}
+,created_time= #{createdTime}
 ,updated= #{updated}
 ,updated_time= #{updatedTime}
-,user_name= #{userName}
-,version= #{version}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>
