@@ -9,6 +9,10 @@ import org.slf4j.LoggerFactory;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * excel的处理监听类
+ * @param <T>
+ */
 public class ModelListener<T> extends AnalysisEventListener<T> {
     private static final Logger LOGGER = LoggerFactory.getLogger(ModelListener.class);
     /**

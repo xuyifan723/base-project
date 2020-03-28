@@ -36,28 +36,19 @@ public class ExcelUtils {
      *
      * @param response
      * @param fileName     导出的文件名称
-     * @param tempFileName 模版文件 在resouces的excelFile文件下面
+     * @param tempFile 模版文件 在resouces的excelFile文件下面
      * @param data         导出的数据，为模版对象在excelvo的包下
      * @param tClass       导出数据的class
      * @param <T>          泛型
      */
-    public static <T> void writerTemp(HttpServletResponse response, String fileName, String tempFileName, List<T> data, Class<T> tClass) {
+    public static <T> void writerTemp(HttpServletResponse response, String fileName, File tempFile, List<T> data, Class<T> tClass) {
         //String tempName = GetResource.class.getClassLoader().getResource("excelFile" + File.separator + tempFileName + ".xlsx").getPath();
 
 
         try {
-            String projectPath = System.getProperty("user.dir");
-            File sourceFile = new File(projectPath +  File.separator +"yue-juan-business-exam"+  File.separator +"exam-impl"+  File.separator +"src"+  File.separator +"main"+  File.separator +"resources"+  File.separator +"excelFile"+  File.separator + tempFileName+".xlsx");
-            String tempName = sourceFile.getPath();
-            ExcelUtils.logger.info(tempName);
-
-
-
-
-
             ServletOutputStream outputStream = response.getOutputStream();
             setExportConfig(response, fileName);
-            EasyExcel.write(outputStream, tClass).registerWriteHandler(getStyle()).withTemplate(tempName).sheet().needHead(false).doWrite(data);
+            EasyExcel.write(outputStream, tClass).registerWriteHandler(getStyle()).withTemplate(tempFile).sheet().needHead(false).doWrite(data);
         } catch (IOException e) {
             logger.info(e.getMessage());
             e.printStackTrace();

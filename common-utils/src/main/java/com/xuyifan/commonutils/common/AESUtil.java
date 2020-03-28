@@ -71,9 +71,11 @@ public class AESUtil {
             }
             //1.构造密钥生成器，指定为AES算法,不区分大小写
             KeyGenerator kgen = KeyGenerator.getInstance(KEY_AES);
+            SecureRandom secureRandom = SecureRandom.getInstance("SHA1PRNG") ;
+            secureRandom.setSeed(key.getBytes());
             //2.根据ecnodeRules规则初始化密钥生成器
             //生成一个128位的随机源,根据传入的字节数组
-            kgen.init(128, new SecureRandom(key.getBytes()));
+            kgen.init(128, secureRandom);
             //3.产生原始对称密钥
             SecretKey secretKey = kgen.generateKey();
             //4.获得原始对称密钥的字节数组
@@ -92,6 +94,7 @@ public class AESUtil {
                 return new String(result, defaultCharset);
             }
         } catch (Exception e) {
+            e.printStackTrace();
             throw new RuntimeException("AES加解密失败");
         }
     }
@@ -134,10 +137,10 @@ public class AESUtil {
         String content = "xuyifan.723";
         System.out.println("加密前：" + content);
         System.out.println("加密密钥和解密密钥：" + KEY);
-        String encrypt = encrypt(content, KEY);
+        String encrypt = encrypt(content);
         System.out.println("加密后：" + encrypt);
-        String decContent="C8540BB3247CEDB3E90ECB0CD539EFC6";
-        String decrypt = decrypt(encrypt, KEY);
+        String decContent="476B8A2064EA78DFDD6DE7209B2ABB01";
+        String decrypt = decrypt(encrypt);
         System.out.println("解密后：" + decrypt);
     }
 }

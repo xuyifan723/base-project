@@ -2,6 +2,7 @@ package com.xuyifan.basecontroller.config.filter;
 
 import com.xuyifan.commonutils.annotation.IgnoreSecurity;
 import com.xuyifan.commonutils.common.HearUserUtils;
+import com.xuyifan.commonutils.common.SysUserUtils;
 import com.xuyifan.commonutils.common.ValidateUtils;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
@@ -17,6 +18,7 @@ import java.lang.reflect.Method;
  * @Version 1.0
  */
 public class AuthInterceptor extends HandlerInterceptorAdapter {
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse httpServletResponse, Object handler) throws Exception {
         // 如果不是映射到方法直接通过
@@ -31,6 +33,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
         Integer userId = HearUserUtils.getUser(request);
         ValidateUtils.validate(userId,"用户没有登录");
         HearUserUtils.setUser(httpServletResponse,userId);
+
         request.setAttribute("currentUser", userId);
         return true;
 

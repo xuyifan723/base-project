@@ -4,6 +4,7 @@ package com.xuyifan.basecontroller.config;
 import com.xuyifan.basedao.bean.UserBean;
 import com.xuyifan.baseservice.service.UserService;
 import com.xuyifan.commonutils.annotation.CurrentUser;
+import com.xuyifan.commonutils.common.SysUserUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.MethodParameter;
 import org.springframework.web.bind.support.WebDataBinderFactory;
@@ -36,6 +37,7 @@ public class CurrentUserMethodArgumentResolver implements HandlerMethodArgumentR
             if (user==null){
                 throw  new MissingServletRequestPartException("currentUser");
             }
+            SysUserUtils.setVal(user);
             return user;
         }
         throw new MissingServletRequestPartException("currentUser");
