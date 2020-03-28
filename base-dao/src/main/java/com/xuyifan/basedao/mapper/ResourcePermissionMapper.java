@@ -1,6 +1,6 @@
 package com.xuyifan.basedao.mapper;
 import java.util.List;
-import com.xuyifan.basedao.bean.ResourcePermissionBean;
+
 /**
  * @author Xu yifan
  * @Ddecription mapper

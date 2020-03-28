@@ -1,8 +1,6 @@
 package com.xuyifan.basecontroller.view;
 
-import com.xuyifan.basecontroller.bean.MenuBean;
 import com.xuyifan.basedao.bean.ResMenuBean;
-import com.xuyifan.basedao.bean.UserBean;
 import com.xuyifan.baseservice.service.ResMenuService;
 import com.xuyifan.commonutils.annotation.CurrentUser;
 import com.xuyifan.commonutils.common.ResultBean;

@@ -1,6 +1,6 @@
 package com.xuyifan.baseservice.service;
 import java.util.List;
-import com.xuyifan.basedao.mapper.ResMenuMapper;
+
 import com.xuyifan.basedao.bean.ResMenuBean;
 
 /**

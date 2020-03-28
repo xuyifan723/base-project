@@ -3,7 +3,6 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.xuyifan.baseservice.service.ResMenuService;
-import com.xuyifan.basedao.mapper.ResMenuMapper;
 import com.xuyifan.basedao.bean.ResMenuBean;
 
 /**

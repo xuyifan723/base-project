@@ -3,9 +3,6 @@ package com.xuyifan.basecontroller.view;
 
 
 
-import com.xuyifan.basecontroller.bean.UserInterBean;
-import com.xuyifan.basedao.bean.UserBean;
-import com.xuyifan.baseservice.service.UserService;
 import com.xuyifan.commonutils.common.HearUserUtils;
 import com.xuyifan.commonutils.common.ResultBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
