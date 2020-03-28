@@ -66,7 +66,7 @@ public class MapperFileTemp extends Temp {
             }else {
                 flag=false;
             }
-            String colName = StringHandle.toClassLowStr(column.getColName());
+            String colName = StringHandle.toClassLowStr(column.getColName(),ConfigureParams.ingoreStrs);
             temp.append( column.getColName()+"= #{"+colName+"}");
             data.add(temp.toString());
         }
@@ -75,7 +75,7 @@ public class MapperFileTemp extends Temp {
         List<String> data = this.getData();
         for (TableColumn column : this.getColumns()) {
             StringBuffer temp = new StringBuffer();
-            String colName = StringHandle.toClassLowStr(column.getColName());
+            String colName = StringHandle.toClassLowStr(column.getColName(),ConfigureParams.ingoreStrs);
             temp.append("      <if test=\""+colName+" != null\">\n" +
                     "        "+column.getColName()+" = #{"+colName+"},\n" +
                     "      </if>");
@@ -86,7 +86,7 @@ public class MapperFileTemp extends Temp {
         List<String> data = this.getData();
         for (TableColumn column : this.getColumns()) {
             StringBuffer temp = new StringBuffer();
-            String colName = StringHandle.toClassLowStr(column.getColName());
+            String colName = StringHandle.toClassLowStr(column.getColName(),ConfigureParams.ingoreStrs);
             temp.append("      <if test=\""+colName+" != null\">\n" +
                     "        #{"+colName+"},\n" +
                     "      </if>");
@@ -97,7 +97,7 @@ public class MapperFileTemp extends Temp {
         List<String> data = this.getData();
         for (TableColumn column : this.getColumns()) {
             StringBuffer temp = new StringBuffer();
-            String colName = StringHandle.toClassLowStr(column.getColName());
+            String colName = StringHandle.toClassLowStr(column.getColName(),ConfigureParams.ingoreStrs);
             temp.append("      <if test=\""+colName+" != null\">\n" +
                     "        "+column.getColName()+",\n" +
                     "      </if>");
@@ -118,7 +118,7 @@ public class MapperFileTemp extends Temp {
             }else {
                 flag=false;
             }
-            temp.append("#{"+StringHandle.toClassLowStr(column.getColName())+"}");
+            temp.append("#{"+StringHandle.toClassLowStr(column.getColName(),ConfigureParams.ingoreStrs)+"}");
         }
         data.add(temp.toString());
     }
@@ -128,7 +128,7 @@ public class MapperFileTemp extends Temp {
         boolean flag=true;
         for (TableColumn column : this.getColumns()) {
             StringBuilder temp = new StringBuilder();
-            String colName = StringHandle.toClassLowStr(column.getColName());
+            String colName = StringHandle.toClassLowStr(column.getColName(),ConfigureParams.ingoreStrs);
             temp.append("      <if test=\"");
 
             temp.append(colName);
@@ -166,7 +166,7 @@ public class MapperFileTemp extends Temp {
                 temp.append("    <result column=\"");
                 temp.append(column.getColName());
                 temp.append("\" property=\"");
-                temp.append(StringHandle.toClassLowStr(column.getColName()));
+                temp.append(StringHandle.toClassLowStr(column.getColName(),ConfigureParams.ingoreStrs));
                 temp.append("\" />");
                 data.add(temp.toString());
             }

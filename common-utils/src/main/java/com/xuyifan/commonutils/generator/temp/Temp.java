@@ -127,10 +127,10 @@ public abstract class Temp {
             regex.put("VERSION", ConfigureParams.version);
             regex.put("DATE", format);
         }
-        regex.put("TABLENAMEUP",StringHandle.toClassUpStr(tableName.getTableName()));
+        regex.put("TABLENAMEUP",StringHandle.toClassUpStr(tableName.getTableName(),ConfigureParams.ingoreStrs));
         regex.put("TABLENAME",tableName.getTableName());
         regex.put("TABLECOMMENT",tableName.getComment());
-        regex.put("TABLENAMELOW",StringHandle.toClassLowStr(tableName.getTableName()));
+        regex.put("TABLENAMELOW",StringHandle.toClassLowStr(tableName.getTableName(),ConfigureParams.ingoreStrs));
         regex.put("PACKAGENAME",packageName);
         return this.regex;
     }
@@ -145,7 +145,7 @@ public abstract class Temp {
         if (!file.exists()) {
             file.mkdirs();
         }
-        File writeName = new File(url + "/" + StringHandle.toClassUpStr(this.tableName.getTableName()) + this.fileSuffix); // 相对路径，如果没有则要建立一个新的output.txt文件
+        File writeName = new File(url + "/" + StringHandle.toClassUpStr(this.tableName.getTableName(),ConfigureParams.ingoreStrs) + this.fileSuffix); // 相对路径，如果没有则要建立一个新的output.txt文件
         return writeName;
     }
     /**
@@ -170,7 +170,7 @@ public abstract class Temp {
                 out.write(tempDatum + "\r\n");
             }
             out.flush(); // 把缓存区内容压入文件
-            System.out.println("------"+StringHandle.toClassUpStr(this.tableName.getTableName()) + this.fileSuffix);
+            System.out.println("------"+StringHandle.toClassUpStr(this.tableName.getTableName(),ConfigureParams.ingoreStrs) + this.fileSuffix);
         } catch (IOException e) {
             e.printStackTrace();
         } finally {

@@ -29,7 +29,7 @@ public class ControllerTemp extends Temp {
     public void handle() {
         List<String> importPackage = this.getImportPackage();
         List<String> data = this.getData();
-        String classUpStr = StringHandle.toClassUpStr(this.getTableName().getTableName());
+        String classUpStr = StringHandle.toClassUpStr(this.getTableName().getTableName(),ConfigureParams.ingoreStrs);
         importPackage.add("import java.util.List;");
         importPackage.add("import org.springframework.beans.factory.annotation.Autowired;");
         importPackage.add("import com.xuyifan.commonutils.common.ResultBean;");

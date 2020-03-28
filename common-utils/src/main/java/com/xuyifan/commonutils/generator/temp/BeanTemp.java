@@ -42,7 +42,7 @@ public class BeanTemp extends Temp {
                 flag=false;
             }
             temp.append(" ");
-            temp.append(StringHandle.toClassLowStr(column.getColName()));
+            temp.append(StringHandle.toClassLowStr(column.getColName(),ConfigureParams.ingoreStrs));
             temp.append(";");
             temp.append("   //"+column.getComment());
             data.add(temp.toString());

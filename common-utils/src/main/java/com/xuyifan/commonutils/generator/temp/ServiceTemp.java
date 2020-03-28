@@ -30,7 +30,7 @@ public class ServiceTemp extends Temp{
     public void handle() {
         List<String> importPackage = this.getImportPackage();
         List<String> data = this.getData();
-        String classUpStr = StringHandle.toClassUpStr(this.getTableName().getTableName());
+        String classUpStr = StringHandle.toClassUpStr(this.getTableName().getTableName(),ConfigureParams.ingoreStrs);
         importPackage.add("import java.util.List;");
         importPackage.add("import " + ConfigureParams.daoPackage + "." + classUpStr + "Mapper;");
         importPackage.add("import " + ConfigureParams.beanPackage + "." + classUpStr + "Bean;");

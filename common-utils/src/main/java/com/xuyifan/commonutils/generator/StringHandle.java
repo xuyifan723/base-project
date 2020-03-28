@@ -3,6 +3,7 @@ package com.xuyifan.commonutils.generator;
 import com.xuyifan.commonutils.generator.bean.TableColumn;
 import com.xuyifan.commonutils.generator.bean.TableName;
 import com.xuyifan.commonutils.generator.config.ConfigureParams;
+import org.apache.commons.lang.StringUtils;
 
 import javax.sound.midi.Soundbank;
 import java.text.SimpleDateFormat;
@@ -27,7 +28,15 @@ public class StringHandle {
      * @Author: Xu yifan
      * @Date: 2019/9/9 15:02
      */
-    public static String toClassUpStr(String str) {
+    public static String toClassUpStr(String str,String [] ignoreStrs) {
+        if (ignoreStrs!=null&&ignoreStrs.length>0){
+            for (String ignoreStr : ignoreStrs) {
+                if (StringUtils.isNotEmpty(ignoreStr)){
+                    str=str.replaceFirst(ignoreStr,"");
+
+                }
+            }
+        }
         String[] vals = str.split("_");
         StringBuffer strBuf = new StringBuffer();
         for (String val : vals) {
@@ -39,7 +48,15 @@ public class StringHandle {
         }
         return strBuf.toString();
     }
-    public static String toClassLowStr(String str) {
+    public static String toClassLowStr(String str,String [] ignoreStrs) {
+        if (ignoreStrs!=null&&ignoreStrs.length>0){
+            for (String ignoreStr : ignoreStrs) {
+                if (StringUtils.isNotEmpty(ignoreStr)){
+                    str=str.replaceFirst(ignoreStr,"");
+
+                }
+            }
+        }
         String[] vals = str.split("_");
         StringBuffer strBuf = new StringBuffer();
         boolean flag=false;

@@ -9,10 +9,10 @@ create table resource_permission
        permission_type varchar(50)  not null comment '允许操作类型',
        permission_action int  not null comment '0代表不允许，1代表允许',
        version int null comment '0以下代表删除，0及0以上代表版本',
-       created varchar(30) null,
+       created varchar(30) null comment '创建人',
        created_time datetime null comment '创建时间',
-       updated varchar(30) null,
-       updated_time datetime null
+       updated varchar(30) null comment '更新人',
+       updated_time datetime null comment '更新时间'
 
 );
 
