@@ -7,7 +7,7 @@ package com.xuyifan.commonutils.generator.config;
  * @Version 1.0
  */
 public class ConfigureParams {
-    public static String workspace="F:\\workspase\\base-project\\";
+    public static String workspace="E:\\workspase\\base-project\\";
     public static String conProjectUrl=workspace+"base-web";
     public  static String controllerPackage="com.xuyifan.basecontroller.view";
     public  static String serProjectUrl=workspace+"base-service";

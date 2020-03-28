@@ -1,10 +1,10 @@
 package com.xuyifan.basedao.mapper;
 import java.util.List;
-
+import com.xuyifan.basedao.bean.ResourcePermissionBean;
 /**
  * @author Xu yifan
  * @Ddecription mapper
- * @date 2019-09-19 08:44:48
+ * @date 2020-03-28 14:59:27
  * @Version 1.0
  */
 public interface ResourcePermissionMapper {

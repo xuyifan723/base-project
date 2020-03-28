@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xuyifan.basedao.mapper.DataSourceMapper">
+  <resultMap id="BaseResultMap" type="com.xuyifan.basedao.bean.DataSourceBean">
+    <id column="id" property="id" />
+    <result column="name" property="name" />
+    <result column="username" property="username" />
+    <result column="password" property="password" />
+    <result column="url" property="url" />
+    <result column="driver_name" property="driverName" />
+    <result column="version" property="version" />
+    <result column="created" property="created" />
+    <result column="created_time" property="createdTime" />
+    <result column="updated" property="updated" />
+    <result column="updated_time" property="updatedTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+id,name,username,password,url,driver_name,version,created,created_time,updated,updated_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from bus_data_source
+    where id = #{id}
+  </select>
+
+    <select id="selectListBySelective" parameterType="com.xuyifan.basedao.bean.DataSourceBean" resultMap="BaseResultMap">
+      select
+      <include refid="Base_Column_List" />
+      from bus_data_source
+      <where>
+      <if test="id != null">
+      id = #{id}
+      </if>
+      <if test="name != null">
+      and name = #{name}
+      </if>
+      <if test="username != null">
+      and username = #{username}
+      </if>
+      <if test="password != null">
+      and password = #{password}
+      </if>
+      <if test="url != null">
+      and url = #{url}
+      </if>
+      <if test="driverName != null">
+      and driver_name = #{driverName}
+      </if>
+      <if test="version != null">
+      and version = #{version}
+      </if>
+      <if test="created != null">
+      and created = #{created}
+      </if>
+      <if test="createdTime != null">
+      and created_time = #{createdTime}
+      </if>
+      <if test="updated != null">
+      and updated = #{updated}
+      </if>
+      <if test="updatedTime != null">
+      and updated_time = #{updatedTime}
+      </if>
+      </where>
+    </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from bus_data_source
+    where id = #{id}
+  </delete>
+  <insert id="insert" parameterType="com.xuyifan.basedao.bean.DataSourceBean">
+    insert into bus_data_source (
+    <include refid="Base_Column_List" />
+    )
+    values (
+#{id},#{name},#{username},#{password},#{url},#{driverName},#{version},#{created},#{createdTime},#{updated},#{updatedTime}
+     )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xuyifan.basedao.bean.DataSourceBean">
+    insert into bus_data_source
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+      <if test="driverName != null">
+        driver_name,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+      <if test="created != null">
+        created,
+      </if>
+      <if test="createdTime != null">
+        created_time,
+      </if>
+      <if test="updated != null">
+        updated,
+      </if>
+      <if test="updatedTime != null">
+        updated_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id},
+      </if>
+      <if test="name != null">
+        #{name},
+      </if>
+      <if test="username != null">
+        #{username},
+      </if>
+      <if test="password != null">
+        #{password},
+      </if>
+      <if test="url != null">
+        #{url},
+      </if>
+      <if test="driverName != null">
+        #{driverName},
+      </if>
+      <if test="version != null">
+        #{version},
+      </if>
+      <if test="created != null">
+        #{created},
+      </if>
+      <if test="createdTime != null">
+        #{createdTime},
+      </if>
+      <if test="updated != null">
+        #{updated},
+      </if>
+      <if test="updatedTime != null">
+        #{updatedTime},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xuyifan.basedao.bean.DataSourceBean">
+    update bus_data_source
+    <set>
+      <if test="id != null">
+        id = #{id},
+      </if>
+      <if test="name != null">
+        name = #{name},
+      </if>
+      <if test="username != null">
+        username = #{username},
+      </if>
+      <if test="password != null">
+        password = #{password},
+      </if>
+      <if test="url != null">
+        url = #{url},
+      </if>
+      <if test="driverName != null">
+        driver_name = #{driverName},
+      </if>
+      <if test="version != null">
+        version = #{version},
+      </if>
+      <if test="created != null">
+        created = #{created},
+      </if>
+      <if test="createdTime != null">
+        created_time = #{createdTime},
+      </if>
+      <if test="updated != null">
+        updated = #{updated},
+      </if>
+      <if test="updatedTime != null">
+        updated_time = #{updatedTime},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xuyifan.basedao.bean.DataSourceBean">
+    update bus_data_source
+    set
+id= #{id}
+,name= #{name}
+,username= #{username}
+,password= #{password}
+,url= #{url}
+,driver_name= #{driverName}
+,version= #{version}
+,created= #{created}
+,created_time= #{createdTime}
+,updated= #{updated}
+,updated_time= #{updatedTime}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

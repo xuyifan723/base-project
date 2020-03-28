@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xuyifan.basedao.mapper.ResourcePermissionMapper">
+  <resultMap id="BaseResultMap" type="com.xuyifan.basedao.bean.ResourcePermissionBean">
+    <id column="id" property="id" />
+    <result column="operator_type" property="operatorType" />
+    <result column="operator_id" property="operatorId" />
+    <result column="resource_type" property="resourceType" />
+    <result column="resource_id" property="resourceId" />
+    <result column="permission_type" property="permissionType" />
+    <result column="permission_action" property="permissionAction" />
+    <result column="version" property="version" />
+    <result column="created" property="created" />
+    <result column="created_time" property="createdTime" />
+    <result column="updated" property="updated" />
+    <result column="updated_time" property="updatedTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+id,operator_type,operator_id,resource_type,resource_id,permission_type,permission_action,version,created,created_time,updated,updated_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from bus_resource_permission
+    where id = #{id}
+  </select>
+
+    <select id="selectListBySelective" parameterType="com.xuyifan.basedao.bean.ResourcePermissionBean" resultMap="BaseResultMap">
+      select
+      <include refid="Base_Column_List" />
+      from bus_resource_permission
+      <where>
+      <if test="id != null">
+      id = #{id}
+      </if>
+      <if test="operatorType != null">
+      and operator_type = #{operatorType}
+      </if>
+      <if test="operatorId != null">
+      and operator_id = #{operatorId}
+      </if>
+      <if test="resourceType != null">
+      and resource_type = #{resourceType}
+      </if>
+      <if test="resourceId != null">
+      and resource_id = #{resourceId}
+      </if>
+      <if test="permissionType != null">
+      and permission_type = #{permissionType}
+      </if>
+      <if test="permissionAction != null">
+      and permission_action = #{permissionAction}
+      </if>
+      <if test="version != null">
+      and version = #{version}
+      </if>
+      <if test="created != null">
+      and created = #{created}
+      </if>
+      <if test="createdTime != null">
+      and created_time = #{createdTime}
+      </if>
+      <if test="updated != null">
+      and updated = #{updated}
+      </if>
+      <if test="updatedTime != null">
+      and updated_time = #{updatedTime}
+      </if>
+      </where>
+    </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from bus_resource_permission
+    where id = #{id}
+  </delete>
+  <insert id="insert" parameterType="com.xuyifan.basedao.bean.ResourcePermissionBean">
+    insert into bus_resource_permission (
+    <include refid="Base_Column_List" />
+    )
+    values (
+#{id},#{operatorType},#{operatorId},#{resourceType},#{resourceId},#{permissionType},#{permissionAction},#{version},#{created},#{createdTime},#{updated},#{updatedTime}
+     )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xuyifan.basedao.bean.ResourcePermissionBean">
+    insert into bus_resource_permission
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="operatorType != null">
+        operator_type,
+      </if>
+      <if test="operatorId != null">
+        operator_id,
+      </if>
+      <if test="resourceType != null">
+        resource_type,
+      </if>
+      <if test="resourceId != null">
+        resource_id,
+      </if>
+      <if test="permissionType != null">
+        permission_type,
+      </if>
+      <if test="permissionAction != null">
+        permission_action,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+      <if test="created != null">
+        created,
+      </if>
+      <if test="createdTime != null">
+        created_time,
+      </if>
+      <if test="updated != null">
+        updated,
+      </if>
+      <if test="updatedTime != null">
+        updated_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id},
+      </if>
+      <if test="operatorType != null">
+        #{operatorType},
+      </if>
+      <if test="operatorId != null">
+        #{operatorId},
+      </if>
+      <if test="resourceType != null">
+        #{resourceType},
+      </if>
+      <if test="resourceId != null">
+        #{resourceId},
+      </if>
+      <if test="permissionType != null">
+        #{permissionType},
+      </if>
+      <if test="permissionAction != null">
+        #{permissionAction},
+      </if>
+      <if test="version != null">
+        #{version},
+      </if>
+      <if test="created != null">
+        #{created},
+      </if>
+      <if test="createdTime != null">
+        #{createdTime},
+      </if>
+      <if test="updated != null">
+        #{updated},
+      </if>
+      <if test="updatedTime != null">
+        #{updatedTime},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xuyifan.basedao.bean.ResourcePermissionBean">
+    update bus_resource_permission
+    <set>
+      <if test="id != null">
+        id = #{id},
+      </if>
+      <if test="operatorType != null">
+        operator_type = #{operatorType},
+      </if>
+      <if test="operatorId != null">
+        operator_id = #{operatorId},
+      </if>
+      <if test="resourceType != null">
+        resource_type = #{resourceType},
+      </if>
+      <if test="resourceId != null">
+        resource_id = #{resourceId},
+      </if>
+      <if test="permissionType != null">
+        permission_type = #{permissionType},
+      </if>
+      <if test="permissionAction != null">
+        permission_action = #{permissionAction},
+      </if>
+      <if test="version != null">
+        version = #{version},
+      </if>
+      <if test="created != null">
+        created = #{created},
+      </if>
+      <if test="createdTime != null">
+        created_time = #{createdTime},
+      </if>
+      <if test="updated != null">
+        updated = #{updated},
+      </if>
+      <if test="updatedTime != null">
+        updated_time = #{updatedTime},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xuyifan.basedao.bean.ResourcePermissionBean">
+    update bus_resource_permission
+    set
+id= #{id}
+,operator_type= #{operatorType}
+,operator_id= #{operatorId}
+,resource_type= #{resourceType}
+,resource_id= #{resourceId}
+,permission_type= #{permissionType}
+,permission_action= #{permissionAction}
+,version= #{version}
+,created= #{created}
+,created_time= #{createdTime}
+,updated= #{updated}
+,updated_time= #{updatedTime}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

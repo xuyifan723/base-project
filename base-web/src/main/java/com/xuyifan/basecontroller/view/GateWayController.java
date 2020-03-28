@@ -3,6 +3,8 @@ package com.xuyifan.basecontroller.view;
 
 
 
+import com.xuyifan.basedao.bean.UserBean;
+import com.xuyifan.baseservice.service.UserService;
 import com.xuyifan.commonutils.common.HearUserUtils;
 import com.xuyifan.commonutils.common.ResultBean;
 import org.springframework.beans.factory.annotation.Autowired;
