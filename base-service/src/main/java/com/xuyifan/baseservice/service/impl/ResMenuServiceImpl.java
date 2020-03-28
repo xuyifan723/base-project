@@ -1,5 +1,7 @@
 package com.xuyifan.baseservice.service.impl;
 import java.util.List;
+
+import com.xuyifan.basedao.mapper.ResMenuMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.xuyifan.baseservice.service.ResMenuService;
