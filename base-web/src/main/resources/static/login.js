@@ -30,7 +30,7 @@ layui.use(['form'], function () {
             $('#username').val("");
             if (isSuccess(data)) {
                 //传递cookie
-                sessionStorage.setItem('loginName', data.data.loginName);
+                sessionStorage.setItem('loginName', data.data.id);
                 window.location.href = "index.html"
             } else {
                 layer.msg(data.msg);

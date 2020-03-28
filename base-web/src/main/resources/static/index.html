@@ -20,15 +20,15 @@
             </ul>
 
             <ul class="layui-nav layui-layout-right" id="userinfo">
-
+                <script type="text/html" id="user_Html">
                 <li class="layui-nav-item">
-                    <a href="javascript:;">BieJun</a>
+                    <a href="javascript:;">{{ d.userName }}</a>
                     <dl class="layui-nav-child">
                         <dd><a href="">帮助中心</a></dd>
                         <dd><a href="login.html">退出</a></dd>
                     </dl>
                 </li>
-                <script type="text/html" id="user_Html">
+
                 </script>
             </ul>
         </div>
@@ -113,8 +113,9 @@
 </body>
 <script type="application/javascript">
     layui.use('laytpl', function(){
+      var userId=  sessionStorage.setItem('loginName', data.data.id);
         var laytpl = layui.laytpl;
-        Data_GET(MENU_USER_LISTS,{},function (data) {
+        Data_GET(USER_GET,{id:userId},function (data) {
             console.log(data);
             var getTpl = user_Html.innerHTML
                 ,view = document.getElementById('userinfo');
