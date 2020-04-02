@@ -19,7 +19,7 @@ public class HearUserUtils {
     public static String splitStr="--";   //设置两个数据的分割附
     public static Integer getUser(HttpServletRequest request){
         String code = request.getHeader(HEARD_NAME);
-        if (StringUtils.isEmpty(code)){
+        if (StringUtils.isEmpty(code)||code.equals("null")){
             return null;
         }
         String decrypt = AESUtil.decrypt(code);

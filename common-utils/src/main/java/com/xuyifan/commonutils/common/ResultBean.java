@@ -55,4 +55,12 @@ public class ResultBean {
     public void setData(Object data) {
         this.data = data;
     }
+
+    public static ResultBean getFail(String msg){
+        ResultBean resultBean=new ResultBean();
+        resultBean.setData(null);
+        resultBean.setMsg(msg);
+        resultBean.setCode(ResultBean.ERROR_CODE);
+        return resultBean;
+    }
 }
