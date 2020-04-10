@@ -1,9 +1,12 @@
 package com.xuyifan.basedao.bean;
+
 import lombok.Data;
+
 import java.util.Date;
+
 /**
  * @author Xu yifan
- * @Ddecription 
+ * @Ddecription
  * @date 2020-03-28 14:59:27
  * @Version 1.0
  */

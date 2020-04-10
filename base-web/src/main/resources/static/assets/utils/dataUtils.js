@@ -11,13 +11,13 @@ var new_element=document.createElement("script");
 new_element.setAttribute("type","text/javascript");
 new_element.setAttribute("src","/data_manager/assets/utils/Apiservice.js");
 document.body.appendChild(new_element);
-var userTokenName='authCode';
+var userTokenName='authcode';
 function Data_POST(url,params,func){
     $.ajax({
         type:"post",
         url:url,
         contentType:'application/json',
-        headers:{'authCode': sessionStorage.getItem(userTokenName)},
+        headers:{'authcode': sessionStorage.getItem(userTokenName)},
         data:JSON.stringify(params),
         dataType:"json",
         success:function (data, textStatus, request) {
@@ -51,7 +51,7 @@ function Data_GET(url,params,func){
         type:"get",
         url:url,
         dataType:"json",
-        headers:{'authCode':  sessionStorage.getItem(userTokenName)},
+        headers:{'authcode':  sessionStorage.getItem(userTokenName)},
         success:function (data, textStatus, request){
             var code = request.getResponseHeader(userTokenName);
             sessionStorage.setItem(userTokenName,code);

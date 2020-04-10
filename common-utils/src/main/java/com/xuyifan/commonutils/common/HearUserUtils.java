@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.security.SecurityProperties;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 /**
  * @author Xu yifan
@@ -14,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
  * @Version 1.0
  */
 public class HearUserUtils {
-    public static final String HEARD_NAME="authCode";    //存放用户的请求头名称
+    public static final String HEARD_NAME="authcode";    //存放用户的请求头名称
     public static final Long EXPIRE_TIME = 1000 * 60 * 30L; //过期时间   30分钟
     public static String splitStr="--";   //设置两个数据的分割附
     public static Integer getUser(HttpServletRequest request){
@@ -38,5 +39,10 @@ public class HearUserUtils {
     public static void setUser(HttpServletResponse response, Integer userId){
         String userInfo = userId + splitStr + System.currentTimeMillis();
         response.setHeader(HEARD_NAME,AESUtil.encrypt(userInfo));
+        try {
+            response.flushBuffer();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
