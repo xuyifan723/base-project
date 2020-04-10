@@ -34,9 +34,9 @@ public class ConfigureParams {
     public  static String version="1.0";
 //,"data_source","res_menu","resource_permission"
     //需要初始化那些表
-    public static String[] tableList={"bus_user","bus_data_source","bus_resource_permission"};
+    public static String[] tableList={"com_menu"};
 
-    public static String [] ingoreStrs={"bus_"};
+    public static String [] ingoreStrs={"bus_","com_"};
     //需要初始化那些数据
    public static String[] updateFile={ConfigureParams.BEAN_NAME,ConfigureParams.SERVICE_NAME,ConfigureParams.CONTROLLER_NAME};
    //实体类

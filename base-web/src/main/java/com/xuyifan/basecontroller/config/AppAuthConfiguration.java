@@ -37,7 +37,6 @@ public class AppAuthConfiguration extends WebMvcConfigurerAdapter {
         ir.addPathPatterns("/**");
         // 配置拦截的路径
         ir.excludePathPatterns("/gateway/*");
-        ir.excludePathPatterns("/user/*");
         // 配置不拦截的路径
 //        ir.excludePathPatterns("**/swagger-ui.html");
         // 还可以在这里注册其它的拦截器

@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 /**
- * @Author bowenZhou
- * @date 2019-11-18 10:19
+ * @author Xu yifan
+ * @Ddecription 全局异常处理类
+ * @date 2019/8/13 10:06
+ * @Version 1.0
  */
 @Slf4j
 @ControllerAdvice

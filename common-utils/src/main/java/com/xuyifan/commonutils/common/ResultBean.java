@@ -9,6 +9,7 @@ package com.xuyifan.commonutils.common;
 public class ResultBean {
     public final static Integer ERROR_CODE=5000;
     public final static Integer SUCCESS_CODE=2000;
+    public final static Integer USER_NO_LOGIN_CODE=3000;
     private int code;
     private String msg;
     private Object data;
