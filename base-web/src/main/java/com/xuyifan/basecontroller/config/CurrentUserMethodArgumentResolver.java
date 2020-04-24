@@ -4,7 +4,7 @@ package com.xuyifan.basecontroller.config;
 import com.xuyifan.basedao.bean.UserBean;
 import com.xuyifan.baseservice.service.UserService;
 import com.xuyifan.commonutils.annotation.CurrentUser;
-import com.xuyifan.commonutils.common.SysUserUtils;
+import com.xuyifan.commonutils.user.SysUserUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.MethodParameter;
 import org.springframework.web.bind.support.WebDataBinderFactory;

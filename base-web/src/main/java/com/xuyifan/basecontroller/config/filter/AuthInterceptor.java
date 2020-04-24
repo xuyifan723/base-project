@@ -1,7 +1,7 @@
 package com.xuyifan.basecontroller.config.filter;
 
 import com.xuyifan.commonutils.annotation.IgnoreSecurity;
-import com.xuyifan.commonutils.common.HearUserUtils;
+import com.xuyifan.commonutils.user.HearUserUtils;
 import com.xuyifan.commonutils.common.ResultBean;
 import com.xuyifan.commonutils.common.ValidateUtils;
 import com.xuyifan.commonutils.exception.BizException;
