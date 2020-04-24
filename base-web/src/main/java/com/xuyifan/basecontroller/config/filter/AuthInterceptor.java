@@ -32,11 +32,11 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
             return true;
         }
         Integer userId = HearUserUtils.getUser(request);
-        if (userId==null){
-            throw new BizException(ResultBean.USER_NO_LOGIN_CODE,"用户没有登录",null);
+        if (userId == null) {
+            throw new BizException(ResultBean.USER_NO_LOGIN_CODE, "用户没有登录", null);
         }
-        ValidateUtils.validate(userId,"用户没有登录");
-        HearUserUtils.setUser(httpServletResponse,userId);
+        ValidateUtils.validate(userId, "用户没有登录");
+        HearUserUtils.setUser(httpServletResponse, userId);
 
         request.setAttribute("currentUser", userId);
         return true;
