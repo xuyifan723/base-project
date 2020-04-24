@@ -59,11 +59,17 @@ public class GenerCode {
     public List<TableName> getTableName(String sql){
         List<TableName> data=new ArrayList<>();
         try {
+            //加载驱动
             Class.forName(ConfigureParams.name);
+            //添加url,用户名和密码获取数据库链接
             Connection connection = DriverManager.getConnection(ConfigureParams.url, ConfigureParams.username, ConfigureParams.password);
+            //数据sql
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            //将sql的scahme的参数添加进入
             preparedStatement.setString(1,ConfigureParams.scahme);
+            //执行查询语句，获取结果
             ResultSet rs = preparedStatement.executeQuery();
+            //将查询结果传输到table里面
             while (rs.next()){
                 TableName table=new TableName();
                 table.setTableName(rs.getString(1));

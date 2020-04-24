@@ -2,7 +2,7 @@ package com.xuyifan.commonutils.generator;
 
 /**
  * @author Xu yifan
- * @Ddecription 待写
+ * @Ddecription 从数据库中查询表数据的类
  * @date 2019/9/7 15:13
  * @Version 1.0
  */

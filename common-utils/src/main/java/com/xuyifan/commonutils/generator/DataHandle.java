@@ -46,12 +46,17 @@ public class DataHandle {
      */
     public void init() {
         GenerCode generCode = new GenerCode();
+        //获取表名的sql
         StringBuffer tableName = new StringBuffer(CommonParams.getTableNameSql);
+        //获取表字段的sql
         StringBuffer tableColName = new StringBuffer(CommonParams.getTableColumnSql);
         if (ConfigureParams.tableList.length > 0) {
+            //sql的条件，查询的表名
             tableName.append(" and table_name in (");
+            //sql的条件，查询的表名的字段
             tableColName.append(" and table_name in (");
             boolean flag = true;
+            //将添加的表一个个的加入到条件里面去
             for (String table : ConfigureParams.tableList) {
                 if (flag){
                    flag=false;
@@ -66,7 +71,9 @@ public class DataHandle {
             tableColName.append(")");
         }
         tableColName.append(" order by TABLE_NAME desc, ORDINAL_POSITION");
+        //获取表信息
         this.tableName = generCode.getTableName(tableName.toString());
+        //获取表的字段信息
         List<TableColumn> tableColumn = generCode.getTableColumn(tableColName.toString());
         for (TableColumn column : tableColumn) {
             List<TableColumn> tableColumns = colData.get(column.getTableName());
