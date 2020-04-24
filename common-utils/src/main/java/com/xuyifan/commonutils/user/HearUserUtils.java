@@ -1,7 +1,7 @@
-package com.xuyifan.commonutils.common;
+package com.xuyifan.commonutils.user;
 
+import com.xuyifan.commonutils.common.StringHanle;
 import com.xuyifan.commonutils.cryptogram.AESUtil;
-import org.apache.commons.lang.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,7 +19,7 @@ public class HearUserUtils {
     public static String splitStr="--";   //设置两个数据的分割附
     public static Integer getUser(HttpServletRequest request){
         String code = request.getHeader(HEARD_NAME);
-        if (StringUtils.isEmpty(code)||code.equals("null")){
+        if (!StringHanle.isNotEmpty(code)){
             return null;
         }
         String decrypt = AESUtil.decrypt(code);

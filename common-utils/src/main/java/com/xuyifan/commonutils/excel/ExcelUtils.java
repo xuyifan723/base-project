@@ -1,4 +1,4 @@
-package com.xuyifan.commonutils.common;
+package com.xuyifan.commonutils.excel;
 
 import com.alibaba.excel.EasyExcel;
 import com.alibaba.excel.context.AnalysisContext;

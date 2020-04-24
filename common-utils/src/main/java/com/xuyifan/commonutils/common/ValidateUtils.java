@@ -15,11 +15,6 @@ import java.util.List;
  */
 public class ValidateUtils {
 
-    public static void validate(boolean flag, String... msg) {
-        if (flag){
-            throw new BizException(getMsg("\\{%s\\}",msg));
-        }
-    }
     /**
      * 功能描述:验证字符串是否为空，为空抛出异常
      *
@@ -34,17 +29,6 @@ public class ValidateUtils {
         }
     }
 
-    /**
-     * 功能描述:验证对象是否为空
-     *
-     * @Param: [item, msg]
-     * @Return: void
-     * @Author: Xu yifan
-     * @Date: 2019/8/29 17:20
-     */
-    public static void validate(Object item, String... msg) {
-        validate(item==null,msg);
-    }
 
     /**
      * 功能描述:验证集合是否为空，不然抛出异常
@@ -58,6 +42,22 @@ public class ValidateUtils {
         if (items == null || items.size() < 1) {
             throw new BizException(getMsg("\\{%s\\}",msg));
         }
+    }
+    /**
+     * 功能描述:验证对象是否为空
+     *
+     * @Param: [item, msg]
+     * @Return: void
+     * @Author: Xu yifan
+     * @Date: 2019/8/29 17:20
+     */
+    public static void validate(Object item, String... msg) {
+        if (item instanceof Boolean){
+            if ((Boolean) item){
+                throw new BizException(getMsg("\\{%s\\}",msg));
+            }
+        }
+        validate(item==null,msg);
     }
 
     public static String getMsg(String regex,Object... msg){

@@ -1,4 +1,4 @@
-package com.xuyifan.commonutils.common;
+package com.xuyifan.commonutils.user;
 
 
 import com.xuyifan.commonutils.cryptogram.AESUtil;

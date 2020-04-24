@@ -1,8 +1,6 @@
-package com.xuyifan.commonutils.common;
+package com.xuyifan.commonutils.user;
 
 
-
-import java.util.Set;
 
 /**
  * 从当前线程中取出数据
