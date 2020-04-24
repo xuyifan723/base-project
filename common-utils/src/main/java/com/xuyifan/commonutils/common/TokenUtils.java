@@ -1,5 +1,6 @@
 package com.xuyifan.commonutils.common;
 
+import com.xuyifan.commonutils.cryptogram.AESUtil;
 import org.apache.commons.lang.StringUtils;
 
 /**

@@ -1,4 +1,4 @@
-package com.xuyifan.commonutils.common;
+package com.xuyifan.commonutils.cryptogram;
 
 
 import org.apache.commons.lang.StringUtils;

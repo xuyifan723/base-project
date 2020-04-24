@@ -1,8 +1,7 @@
 package com.xuyifan.commonutils.common;
 
-import com.xuyifan.commonutils.exception.BizException;
+import com.xuyifan.commonutils.cryptogram.AESUtil;
 import org.apache.commons.lang.StringUtils;
-import org.springframework.boot.autoconfigure.security.SecurityProperties;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

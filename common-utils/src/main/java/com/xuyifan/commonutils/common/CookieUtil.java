@@ -1,6 +1,7 @@
 package com.xuyifan.commonutils.common;
 
 
+import com.xuyifan.commonutils.cryptogram.AESUtil;
 import org.apache.commons.lang.StringUtils;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
