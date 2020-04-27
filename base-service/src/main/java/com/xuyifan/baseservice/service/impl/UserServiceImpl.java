@@ -1,10 +1,11 @@
 package com.xuyifan.baseservice.service.impl;
-import java.util.List;
-import org.springframework.stereotype.Service;
-import org.springframework.beans.factory.annotation.Autowired;
-import com.xuyifan.baseservice.service.UserService;
-import com.xuyifan.basedao.mapper.UserMapper;
 import com.xuyifan.basedao.bean.UserBean;
+import com.xuyifan.basedao.mapper.UserMapper;
+import com.xuyifan.baseservice.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @author Xu yifan
@@ -94,5 +95,17 @@ public class UserServiceImpl implements UserService {
     @Override
     public int updateByPrimaryKey(UserBean record){
       return userMapper.updateByPrimaryKey(record);
+    }
+
+    @Override
+    public UserBean getUserByUserPassword(String userName, String password) {
+        UserBean userBean=userMapper.getUserByUserPassword(userName,password);
+        return userBean;
+    }
+
+    @Override
+    public UserBean getUserById(Integer userId) {
+        UserBean userBean=userMapper.getUserById(userId);
+        return userBean;
     }
 }

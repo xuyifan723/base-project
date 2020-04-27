@@ -1,6 +1,7 @@
 package com.xuyifan.basedao.mapper;
 
 import com.xuyifan.basedao.bean.UserBean;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -31,4 +32,8 @@ public interface UserMapper {
 
     //通过id更新记录
     int updateByPrimaryKey(UserBean record);
+
+    UserBean getUserByUserPassword(@Param("userName") String userName, @Param("password") String password);
+
+    UserBean getUserById(@Param("userId") Integer userId);
 }

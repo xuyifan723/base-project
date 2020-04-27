@@ -1,20 +1,14 @@
 package com.xuyifan.basecontroller.view;
 
 
-
-
 import com.xuyifan.basedao.bean.UserBean;
 import com.xuyifan.baseservice.service.UserService;
-import com.xuyifan.commonutils.user.HearUserUtils;
 import com.xuyifan.commonutils.common.ResultBean;
+import com.xuyifan.commonutils.user.HearUserUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
-import java.util.List;
 
 /**
  * @author Xu yifan
@@ -27,23 +21,53 @@ import java.util.List;
 public class GateWayController {
     @Autowired
     private UserService userService;
+
+    /**
+     * 用户登陆
+     * @param response
+     * @param userBean
+     * @return
+     */
     @PostMapping("/login")
     public ResultBean login(HttpServletResponse response, @RequestBody UserBean userBean){
-
-        List<UserBean> users = userService.selectListBySelective(userBean);
-        if (users!=null&&users.size()>0){
-            UserBean user=users.get(0);
+        UserBean user = userService.getUserByUserPassword(userBean.getUserName(),userBean.getPassword());
+        if (user!=null){
             HearUserUtils.setUser(response,user.getId());
+            user.setPassword(null);
             return  new ResultBean(user);
         }else {
             return new ResultBean().error("用户名或者密码错误");
         }
     }
-    @PostMapping("/getUserInfo")
-    public ResultBean getUserInfo(@RequestBody UserBean userBean){
-        List<UserBean> users = userService.selectListBySelective(userBean);
-        if (users!=null&&users.size()>0){
-            UserBean user=users.get(0);
+
+    /**
+     * 用户登陆
+     * @param response
+     * @param userBean
+     * @return
+     */
+    @PostMapping("/logout")
+    public ResultBean logout(HttpServletResponse response, @RequestBody UserBean userBean){
+        UserBean user = userService.getUserByUserPassword(userBean.getUserName(),userBean.getPassword());
+        if (user!=null){
+            HearUserUtils.setUser(response,user.getId());
+            user.setPassword(null);
+            return  new ResultBean(user);
+        }else {
+            return new ResultBean().error("用户名或者密码错误");
+        }
+    }
+
+    /**
+     * 通过id查询用户信息
+     * @param userid
+     * @return
+     */
+    @GetMapping("/getUserInfo")
+    public ResultBean getUserInfo(Integer userid){
+        UserBean user = userService.getUserById(userid);
+        if (user!=null){
+            user.setPassword(null);
             return  new ResultBean(user);
         }else {
             return new ResultBean().error("用户名或者密码错误");
