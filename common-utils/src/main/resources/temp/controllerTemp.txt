@@ -16,7 +16,7 @@ public class %{TABLENAMEUP}%Controller {
      * @Date: %{DATE}%
      */
     @GetMapping("/delete")
-    public Object deleteByPrimaryKey(Integer id){
+    public Object deleteByPrimaryKey(%{PRIMARYKEYTYPE}% id){
         int num=%{TABLENAMELOW}%Service.deleteByPrimaryKey(id);
        return new ResultBean();
     }
@@ -49,7 +49,7 @@ public class %{TABLENAMEUP}%Controller {
      * @Date: %{DATE}%
      */
     @GetMapping("/get")
-    public Object selectByPrimaryKey(Integer id){
+    public Object selectByPrimaryKey(%{PRIMARYKEYTYPE}% id){
        %{TABLENAMEUP}%Bean bean=%{TABLENAMELOW}%Service.selectByPrimaryKey(id);
        return  new ResultBean(bean);
      }

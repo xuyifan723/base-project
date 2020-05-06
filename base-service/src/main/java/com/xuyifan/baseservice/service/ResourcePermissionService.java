@@ -1,12 +1,12 @@
 package com.xuyifan.baseservice.service;
-import java.util.List;
-import com.xuyifan.basedao.mapper.ResourcePermissionMapper;
 import com.xuyifan.basedao.bean.ResourcePermissionBean;
+
+import java.util.List;
 
 /**
  * @author Xu yifan
  * @Ddecription 服务
- * @date 2020-03-28 14:59:27
+ * @date 2020-05-06 17:40:22
  * @Version 1.0
  */
 public interface ResourcePermissionService {
@@ -15,15 +15,15 @@ public interface ResourcePermissionService {
      * @Param: [id]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2020-03-28 14:59:27
+     * @Date: 2020-05-06 17:40:22
      */
-    public int deleteByPrimaryKey(Integer id);
+    public int deleteByPrimaryKey(String id);
     /**
      * 功能描述:插入全部数据
      * @Param: [ResourcePermissionBean]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2020-03-28 14:59:27
+     * @Date: 2020-05-06 17:40:22
      */
     public int insert(ResourcePermissionBean record);
     /**
@@ -31,7 +31,7 @@ public interface ResourcePermissionService {
      * @Param: [ResourcePermissionBean]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2020-03-28 14:59:27
+     * @Date: 2020-05-06 17:40:22
      */
     public int insertSelective(ResourcePermissionBean record);
     /**
@@ -39,15 +39,15 @@ public interface ResourcePermissionService {
      * @Param: [id]
      * @Return: ResourcePermissionBean
      * @Author: Xu yifan
-     * @Date: 2020-03-28 14:59:27
+     * @Date: 2020-05-06 17:40:22
      */
-    public ResourcePermissionBean selectByPrimaryKey(Integer id);
+    public ResourcePermissionBean selectByPrimaryKey(String id);
     /**
      * 功能描述:通过非空参数搜索list
      * @Param: [ResourcePermissionBean]
      * @Return: List<ResourcePermissionBean>
      * @Author: Xu yifan
-     * @Date: 2020-03-28 14:59:27
+     * @Date: 2020-05-06 17:40:22
      */
     public List<ResourcePermissionBean> selectListBySelective(ResourcePermissionBean record);
      /**
@@ -55,7 +55,7 @@ public interface ResourcePermissionService {
       * @Param: [ResourcePermissionBean]
       * @Return: int
       * @Author: Xu yifan
-      * @Date: 2020-03-28 14:59:27
+      * @Date: 2020-05-06 17:40:22
       */
     public int updateByPrimaryKeySelective(ResourcePermissionBean record);
     /**
@@ -63,7 +63,7 @@ public interface ResourcePermissionService {
      * @Param: [ResourcePermissionBean]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2020-03-28 14:59:27
+     * @Date: 2020-05-06 17:40:22
      */
     public int updateByPrimaryKey(ResourcePermissionBean record);
 }

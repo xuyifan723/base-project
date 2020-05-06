@@ -129,6 +129,7 @@ public abstract class Temp {
         }
         regex.put("TABLENAMEUP",StringHandle.toClassUpStr(tableName.getTableName(),ConfigureParams.ingoreStrs));
         regex.put("TABLENAME",tableName.getTableName());
+        regex.put("PRIMARYKEYTYPE","String");
         regex.put("TABLECOMMENT",tableName.getComment());
         regex.put("TABLENAMELOW",StringHandle.toClassLowStr(tableName.getTableName(),ConfigureParams.ingoreStrs));
         regex.put("PACKAGENAME",packageName);

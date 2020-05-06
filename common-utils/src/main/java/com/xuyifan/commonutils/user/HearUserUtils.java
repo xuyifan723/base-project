@@ -17,7 +17,7 @@ public class HearUserUtils {
     public static final String HEARD_NAME="authcode";    //存放用户的请求头名称
     public static final Long EXPIRE_TIME = 1000 * 60 * 30L; //过期时间   30分钟
     public static String splitStr="--";   //设置两个数据的分割附
-    public static Integer getUser(HttpServletRequest request){
+    public static String getUser(HttpServletRequest request){
         String code = request.getHeader(HEARD_NAME);
         if (!StringHanle.isNotEmpty(code)){
             return null;
@@ -33,9 +33,9 @@ public class HearUserUtils {
         if (time>EXPIRE_TIME){
             return null;
         }
-        return Integer.valueOf(infos[0]);
+        return infos[0];
     }
-    public static void setUser(HttpServletResponse response, Integer userId){
+    public static void setUser(HttpServletResponse response, String userId){
         String userInfo = userId + splitStr + System.currentTimeMillis();
         response.setHeader(HEARD_NAME,AESUtil.encrypt(userInfo));
         try {

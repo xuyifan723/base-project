@@ -64,8 +64,8 @@ public class GateWayController {
      * @return
      */
     @GetMapping("/getUserInfo")
-    public ResultBean getUserInfo(Integer userid){
-        UserBean user = userService.getUserById(userid);
+    public ResultBean getUserInfo(String userid){
+        UserBean user = userService.selectByPrimaryKey(userid);
         if (user!=null){
             user.setPassword(null);
             return  new ResultBean(user);

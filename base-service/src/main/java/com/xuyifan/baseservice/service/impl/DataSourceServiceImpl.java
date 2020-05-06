@@ -1,15 +1,17 @@
 package com.xuyifan.baseservice.service.impl;
-import java.util.List;
-import org.springframework.stereotype.Service;
-import org.springframework.beans.factory.annotation.Autowired;
-import com.xuyifan.baseservice.service.DataSourceService;
-import com.xuyifan.basedao.mapper.DataSourceMapper;
 import com.xuyifan.basedao.bean.DataSourceBean;
+import com.xuyifan.basedao.mapper.DataSourceMapper;
+import com.xuyifan.baseservice.service.DataSourceService;
+import com.xuyifan.commonutils.common.UUIDUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @author Xu yifan
  * @Ddecription 服务
- * @date 2020-03-28 14:59:27
+ * @date 2020-05-06 17:40:22
  * @Version 1.0
  */
 @Service
@@ -23,10 +25,10 @@ public class DataSourceServiceImpl implements DataSourceService {
      * @Param: [id]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2020-03-28 14:59:27
+     * @Date: 2020-05-06 17:40:22
      */
     @Override
-    public int deleteByPrimaryKey(Integer id){
+    public int deleteByPrimaryKey(String id){
        return dataSourceMapper.deleteByPrimaryKey(id);
     }
     /**
@@ -34,18 +36,19 @@ public class DataSourceServiceImpl implements DataSourceService {
      * @Param: [DataSourceBean]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2020-03-28 14:59:27
+     * @Date: 2020-05-06 17:40:22
      */
     @Override
     public int insert(DataSourceBean record){
-       return dataSourceMapper.insert(record);
+        record.setId(UUIDUtils.getLowString());
+        return dataSourceMapper.insert(record);
     }
     /**
      * 功能描述:插入非空数据
      * @Param: [DataSourceBean]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2020-03-28 14:59:27
+     * @Date: 2020-05-06 17:40:22
      */
     @Override
     public int insertSelective(DataSourceBean record){
@@ -56,10 +59,10 @@ public class DataSourceServiceImpl implements DataSourceService {
      * @Param: [id]
      * @Return: DataSourceBean
      * @Author: Xu yifan
-     * @Date: 2020-03-28 14:59:27
+     * @Date: 2020-05-06 17:40:22
      */
     @Override
-    public DataSourceBean selectByPrimaryKey(Integer id){
+    public DataSourceBean selectByPrimaryKey(String id){
        return dataSourceMapper.selectByPrimaryKey(id);
      }
     /**
@@ -67,7 +70,7 @@ public class DataSourceServiceImpl implements DataSourceService {
      * @Param: [DataSourceBean]
      * @Return: List<DataSourceBean>
      * @Author: Xu yifan
-     * @Date: 2020-03-28 14:59:27
+     * @Date: 2020-05-06 17:40:22
      */
     @Override
     public List<DataSourceBean> selectListBySelective(DataSourceBean record){
@@ -78,7 +81,7 @@ public class DataSourceServiceImpl implements DataSourceService {
       * @Param: [DataSourceBean]
       * @Return: int
       * @Author: Xu yifan
-      * @Date: 2020-03-28 14:59:27
+      * @Date: 2020-05-06 17:40:22
       */
     @Override
     public int updateByPrimaryKeySelective(DataSourceBean record){
@@ -89,7 +92,7 @@ public class DataSourceServiceImpl implements DataSourceService {
      * @Param: [DataSourceBean]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2020-03-28 14:59:27
+     * @Date: 2020-05-06 17:40:22
      */
     @Override
     public int updateByPrimaryKey(DataSourceBean record){

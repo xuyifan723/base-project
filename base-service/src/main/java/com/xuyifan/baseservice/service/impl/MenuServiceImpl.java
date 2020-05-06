@@ -9,7 +9,7 @@ import com.xuyifan.basedao.bean.MenuBean;
 /**
  * @author Xu yifan
  * @Ddecription 服务
- * @date 2020-04-10 16:14:09
+ * @date 2020-05-06 17:40:22
  * @Version 1.0
  */
 @Service
@@ -23,10 +23,10 @@ public class MenuServiceImpl implements MenuService {
      * @Param: [id]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2020-04-10 16:14:09
+     * @Date: 2020-05-06 17:40:22
      */
     @Override
-    public int deleteByPrimaryKey(Integer id){
+    public int deleteByPrimaryKey(String id){
        return menuMapper.deleteByPrimaryKey(id);
     }
     /**
@@ -34,7 +34,7 @@ public class MenuServiceImpl implements MenuService {
      * @Param: [MenuBean]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2020-04-10 16:14:09
+     * @Date: 2020-05-06 17:40:22
      */
     @Override
     public int insert(MenuBean record){
@@ -45,7 +45,7 @@ public class MenuServiceImpl implements MenuService {
      * @Param: [MenuBean]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2020-04-10 16:14:09
+     * @Date: 2020-05-06 17:40:22
      */
     @Override
     public int insertSelective(MenuBean record){
@@ -56,10 +56,10 @@ public class MenuServiceImpl implements MenuService {
      * @Param: [id]
      * @Return: MenuBean
      * @Author: Xu yifan
-     * @Date: 2020-04-10 16:14:09
+     * @Date: 2020-05-06 17:40:22
      */
     @Override
-    public MenuBean selectByPrimaryKey(Integer id){
+    public MenuBean selectByPrimaryKey(String id){
        return menuMapper.selectByPrimaryKey(id);
      }
     /**
@@ -67,7 +67,7 @@ public class MenuServiceImpl implements MenuService {
      * @Param: [MenuBean]
      * @Return: List<MenuBean>
      * @Author: Xu yifan
-     * @Date: 2020-04-10 16:14:09
+     * @Date: 2020-05-06 17:40:22
      */
     @Override
     public List<MenuBean> selectListBySelective(MenuBean record){
@@ -78,7 +78,7 @@ public class MenuServiceImpl implements MenuService {
       * @Param: [MenuBean]
       * @Return: int
       * @Author: Xu yifan
-      * @Date: 2020-04-10 16:14:09
+      * @Date: 2020-05-06 17:40:22
       */
     @Override
     public int updateByPrimaryKeySelective(MenuBean record){
@@ -89,7 +89,7 @@ public class MenuServiceImpl implements MenuService {
      * @Param: [MenuBean]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2020-04-10 16:14:09
+     * @Date: 2020-05-06 17:40:22
      */
     @Override
     public int updateByPrimaryKey(MenuBean record){

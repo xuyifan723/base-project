@@ -18,7 +18,7 @@
   <sql id="Base_Column_List">
 id,operator_type,operator_id,resource_type,resource_id,permission_type,permission_action,version,created,created_time,updated,updated_time
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from bus_resource_permission
@@ -69,7 +69,7 @@ id,operator_type,operator_id,resource_type,resource_id,permission_type,permissio
       </where>
     </select>
 
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from bus_resource_permission
     where id = #{id}
   </delete>
@@ -200,7 +200,7 @@ id,operator_type,operator_id,resource_type,resource_id,permission_type,permissio
         updated_time = #{updatedTime},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.xuyifan.basedao.bean.ResourcePermissionBean">
     update bus_resource_permission
@@ -217,6 +217,6 @@ id= #{id}
 ,created_time= #{createdTime}
 ,updated= #{updated}
 ,updated_time= #{updatedTime}
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id}
   </update>
 </mapper>

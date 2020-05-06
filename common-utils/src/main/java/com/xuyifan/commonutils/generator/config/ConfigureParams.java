@@ -22,10 +22,10 @@ public class ConfigureParams {
     //mapper的xml文件
     public  static String mapperFile=workspace+"base-web\\src\\main\\resources\\mapper";   //mapper的xml地址
    //数据库配置
-    public static  String url = "jdbc:mysql://49.232.166.111:3306/data_manager?serverTimezone=Asia/Shanghai";
+    public static  String url = "jdbc:mysql://localhost:3306/data_manager?serverTimezone=Asia/Shanghai";
     public static  String name = "com.mysql.cj.jdbc.Driver";
     public static  String username = "root";
-    public static  String password = "666666";
+    public static  String password = "123456";
     //数据库的scahme
     public  static String scahme="data_manager";
    //用户
@@ -34,7 +34,7 @@ public class ConfigureParams {
     public  static String version="1.0";
 //,"data_source","res_menu","resource_permission"
     //需要初始化那些表
-    public static String[] tableList={"com_menu"};
+    public static String[] tableList={"com_menu","bus_data_source","bus_resource_permission","bus_user"};
 
     public static String [] ingoreStrs={"bus_","com_"};
     //需要初始化那些数据

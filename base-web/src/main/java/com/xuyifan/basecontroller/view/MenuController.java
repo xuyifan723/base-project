@@ -8,7 +8,7 @@ import com.xuyifan.basedao.bean.MenuBean;
 /**
  * @author Xu yifan
  * @Ddecription 
- * @date 2020-04-10 16:14:09
+ * @date 2020-05-06 17:40:22
  * @Version 1.0
  */
 @RestController
@@ -20,10 +20,10 @@ public class MenuController {
      * 功能描述:通过id删除记录
      * @Param: [id]
      * @Author: Xu yifan
-     * @Date: 2020-04-10 16:14:09
+     * @Date: 2020-05-06 17:40:22
      */
     @GetMapping("/delete")
-    public Object deleteByPrimaryKey(Integer id){
+    public Object deleteByPrimaryKey(String id){
         int num=menuService.deleteByPrimaryKey(id);
        return new ResultBean();
     }
@@ -31,7 +31,7 @@ public class MenuController {
      * 功能描述:插入全部数据
      * @Param: [MenuBean]
      * @Author: Xu yifan
-     * @Date: 2020-04-10 16:14:09
+     * @Date: 2020-05-06 17:40:22
      */
     @PostMapping("/addAll")
     public Object insert(@RequestBody MenuBean record){
@@ -42,7 +42,7 @@ public class MenuController {
      * 功能描述:插入非空数据
      * @Param: [MenuBean]
      * @Author: Xu yifan
-     * @Date: 2020-04-10 16:14:09
+     * @Date: 2020-05-06 17:40:22
      */
     @PostMapping("/add")
     public Object insertSelective(@RequestBody MenuBean record){
@@ -53,10 +53,10 @@ public class MenuController {
      * 功能描述:通过id查询记录
      * @Param: [id]
      * @Author: Xu yifan
-     * @Date: 2020-04-10 16:14:09
+     * @Date: 2020-05-06 17:40:22
      */
     @GetMapping("/get")
-    public Object selectByPrimaryKey(Integer id){
+    public Object selectByPrimaryKey(String id){
        MenuBean bean=menuService.selectByPrimaryKey(id);
        return  new ResultBean(bean);
      }
@@ -64,7 +64,7 @@ public class MenuController {
      * 功能描述:通过非空参数搜索list
      * @Param: [MenuBean]
      * @Author: Xu yifan
-     * @Date: 2020-04-10 16:14:09
+     * @Date: 2020-05-06 17:40:22
      */
     @PostMapping("/getList")
     public Object selectListBySelective(@RequestBody MenuBean record){
@@ -75,7 +75,7 @@ public class MenuController {
       * 功能描述:通过id更新非空参数
       * @Param: [MenuBean]
       * @Author: Xu yifan
-      * @Date: 2020-04-10 16:14:09
+      * @Date: 2020-05-06 17:40:22
       */
     @PostMapping("/update")
     public Object updateByPrimaryKeySelective(@RequestBody MenuBean record){
@@ -86,7 +86,7 @@ public class MenuController {
      * 功能描述:通过id更新记录
      * @Param: [MenuBean]
      * @Author: Xu yifan
-     * @Date: 2020-04-10 16:14:09
+     * @Date: 2020-05-06 17:40:22
      */
     @PostMapping("/updateAll")
     public Object updateByPrimaryKey(@RequestBody MenuBean record){

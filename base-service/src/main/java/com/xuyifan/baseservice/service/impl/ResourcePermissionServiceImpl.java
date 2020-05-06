@@ -9,7 +9,7 @@ import com.xuyifan.basedao.bean.ResourcePermissionBean;
 /**
  * @author Xu yifan
  * @Ddecription 服务
- * @date 2020-03-28 14:59:27
+ * @date 2020-05-06 17:40:22
  * @Version 1.0
  */
 @Service
@@ -23,10 +23,10 @@ public class ResourcePermissionServiceImpl implements ResourcePermissionService 
      * @Param: [id]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2020-03-28 14:59:27
+     * @Date: 2020-05-06 17:40:22
      */
     @Override
-    public int deleteByPrimaryKey(Integer id){
+    public int deleteByPrimaryKey(String id){
        return resourcePermissionMapper.deleteByPrimaryKey(id);
     }
     /**
@@ -34,7 +34,7 @@ public class ResourcePermissionServiceImpl implements ResourcePermissionService 
      * @Param: [ResourcePermissionBean]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2020-03-28 14:59:27
+     * @Date: 2020-05-06 17:40:22
      */
     @Override
     public int insert(ResourcePermissionBean record){
@@ -45,7 +45,7 @@ public class ResourcePermissionServiceImpl implements ResourcePermissionService 
      * @Param: [ResourcePermissionBean]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2020-03-28 14:59:27
+     * @Date: 2020-05-06 17:40:22
      */
     @Override
     public int insertSelective(ResourcePermissionBean record){
@@ -56,10 +56,10 @@ public class ResourcePermissionServiceImpl implements ResourcePermissionService 
      * @Param: [id]
      * @Return: ResourcePermissionBean
      * @Author: Xu yifan
-     * @Date: 2020-03-28 14:59:27
+     * @Date: 2020-05-06 17:40:22
      */
     @Override
-    public ResourcePermissionBean selectByPrimaryKey(Integer id){
+    public ResourcePermissionBean selectByPrimaryKey(String id){
        return resourcePermissionMapper.selectByPrimaryKey(id);
      }
     /**
@@ -67,7 +67,7 @@ public class ResourcePermissionServiceImpl implements ResourcePermissionService 
      * @Param: [ResourcePermissionBean]
      * @Return: List<ResourcePermissionBean>
      * @Author: Xu yifan
-     * @Date: 2020-03-28 14:59:27
+     * @Date: 2020-05-06 17:40:22
      */
     @Override
     public List<ResourcePermissionBean> selectListBySelective(ResourcePermissionBean record){
@@ -78,7 +78,7 @@ public class ResourcePermissionServiceImpl implements ResourcePermissionService 
       * @Param: [ResourcePermissionBean]
       * @Return: int
       * @Author: Xu yifan
-      * @Date: 2020-03-28 14:59:27
+      * @Date: 2020-05-06 17:40:22
       */
     @Override
     public int updateByPrimaryKeySelective(ResourcePermissionBean record){
@@ -89,7 +89,7 @@ public class ResourcePermissionServiceImpl implements ResourcePermissionService 
      * @Param: [ResourcePermissionBean]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2020-03-28 14:59:27
+     * @Date: 2020-05-06 17:40:22
      */
     @Override
     public int updateByPrimaryKey(ResourcePermissionBean record){

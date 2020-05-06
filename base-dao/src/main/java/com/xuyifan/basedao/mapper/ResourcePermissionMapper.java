@@ -1,21 +1,22 @@
 package com.xuyifan.basedao.mapper;
-import java.util.List;
 import com.xuyifan.basedao.bean.ResourcePermissionBean;
+
+import java.util.List;
 /**
  * @author Xu yifan
  * @Ddecription mapper
- * @date 2020-03-28 14:59:27
+ * @date 2020-05-06 17:40:22
  * @Version 1.0
  */
 public interface ResourcePermissionMapper {
     //通过id删除记录
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(String id);
     //插入全部数据
     int insert(ResourcePermissionBean record);
     //插入非空数据
     int insertSelective(ResourcePermissionBean record);
     //通过id查询记录
-    ResourcePermissionBean selectByPrimaryKey(Integer id);
+    ResourcePermissionBean selectByPrimaryKey(String id);
     //通过非空参数搜索list
     List<ResourcePermissionBean> selectListBySelective(ResourcePermissionBean record);
     //通过id更新非空参数

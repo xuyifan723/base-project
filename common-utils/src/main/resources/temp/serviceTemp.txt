@@ -13,7 +13,7 @@ public interface %{TABLENAMEUP}%Service {
      * @Author: %{USERNAME}%
      * @Date: %{DATE}%
      */
-    public int deleteByPrimaryKey(Integer id);
+    public int deleteByPrimaryKey(%{PRIMARYKEYTYPE}% id);
     /**
      * 功能描述:插入全部数据
      * @Param: [%{TABLENAMEUP}%Bean]
@@ -37,7 +37,7 @@ public interface %{TABLENAMEUP}%Service {
      * @Author: %{USERNAME}%
      * @Date: %{DATE}%
      */
-    public %{TABLENAMEUP}%Bean selectByPrimaryKey(Integer id);
+    public %{TABLENAMEUP}%Bean selectByPrimaryKey(%{PRIMARYKEYTYPE}% id);
     /**
      * 功能描述:通过非空参数搜索list
      * @Param: [%{TABLENAMEUP}%Bean]

@@ -9,8 +9,8 @@ import java.util.List;
 
 /**
  * @author Xu yifan
- * @Ddecription 用户表服务
- * @date 2020-03-28 14:59:27
+ * @Ddecription 服务
+ * @date 2020-05-06 17:40:22
  * @Version 1.0
  */
 @Service
@@ -24,10 +24,10 @@ public class UserServiceImpl implements UserService {
      * @Param: [id]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2020-03-28 14:59:27
+     * @Date: 2020-05-06 17:40:22
      */
     @Override
-    public int deleteByPrimaryKey(Integer id){
+    public int deleteByPrimaryKey(String id){
        return userMapper.deleteByPrimaryKey(id);
     }
     /**
@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserService {
      * @Param: [UserBean]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2020-03-28 14:59:27
+     * @Date: 2020-05-06 17:40:22
      */
     @Override
     public int insert(UserBean record){
@@ -46,7 +46,7 @@ public class UserServiceImpl implements UserService {
      * @Param: [UserBean]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2020-03-28 14:59:27
+     * @Date: 2020-05-06 17:40:22
      */
     @Override
     public int insertSelective(UserBean record){
@@ -57,10 +57,10 @@ public class UserServiceImpl implements UserService {
      * @Param: [id]
      * @Return: UserBean
      * @Author: Xu yifan
-     * @Date: 2020-03-28 14:59:27
+     * @Date: 2020-05-06 17:40:22
      */
     @Override
-    public UserBean selectByPrimaryKey(Integer id){
+    public UserBean selectByPrimaryKey(String id){
        return userMapper.selectByPrimaryKey(id);
      }
     /**
@@ -68,7 +68,7 @@ public class UserServiceImpl implements UserService {
      * @Param: [UserBean]
      * @Return: List<UserBean>
      * @Author: Xu yifan
-     * @Date: 2020-03-28 14:59:27
+     * @Date: 2020-05-06 17:40:22
      */
     @Override
     public List<UserBean> selectListBySelective(UserBean record){
@@ -79,7 +79,7 @@ public class UserServiceImpl implements UserService {
       * @Param: [UserBean]
       * @Return: int
       * @Author: Xu yifan
-      * @Date: 2020-03-28 14:59:27
+      * @Date: 2020-05-06 17:40:22
       */
     @Override
     public int updateByPrimaryKeySelective(UserBean record){
@@ -90,7 +90,7 @@ public class UserServiceImpl implements UserService {
      * @Param: [UserBean]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2020-03-28 14:59:27
+     * @Date: 2020-05-06 17:40:22
      */
     @Override
     public int updateByPrimaryKey(UserBean record){
@@ -99,13 +99,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserBean getUserByUserPassword(String userName, String password) {
-        UserBean userBean=userMapper.getUserByUserPassword(userName,password);
-        return userBean;
-    }
-
-    @Override
-    public UserBean getUserById(Integer userId) {
-        UserBean userBean=userMapper.getUserById(userId);
+        UserBean userBean= userMapper.getUserByUserPassword(userName,password);
         return userBean;
     }
 }

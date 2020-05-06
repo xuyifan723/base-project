@@ -1,12 +1,12 @@
 package com.xuyifan.baseservice.service;
-import java.util.List;
-import com.xuyifan.basedao.mapper.MenuMapper;
 import com.xuyifan.basedao.bean.MenuBean;
+
+import java.util.List;
 
 /**
  * @author Xu yifan
  * @Ddecription 服务
- * @date 2020-04-10 16:14:09
+ * @date 2020-05-06 17:40:22
  * @Version 1.0
  */
 public interface MenuService {
@@ -15,15 +15,15 @@ public interface MenuService {
      * @Param: [id]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2020-04-10 16:14:09
+     * @Date: 2020-05-06 17:40:22
      */
-    public int deleteByPrimaryKey(Integer id);
+    public int deleteByPrimaryKey(String id);
     /**
      * 功能描述:插入全部数据
      * @Param: [MenuBean]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2020-04-10 16:14:09
+     * @Date: 2020-05-06 17:40:22
      */
     public int insert(MenuBean record);
     /**
@@ -31,7 +31,7 @@ public interface MenuService {
      * @Param: [MenuBean]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2020-04-10 16:14:09
+     * @Date: 2020-05-06 17:40:22
      */
     public int insertSelective(MenuBean record);
     /**
@@ -39,15 +39,15 @@ public interface MenuService {
      * @Param: [id]
      * @Return: MenuBean
      * @Author: Xu yifan
-     * @Date: 2020-04-10 16:14:09
+     * @Date: 2020-05-06 17:40:22
      */
-    public MenuBean selectByPrimaryKey(Integer id);
+    public MenuBean selectByPrimaryKey(String id);
     /**
      * 功能描述:通过非空参数搜索list
      * @Param: [MenuBean]
      * @Return: List<MenuBean>
      * @Author: Xu yifan
-     * @Date: 2020-04-10 16:14:09
+     * @Date: 2020-05-06 17:40:22
      */
     public List<MenuBean> selectListBySelective(MenuBean record);
      /**
@@ -55,7 +55,7 @@ public interface MenuService {
       * @Param: [MenuBean]
       * @Return: int
       * @Author: Xu yifan
-      * @Date: 2020-04-10 16:14:09
+      * @Date: 2020-05-06 17:40:22
       */
     public int updateByPrimaryKeySelective(MenuBean record);
     /**
@@ -63,7 +63,7 @@ public interface MenuService {
      * @Param: [MenuBean]
      * @Return: int
      * @Author: Xu yifan
-     * @Date: 2020-04-10 16:14:09
+     * @Date: 2020-05-06 17:40:22
      */
     public int updateByPrimaryKey(MenuBean record);
 }

@@ -1,18 +1,15 @@
 package com.xuyifan.basedao.bean;
-
 import lombok.Data;
-
 import java.util.Date;
-
 /**
  * @author Xu yifan
- * @Ddecription
- * @date 2020-03-28 14:59:27
+ * @Ddecription 
+ * @date 2020-05-06 17:40:22
  * @Version 1.0
  */
 @Data
 public class DataSourceBean {
-    private Integer id;   //
+    private String id;   //
     private String name;   //数据源名称
     private Integer username;   //数据源用户名
     private String password;   //密码

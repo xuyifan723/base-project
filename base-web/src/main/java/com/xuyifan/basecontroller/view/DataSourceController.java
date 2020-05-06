@@ -8,7 +8,7 @@ import com.xuyifan.basedao.bean.DataSourceBean;
 /**
  * @author Xu yifan
  * @Ddecription 
- * @date 2020-03-28 14:59:27
+ * @date 2020-05-06 17:40:22
  * @Version 1.0
  */
 @RestController
@@ -20,10 +20,10 @@ public class DataSourceController {
      * 功能描述:通过id删除记录
      * @Param: [id]
      * @Author: Xu yifan
-     * @Date: 2020-03-28 14:59:27
+     * @Date: 2020-05-06 17:40:22
      */
     @GetMapping("/delete")
-    public Object deleteByPrimaryKey(Integer id){
+    public Object deleteByPrimaryKey(String id){
         int num=dataSourceService.deleteByPrimaryKey(id);
        return new ResultBean();
     }
@@ -31,7 +31,7 @@ public class DataSourceController {
      * 功能描述:插入全部数据
      * @Param: [DataSourceBean]
      * @Author: Xu yifan
-     * @Date: 2020-03-28 14:59:27
+     * @Date: 2020-05-06 17:40:22
      */
     @PostMapping("/addAll")
     public Object insert(@RequestBody DataSourceBean record){
@@ -42,7 +42,7 @@ public class DataSourceController {
      * 功能描述:插入非空数据
      * @Param: [DataSourceBean]
      * @Author: Xu yifan
-     * @Date: 2020-03-28 14:59:27
+     * @Date: 2020-05-06 17:40:22
      */
     @PostMapping("/add")
     public Object insertSelective(@RequestBody DataSourceBean record){
@@ -53,10 +53,10 @@ public class DataSourceController {
      * 功能描述:通过id查询记录
      * @Param: [id]
      * @Author: Xu yifan
-     * @Date: 2020-03-28 14:59:27
+     * @Date: 2020-05-06 17:40:22
      */
     @GetMapping("/get")
-    public Object selectByPrimaryKey(Integer id){
+    public Object selectByPrimaryKey(String id){
        DataSourceBean bean=dataSourceService.selectByPrimaryKey(id);
        return  new ResultBean(bean);
      }
@@ -64,7 +64,7 @@ public class DataSourceController {
      * 功能描述:通过非空参数搜索list
      * @Param: [DataSourceBean]
      * @Author: Xu yifan
-     * @Date: 2020-03-28 14:59:27
+     * @Date: 2020-05-06 17:40:22
      */
     @PostMapping("/getList")
     public Object selectListBySelective(@RequestBody DataSourceBean record){
@@ -75,7 +75,7 @@ public class DataSourceController {
       * 功能描述:通过id更新非空参数
       * @Param: [DataSourceBean]
       * @Author: Xu yifan
-      * @Date: 2020-03-28 14:59:27
+      * @Date: 2020-05-06 17:40:22
       */
     @PostMapping("/update")
     public Object updateByPrimaryKeySelective(@RequestBody DataSourceBean record){
@@ -86,7 +86,7 @@ public class DataSourceController {
      * 功能描述:通过id更新记录
      * @Param: [DataSourceBean]
      * @Author: Xu yifan
-     * @Date: 2020-03-28 14:59:27
+     * @Date: 2020-05-06 17:40:22
      */
     @PostMapping("/updateAll")
     public Object updateByPrimaryKey(@RequestBody DataSourceBean record){

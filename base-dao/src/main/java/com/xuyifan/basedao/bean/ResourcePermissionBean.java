@@ -4,12 +4,12 @@ import java.util.Date;
 /**
  * @author Xu yifan
  * @Ddecription 
- * @date 2020-03-28 14:59:27
+ * @date 2020-05-06 17:40:22
  * @Version 1.0
  */
 @Data
 public class ResourcePermissionBean {
-    private Integer id;   //
+    private String id;   //
     private String operatorType;   //用户类型
     private Integer operatorId;   //用户id
     private String resourceType;   //资源类型

@@ -19,7 +19,7 @@ public class %{TABLENAMEUP}%ServiceImpl implements %{TABLENAMEUP}%Service {
      * @Date: %{DATE}%
      */
     @Override
-    public int deleteByPrimaryKey(Integer id){
+    public int deleteByPrimaryKey(%{PRIMARYKEYTYPE}% id){
        return %{TABLENAMELOW}%Mapper.deleteByPrimaryKey(id);
     }
     /**
@@ -52,7 +52,7 @@ public class %{TABLENAMEUP}%ServiceImpl implements %{TABLENAMEUP}%Service {
      * @Date: %{DATE}%
      */
     @Override
-    public %{TABLENAMEUP}%Bean selectByPrimaryKey(Integer id){
+    public %{TABLENAMEUP}%Bean selectByPrimaryKey(%{PRIMARYKEYTYPE}% id){
        return %{TABLENAMELOW}%Mapper.selectByPrimaryKey(id);
      }
     /**
