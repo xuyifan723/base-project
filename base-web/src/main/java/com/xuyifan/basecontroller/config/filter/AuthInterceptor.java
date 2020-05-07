@@ -1,10 +1,9 @@
 package com.xuyifan.basecontroller.config.filter;
 
 import com.xuyifan.commonutils.annotation.IgnoreSecurity;
-import com.xuyifan.commonutils.user.HearUserUtils;
 import com.xuyifan.commonutils.common.ResultBean;
-import com.xuyifan.commonutils.common.ValidateUtils;
 import com.xuyifan.commonutils.exception.BizException;
+import com.xuyifan.commonutils.user.HearUserUtils;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
@@ -31,11 +30,11 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
         if (method.isAnnotationPresent(IgnoreSecurity.class)) {
             return true;
         }
-        Integer userId = HearUserUtils.getUser(request);
+        //从头部获取用户id
+        String userId = HearUserUtils.getUser(request);
         if (userId == null) {
             throw new BizException(ResultBean.USER_NO_LOGIN_CODE, "用户没有登录", null);
         }
-        ValidateUtils.validate(userId, "用户没有登录");
         HearUserUtils.setUser(httpServletResponse, userId);
 
         request.setAttribute("currentUser", userId);

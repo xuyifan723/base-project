@@ -11,7 +11,11 @@ public class SysUserUtils {
         localVar.set(t);
     }
     public static <T> T  getVal(Class<T> tClass){
-        T t =(T) localVar.get();
+        Object result = localVar.get();
+        if (result==null){
+            return null;
+        }
+        T t =(T) result;
         return t;
     }
 }

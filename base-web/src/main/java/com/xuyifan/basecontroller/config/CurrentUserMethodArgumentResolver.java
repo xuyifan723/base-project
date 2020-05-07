@@ -31,12 +31,13 @@ public class CurrentUserMethodArgumentResolver implements HandlerMethodArgumentR
 
     @Override
     public Object resolveArgument(MethodParameter methodParameter, ModelAndViewContainer modelAndViewContainer, NativeWebRequest nativeWebRequest, WebDataBinderFactory webDataBinderFactory) throws Exception {
-        Integer userId = (Integer) nativeWebRequest.getAttribute("currentUser", RequestAttributes.SCOPE_REQUEST);
+        String userId =(String) nativeWebRequest.getAttribute("currentUser", RequestAttributes.SCOPE_REQUEST);
         if (userId != null) {
             UserBean user = userService.selectByPrimaryKey(userId);
             if (user==null){
                 throw  new MissingServletRequestPartException("currentUser");
             }
+            //往当前系统中存入用户
             SysUserUtils.setVal(user);
             return user;
         }

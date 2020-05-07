@@ -7,7 +7,7 @@ import java.io.IOException;
 
 /**
  * @author Xu yifan
- * @Ddecription 待写
+ * @Ddecription 简单拦截器
  * @date 2019/8/12 14:44
  * @Version 1.0
  */

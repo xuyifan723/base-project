@@ -9,7 +9,7 @@ import java.io.IOException;
 
 /**
  * @author Xu yifan
- * @Ddecription 待写
+ * @Ddecription 从请求头处理用户
  * @date 2019/9/6 10:25
  * @Version 1.0
  */
@@ -17,6 +17,12 @@ public class HearUserUtils {
     public static final String HEARD_NAME="authcode";    //存放用户的请求头名称
     public static final Long EXPIRE_TIME = 1000 * 60 * 30L; //过期时间   30分钟
     public static String splitStr="--";   //设置两个数据的分割附
+
+    /**
+     * 从request里面获取授权用户
+     * @param request
+     * @return
+     */
     public static String getUser(HttpServletRequest request){
         String code = request.getHeader(HEARD_NAME);
         if (!StringHanle.isNotEmpty(code)){
@@ -35,6 +41,12 @@ public class HearUserUtils {
         }
         return infos[0];
     }
+
+    /**
+     * 将用户id加上--再加上时间戳，保存到response
+     * @param response
+     * @param userId
+     */
     public static void setUser(HttpServletResponse response, String userId){
         String userInfo = userId + splitStr + System.currentTimeMillis();
         response.setHeader(HEARD_NAME,AESUtil.encrypt(userInfo));

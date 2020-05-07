@@ -10,6 +10,6 @@ import lombok.Data;
  */
 @Data
 public class UserInterBean {
-    private String username;
+    private String loginName;
     private String password;
 }
