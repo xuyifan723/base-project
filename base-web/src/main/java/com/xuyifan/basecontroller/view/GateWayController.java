@@ -30,7 +30,7 @@ public class GateWayController {
      */
     @PostMapping("/login")
     public ResultBean login(HttpServletResponse response, @RequestBody UserBean userBean){
-        UserBean user = userService.getUserByUserPassword(userBean.getUserName(),userBean.getPassword());
+        UserBean user = userService.getUserByUserPassword(userBean.getLoginName(),userBean.getPassword());
         if (user!=null){
             HearUserUtils.setUser(response,user.getId());
             user.setPassword(null);

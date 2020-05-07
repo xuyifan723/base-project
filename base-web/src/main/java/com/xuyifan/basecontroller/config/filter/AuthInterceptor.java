@@ -1,9 +1,14 @@
 package com.xuyifan.basecontroller.config.filter;
 
+import com.xuyifan.commonutils.common.SysRequest;
+import com.xuyifan.basedao.bean.UserBean;
+import com.xuyifan.baseservice.service.UserService;
 import com.xuyifan.commonutils.annotation.IgnoreSecurity;
 import com.xuyifan.commonutils.common.ResultBean;
 import com.xuyifan.commonutils.exception.BizException;
 import com.xuyifan.commonutils.user.HearUserUtils;
+import com.xuyifan.commonutils.user.SysUserUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
@@ -18,7 +23,9 @@ import java.lang.reflect.Method;
  * @Version 1.0
  */
 public class AuthInterceptor extends HandlerInterceptorAdapter {
-
+    public static final String USER_NAME="currentUser";
+    @Autowired
+    private UserService userService;
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse httpServletResponse, Object handler) throws Exception {
         // 如果不是映射到方法直接通过
@@ -35,9 +42,16 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
         if (userId == null) {
             throw new BizException(ResultBean.USER_NO_LOGIN_CODE, "用户没有登录", null);
         }
-        HearUserUtils.setUser(httpServletResponse, userId);
+        UserBean user = userService.selectByPrimaryKey(userId);
+        if (user==null){
+            throw  new BizException(ResultBean.USER_NO_LOGIN_CODE,"用户已经不存在",null);
+        }else {
+            //往当前系统中存入用户
+            SysUserUtils.setVal(user);
 
-        request.setAttribute("currentUser", userId);
+        }
+        HearUserUtils.setUser(httpServletResponse, userId);
+        request.setAttribute(SysRequest.CURRENT_USER,user);
         return true;
 
     }

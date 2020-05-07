@@ -70,6 +70,6 @@ public class MD5Util {
     }
     public static void main(String[] args) {
         System.out.println(md5Password("111111"));
-        System.out.println(MD5("gaolei"));
+        System.out.println(System.currentTimeMillis());
     }
 }

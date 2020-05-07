@@ -36,9 +36,9 @@ public class AppAuthConfiguration extends WebMvcConfigurerAdapter {
         InterceptorRegistration ir = registry.addInterceptor(getSecurityInterceptor());
         ir.addPathPatterns("/**");
         // 登陆和登出
-        ir.excludePathPatterns("/gateway/*");
+      //  ir.excludePathPatterns("/gateway/*");
         //对外部接口
-        ir.excludePathPatterns("/exterApi/*");
+       // ir.excludePathPatterns("/exterApi/*");
         // 配置不拦截的路径
 //        ir.excludePathPatterns("**/swagger-ui.html");
         // 还可以在这里注册其它的拦截器
@@ -54,12 +54,12 @@ public class AppAuthConfiguration extends WebMvcConfigurerAdapter {
      */
     @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
-        argumentResolvers.add(currentUserMethodArgumentResolver());
+       // argumentResolvers.add(currentUserMethodArgumentResolver());
         super.addArgumentResolvers(argumentResolvers);
     }
 
-    @Bean
+   /* @Bean
     public CurrentUserMethodArgumentResolver currentUserMethodArgumentResolver() {
         return new CurrentUserMethodArgumentResolver();
-    }
+    }*/
 }

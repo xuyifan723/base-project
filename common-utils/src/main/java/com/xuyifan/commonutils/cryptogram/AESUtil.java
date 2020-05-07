@@ -137,7 +137,7 @@ public class AESUtil {
         String content = "xuyifan.723";
         System.out.println("加密前：" + content);
         System.out.println("加密密钥和解密密钥：" + KEY);
-        String encrypt = encrypt(content);
+        String encrypt = encrypt("c88dc79746a04027b85fcfca054545b1"+"--"+"2588833915405");
         System.out.println("加密后：" + encrypt);
         String decContent="476B8A2064EA78DFDD6DE7209B2ABB01";
         String decrypt = decrypt(encrypt);

@@ -1,10 +1,15 @@
 package com.xuyifan.baseservice.service.impl;
+
 import com.xuyifan.basedao.bean.UserBean;
 import com.xuyifan.basedao.mapper.UserMapper;
 import com.xuyifan.baseservice.service.UserService;
+import com.xuyifan.commonutils.common.SysRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -99,6 +104,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserBean getUserByUserPassword(String userName, String password) {
+        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+        UserBean user = (UserBean)request.getAttribute(SysRequest.CURRENT_USER);
+
         UserBean userBean= userMapper.getUserByUserPassword(userName,password);
         return userBean;
     }
