@@ -1,10 +1,12 @@
 package com.xuyifan.basecontroller.view;
-import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
-import com.xuyifan.commonutils.common.ResultBean;
-import org.springframework.web.bind.annotation.*;
-import com.xuyifan.baseservice.service.UserService;
 import com.xuyifan.basedao.bean.UserBean;
+import com.xuyifan.baseservice.service.UserService;
+import com.xuyifan.commonutils.common.ResultBean;
+import com.xuyifan.commonutils.cryptogram.MD5Util;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 /**
  * @author Xu yifan
  * @Ddecription 
@@ -46,6 +48,7 @@ public class UserController {
      */
     @PostMapping("/add")
     public Object insertSelective(@RequestBody UserBean record){
+        record.setPassword(MD5Util.md5Password(record.getPassword()));
        int num=userService.insertSelective(record);
        return new ResultBean();
      }

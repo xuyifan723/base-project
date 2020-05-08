@@ -13,7 +13,7 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 
 /**
  * @author Xu yifan
- * @Ddecription 方法参数解析器
+ * @Ddecription 方法参数解析器 （已废弃）
  * @date 2019/8/12 15:33
  * @Version 1.0
  */

@@ -2,6 +2,7 @@ package com.xuyifan.baseservice.service.impl;
 
 import com.xuyifan.basedao.bean.UserBean;
 import com.xuyifan.basedao.mapper.UserMapper;
+import com.xuyifan.baseservice.common.DataHandle;
 import com.xuyifan.baseservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -51,7 +52,8 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public int insertSelective(UserBean record){
-       return userMapper.insertSelective(record);
+        DataHandle.addData(record);
+        return userMapper.insertSelective(record);
      }
     /**
      * 功能描述:通过id查询记录
