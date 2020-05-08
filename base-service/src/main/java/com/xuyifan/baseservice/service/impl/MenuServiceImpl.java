@@ -1,10 +1,12 @@
 package com.xuyifan.baseservice.service.impl;
-import java.util.List;
-import org.springframework.stereotype.Service;
-import org.springframework.beans.factory.annotation.Autowired;
-import com.xuyifan.baseservice.service.MenuService;
-import com.xuyifan.basedao.mapper.MenuMapper;
 import com.xuyifan.basedao.bean.MenuBean;
+import com.xuyifan.basedao.mapper.MenuMapper;
+import com.xuyifan.baseservice.common.DataHandle;
+import com.xuyifan.baseservice.service.MenuService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @author Xu yifan
@@ -49,6 +51,7 @@ public class MenuServiceImpl implements MenuService {
      */
     @Override
     public int insertSelective(MenuBean record){
+        DataHandle.addData(record);
        return menuMapper.insertSelective(record);
      }
     /**
