@@ -13,6 +13,7 @@ public class UserBean {
     private String userName;   //
     private String loginName;   //
     private String password;   //
+    private String imgUrl;
     private Integer version;   //
     private String createdId;   //
     private Date createdTime;   //

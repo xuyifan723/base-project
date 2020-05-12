@@ -1,5 +1,6 @@
 package com.xuyifan.basecontroller.view;
 import com.xuyifan.basedao.bean.UserBean;
+import com.xuyifan.baseservice.common.SysRequest;
 import com.xuyifan.baseservice.service.UserService;
 import com.xuyifan.commonutils.common.ResultBean;
 import com.xuyifan.commonutils.cryptogram.MD5Util;
@@ -40,6 +41,12 @@ public class UserController {
        int num=userService.insert(record);
        return new ResultBean();
     }
+
+    @GetMapping("getCurrentUser")
+    public Object getCurrentUser(){
+        UserBean user = SysRequest.getUser();
+        return new ResultBean(user);
+    }
     /**
      * 功能描述:插入非空数据
      * @Param: [UserBean]
@@ -61,6 +68,7 @@ public class UserController {
     @GetMapping("/get")
     public Object selectByPrimaryKey(String id){
        UserBean bean=userService.selectByPrimaryKey(id);
+       bean.setPassword(null);
        return  new ResultBean(bean);
      }
     /**

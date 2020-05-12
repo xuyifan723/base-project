@@ -3,6 +3,7 @@ package com.xuyifan.basecontroller.view;
 
 import com.xuyifan.basedao.bean.UserBean;
 import com.xuyifan.baseservice.service.UserService;
+import com.xuyifan.commonutils.annotation.IgnoreSecurity;
 import com.xuyifan.commonutils.common.ResultBean;
 import com.xuyifan.commonutils.user.HearUserUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,7 @@ public class GateWayController {
      * @return
      */
     @PostMapping("/login")
+    @IgnoreSecurity
     public ResultBean login(HttpServletResponse response, @RequestBody UserBean userBean){
         UserBean user = userService.getUserByUserPassword(userBean.getLoginName(),userBean.getPassword());
         if (user!=null){

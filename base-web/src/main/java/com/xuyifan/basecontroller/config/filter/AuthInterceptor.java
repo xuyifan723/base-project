@@ -42,6 +42,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
             throw new BizException(ResultBean.USER_NO_LOGIN_CODE, "用户没有登录", null);
         }
         UserBean user = userService.selectByPrimaryKey(userId);
+        user.setPassword(null);
         if (user==null){
             throw  new BizException(ResultBean.USER_NO_LOGIN_CODE,"用户已经不存在",null);
         }
