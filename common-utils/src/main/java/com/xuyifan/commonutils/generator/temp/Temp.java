@@ -158,7 +158,13 @@ public abstract class Temp {
         BufferedWriter out = null;
         try {
             File writeName = getFile();
-            writeName.createNewFile(); // 创建新文件,有同名的文件的话直接覆盖
+            if (writeName.exists()){
+
+            }else {
+                writeName.createNewFile(); // 创建新文件,有同名的文件的话直接覆盖
+            }
+
+
             writer = new FileWriter(writeName);
             out = new BufferedWriter(writer);
             if (!this.fileSuffix.endsWith("xml")){
