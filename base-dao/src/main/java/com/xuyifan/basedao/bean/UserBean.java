@@ -14,6 +14,7 @@ public class UserBean {
     private String loginName;   //
     private String password;   //
     private String imgUrl;
+    private Integer sex;
     private Integer version;   //
     private String createdId;   //
     private Date createdTime;   //
