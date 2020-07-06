@@ -2,7 +2,9 @@ package com.xuyifan.projectinit.bean;
 
 import lombok.Data;
 
-/**表信息
+/**
+ * 表信息
+ *
  * @Author: xuyifan
  * @Date: 2020/7/2
  */

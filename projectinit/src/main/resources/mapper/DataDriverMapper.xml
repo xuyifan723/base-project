@@ -15,7 +15,7 @@
         select
         <include refid="Base_Column_List" />
         from data_driver
-        where data_type = #{dataType}
+        where data_type = #{databaseType}
     </select>
 
     <delete id="deleteData" >

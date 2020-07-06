@@ -6,6 +6,7 @@ import com.xuyifan.projectinit.service.DriverService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -13,6 +14,7 @@ import java.util.List;
  * @Author: xuyifan
  * @Date: 2020/7/6
  */
+@RestController
 @RequestMapping("/driver")
 public class DriverController {
     @Autowired

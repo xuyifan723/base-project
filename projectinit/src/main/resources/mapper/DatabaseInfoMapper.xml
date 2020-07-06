@@ -15,7 +15,7 @@
         select
         <include refid="Base_Column_List" />
         from data_base_info
-        where name like #{dataType}
+        where name like #{name}
     </select>
 
     <delete id="deleteData" >

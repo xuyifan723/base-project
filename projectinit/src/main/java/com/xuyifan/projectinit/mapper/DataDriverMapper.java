@@ -11,8 +11,12 @@ import java.util.List;
  */
 public interface DataDriverMapper {
     void addData(DataDriverBean dataDriverBean);
+
     void updateData(DataDriverBean dataDriverBean);
+
     void deleteData(@Param("id") Integer id);
+
     DataDriverBean getData(@Param("id") Integer id);
+
     List<DataDriverBean> getDatasByType(@Param("databaseType") String databaseType);
 }
