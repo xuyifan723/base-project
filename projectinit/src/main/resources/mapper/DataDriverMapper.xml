@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xuyifan.projectinit.mapper.DataDriverMapper">
+
+    <sql id="Base_Column_List">
+        id,name,driver_name,data_type
+    </sql>
+    <select id="getData" resultType="com.xuyifan.projectinit.bean.DataDriverBean">
+        select
+        <include refid="Base_Column_List" />
+        from data_driver
+        where id = #{id}
+    </select>
+    <select id="getDatasByType" resultType="com.xuyifan.projectinit.bean.DataDriverBean">
+        select
+        <include refid="Base_Column_List" />
+        from data_driver
+        where data_type = #{dataType}
+    </select>
+
+    <delete id="deleteData" >
+        delete from data_driver
+        where id = #{id}
+    </delete>
+    <insert id="addData" parameterType="DataDriverBean">
+        insert into data_driver (
+        <include refid="Base_Column_List" />
+        )
+        values (
+        #{id},#{name},#{driverName},#{dataType}
+        )
+    </insert>
+
+    <update id="updateData" parameterType="DataDriverBean">
+        update data_driver
+        set
+            id= #{id}
+          ,name= #{name}
+          ,driver_name= #{driverName}
+          ,data_type= #{dataType}
+        where id = #{id}
+    </update>
+</mapper>

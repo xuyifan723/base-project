@@ -3,194 +3,42 @@
 <mapper namespace="com.xuyifan.projectinit.mapper.DatabaseInfoMapper">
 
     <sql id="Base_Column_List">
-        id,name,username,password,url,driver_name,version,created,created_time,updated,updated_time
+        id,name,url,user_name,password,driver
     </sql>
-    <select id="getData" parameterType="integer" resultType="DatabaseInfoBean">
+    <select id="getData" resultType="com.xuyifan.projectinit.bean.DatabaseInfoBean">
         select
         <include refid="Base_Column_List" />
-        from bus_data_source
+        from data_base_info
         where id = #{id}
     </select>
-
-    <select id="selectListBySelective" parameterType="com.xuyifan.basedao.bean.DataSourceBean" resultMap="BaseResultMap">
+    <select id="getDatasByLike" resultType="com.xuyifan.projectinit.bean.DatabaseInfoBean">
         select
         <include refid="Base_Column_List" />
-        from bus_data_source
-        <where>
-            <if test="id != null">
-                id = #{id}
-            </if>
-            <if test="name != null">
-                and name = #{name}
-            </if>
-            <if test="username != null">
-                and username = #{username}
-            </if>
-            <if test="password != null">
-                and password = #{password}
-            </if>
-            <if test="url != null">
-                and url = #{url}
-            </if>
-            <if test="driverName != null">
-                and driver_name = #{driverName}
-            </if>
-            <if test="version != null">
-                and version = #{version}
-            </if>
-            <if test="created != null">
-                and created = #{created}
-            </if>
-            <if test="createdTime != null">
-                and created_time = #{createdTime}
-            </if>
-            <if test="updated != null">
-                and updated = #{updated}
-            </if>
-            <if test="updatedTime != null">
-                and updated_time = #{updatedTime}
-            </if>
-        </where>
+        from data_base_info
+        where name like #{dataType}
     </select>
 
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-        delete from bus_data_source
+    <delete id="deleteData" >
+        delete from data_base_info
         where id = #{id}
     </delete>
-    <insert id="insert" parameterType="com.xuyifan.basedao.bean.DataSourceBean">
-        insert into bus_data_source (
+    <insert id="addData" parameterType="DatabaseInfoBean">
+        insert into data_base_info (
         <include refid="Base_Column_List" />
         )
         values (
-        #{id},#{name},#{username},#{password},#{url},#{driverName},#{version},#{created},#{createdTime},#{updated},#{updatedTime}
+        #{id},#{name},#{url},#{userName},#{password},#{driver}
         )
     </insert>
-    <insert id="insertSelective" parameterType="com.xuyifan.basedao.bean.DataSourceBean">
-        insert into bus_data_source
-        <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="id != null">
-                id,
-            </if>
-            <if test="name != null">
-                name,
-            </if>
-            <if test="username != null">
-                username,
-            </if>
-            <if test="password != null">
-                password,
-            </if>
-            <if test="url != null">
-                url,
-            </if>
-            <if test="driverName != null">
-                driver_name,
-            </if>
-            <if test="version != null">
-                version,
-            </if>
-            <if test="created != null">
-                created,
-            </if>
-            <if test="createdTime != null">
-                created_time,
-            </if>
-            <if test="updated != null">
-                updated,
-            </if>
-            <if test="updatedTime != null">
-                updated_time,
-            </if>
-        </trim>
-        <trim prefix="values (" suffix=")" suffixOverrides=",">
-            <if test="id != null">
-                #{id},
-            </if>
-            <if test="name != null">
-                #{name},
-            </if>
-            <if test="username != null">
-                #{username},
-            </if>
-            <if test="password != null">
-                #{password},
-            </if>
-            <if test="url != null">
-                #{url},
-            </if>
-            <if test="driverName != null">
-                #{driverName},
-            </if>
-            <if test="version != null">
-                #{version},
-            </if>
-            <if test="created != null">
-                #{created},
-            </if>
-            <if test="createdTime != null">
-                #{createdTime},
-            </if>
-            <if test="updated != null">
-                #{updated},
-            </if>
-            <if test="updatedTime != null">
-                #{updatedTime},
-            </if>
-        </trim>
-    </insert>
-    <update id="updateByPrimaryKeySelective" parameterType="com.xuyifan.basedao.bean.DataSourceBean">
-        update bus_data_source
-        <set>
-            <if test="id != null">
-                id = #{id},
-            </if>
-            <if test="name != null">
-                name = #{name},
-            </if>
-            <if test="username != null">
-                username = #{username},
-            </if>
-            <if test="password != null">
-                password = #{password},
-            </if>
-            <if test="url != null">
-                url = #{url},
-            </if>
-            <if test="driverName != null">
-                driver_name = #{driverName},
-            </if>
-            <if test="version != null">
-                version = #{version},
-            </if>
-            <if test="created != null">
-                created = #{created},
-            </if>
-            <if test="createdTime != null">
-                created_time = #{createdTime},
-            </if>
-            <if test="updated != null">
-                updated = #{updated},
-            </if>
-            <if test="updatedTime != null">
-                updated_time = #{updatedTime},
-            </if>
-        </set>
-        where id = #{id}
-    </update>
-    <update id="updateByPrimaryKey" parameterType="com.xuyifan.basedao.bean.DataSourceBean">
-        update bus_data_source
+
+    <update id="updateData" parameterType="DataDriverBean">
+        update data_base_info
         set
-            id= #{id}
-          ,name= #{name}
-          ,username= #{username}
-          ,password= #{password}
+           name= #{name}
           ,url= #{url}
-          ,driver_name= #{driverName}
-          ,version= #{version}
-          ,created= #{created}
-          ,created_time= #{createdTime}
-          ,updated= #{updated}
-          ,updated_time= #{updatedTime}
+          ,user_name= #{userName}
+          ,password= #{password}
+          ,driver= #{driver}
         where id = #{id}
     </update>
 </mapper>
