@@ -13,9 +13,15 @@ public class UUIDUtils {
         String idStr = str.replaceAll("-", "");
         return idStr;
     }
+    public static String getUpperString(){
+        UUID uuid = UUID.randomUUID();
+        String str = uuid.toString();
+        String idStr = str.replaceAll("-", "").toUpperCase();
+        return idStr;
+    }
 
     public static void main(String[] args) {
-        String upString = UUIDUtils.getLowString();
+        String upString = UUIDUtils.getUpperString();
         System.out.println(upString);
     }
 }

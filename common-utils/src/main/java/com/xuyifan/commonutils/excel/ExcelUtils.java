@@ -43,8 +43,6 @@ public class ExcelUtils {
      */
     public static <T> void writerTemp(HttpServletResponse response, String fileName, File tempFile, List<T> data, Class<T> tClass) {
         //String tempName = GetResource.class.getClassLoader().getResource("excelFile" + File.separator + tempFileName + ".xlsx").getPath();
-
-
         try {
             ServletOutputStream outputStream = response.getOutputStream();
             setExportConfig(response, fileName);

@@ -24,7 +24,7 @@ public class ResultBean {
     }
     public ResultBean(Object data){
         this.code=this.SUCCESS_CODE;
-        this.msg="ok";
+        this.msg="";
         this.data=data;
     }
     public ResultBean error(String msg){

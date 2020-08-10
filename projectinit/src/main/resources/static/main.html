@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>项目初始化</title>
+    <meta http-Equiv="Cache-Control" Content="no-cache" />
+    <meta http-Equiv="Pragma" Content="no-cache" />
+    <meta http-Equiv="Expires" Content="0" />
+    <link rel="stylesheet" href="layui/css/layui.css">
+
+</head>
+
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo">layui 后台布局</div>
+        <!-- 头部区域（可配合layui已有的水平导航） -->
+        <ul class="layui-nav layui-layout-left">
+            <li class="layui-nav-item">
+                <a href="">控制台</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="">商品管理</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="">用户</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">其它系统</a>
+                <dl class="layui-nav-child">
+                    <dd>
+                        <a href="">邮件管理</a>
+                    </dd>
+                    <dd>
+                        <a href="">消息管理</a>
+                    </dd>
+                    <dd>
+                        <a href="">授权管理</a>
+                    </dd>
+                </dl>
+            </li>
+        </ul>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="" class="layui-nav-img"> 贤心
+                </a>
+                <dl class="layui-nav-child">
+                    <dd>
+                        <a href="">基本资料</a>
+                    </dd>
+                    <dd>
+                        <a href="">安全设置</a>
+                    </dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item">
+                <a href="">退了</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree" lay-filter="menu">
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">数据库配置</a>
+                    <dl class="layui-nav-child">
+                        <dd>
+                            <a href="javascript:;" menu-data="databaseType" menu-id="1001" menu-url="database/databasetype.html">数据库类型配置</a>
+                        </dd>
+                        <dd>
+                            <a href="javascript:;" menu-data="databaseConfig" menu-id="1002">数据库配置</a>
+                        </dd>
+                        <dd>
+                            <a href="javascript:;" menu-data="dbOperate" menu-id="1003">操作</a>
+                        </dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;" menu-data="databaseConfig" menu-id="2001">解决方案</a>
+                    <dl class="layui-nav-child">
+                        <dd>
+                            <a href="javascript:;">列表一</a>
+                        </dd>
+                        <dd>
+                            <a href="javascript:;">列表二</a>
+                        </dd>
+                        <dd>
+                            <a href="main.html">超链接</a>
+                        </dd>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+        <!-- 内容主体区域 -->
+        <div class="layui-tab" lay-filter="tabMenu" lay-allowclose="true" style="margin:0px;height: 100%">
+            <ul class="layui-tab-title">
+                <li class="layui-this" lay-id="11">网站设置</li>
+            </ul>
+            <div class="layui-tab-content" style="height: 100%">
+                <div class="layui-tab-item layui-show">内容1</div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="layui-footer">
+        <!-- 底部固定区域 -->
+        © layui.com - 底部固定区域
+    </div>
+</div>
+<script src="layui/layui.all.js"></script>
+
+<script>
+    var tabmenuList=new Array();
+    tabmenuList.push({id:"",
+        title:"首页",
+        name:"home",
+        url:""})
+    //查询tab表字段
+  function getTabMenu(menuName){
+      var tab;
+      for (var i=0;i<tabmenuList.length;i++){
+          let mt = tabmenuList[i];
+          if (mt.name==menuName){
+              return mt;
+          }
+      }
+      return null;
+  }
+  /*删除tabmenu*/
+function deleteTabMenuById(id){
+    for (var i=0;i<tabmenuList.length;i++){
+        let mt = tabmenuList[i];
+        if (mt.id==id){
+            tabmenuList.splice(i,1);
+        }
+    }
+}
+    //JavaScript代码区域
+    layui.use(['jquery','element',], function() {
+        var $ = layui.$
+        var element = layui.element;
+        element.on('nav(menu)', function(elem){
+            /*menu-id*/
+            var menuTitle=elem.attr("menu-data");
+            var menuId=elem.attr("menu-id");
+            var menuUrl=elem.attr("menu-url");
+            let tabMenu = getTabMenu(menuTitle);
+            if (tabMenu==null){
+                tabmenuList.push({id:menuId,
+                    title:elem.text(),
+                    name:menuTitle,
+                    url:menuUrl})
+                element.tabAdd('tabMenu', {
+                    title: elem.text()
+                    ,content: '<iframe style="width: 100%; height: 100%;" scrolling="no" frameborder="no" src="'+menuUrl+'"></iframe>' //支持传入html
+                    ,id: menuId
+                });
+                element.tabChange("tabMenu", menuId);
+            }else {
+                console.log(menuId);
+                element.tabChange("tabMenu", menuId);
+            }
+
+        });
+        element.on('tabDelete(tabMenu)', function(data){
+            console.log($(this).parent().attr("lay-id"));//当前Tab标题所在的原始DOM元素
+            let id = $(this).parent().attr("lay-id");
+            console.log('kaishi')
+            console.log(tabmenuList)
+            if (id!=null){
+                deleteTabMenuById(id)
+            }
+            console.log(tabmenuList)
+        });
+
+    });
+
+ /*   layui.use('table', function(){
+        var table = layui.table;
+
+        //第一个实例
+        table.render({
+            elem: '#users'
+            ,height: 515
+            ,url: 'UserController?action=pager' //数据接口
+            ,page: true //开启分页
+            ,cols: [[ //表头
+                {field: 'id', title: 'ID', width:80, sort: true, fixed: 'left'}
+                ,{field: 'name', title: '用户名', width:300,sort: true}
+                ,{field: 'city', title: '城市', width:300,sort: true}
+                ,{field: 'birthday', title: '出生日期', width: 177,sort: true}
+            ]]
+        });
+
+    });*/
+</script>
+</body>
+<style>
+    .layui-tab-item{
+        height: 100%;
+    }
+</style>
+
+</html>

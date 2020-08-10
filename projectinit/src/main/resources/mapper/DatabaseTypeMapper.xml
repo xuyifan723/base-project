@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xuyifan.projectinit.mapper.DatabaseTypeMapper">
+
+    <sql id="Base_Column_List">
+        id,name,driver_class_name,switch_flag
+    </sql>
+    <select id="getData" resultType="com.xuyifan.projectinit.bean.DatabaseTypeBean">
+        select
+        <include refid="Base_Column_List" />
+        from data_base_type
+        where id = #{id}
+    </select>
+    <select id="getDatasByLike" resultType="com.xuyifan.projectinit.bean.DatabaseTypeBean">
+        select
+        <include refid="Base_Column_List" />
+        from data_base_type
+      <if test="name !=null and name!=''">
+          where name like #{name}
+      </if>
+    </select>
+
+    <delete id="deleteData" >
+        delete from data_base_type
+        where id = #{id}
+    </delete>
+    <insert id="addData" parameterType="DatabaseTypeBean">
+        insert into data_base_type (
+        <include refid="Base_Column_List" />
+        )
+        values (
+        #{id},#{name},#{driverClassName},#{switchFlag}
+        )
+    </insert>
+
+    <update id="updateData" parameterType="DataDriverBean">
+        update data_base_type
+        set
+            name= #{name}
+          ,driver_class_name= #{driverClassName}
+          ,switch_flag= #{switchFlag}
+        where id = #{id}
+    </update>
+</mapper>
