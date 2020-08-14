@@ -18,6 +18,7 @@ public interface DatabaseTypeMapper {
 
     DatabaseTypeBean getData(@Param("id") String id);
 
-    List<DatabaseTypeBean> getDatasByLike(@Param("name") String name);
+    List<DatabaseTypeBean> getDatasByLike(@Param("name") String name, @Param("flag") Boolean flag, @Param("curNumIndex") Integer curNumIndex, @Param("limit")Integer limit);
 
+    Integer getDatasCount(@Param("name") String name, @Param("flag") Boolean flag);
 }

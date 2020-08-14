@@ -2,6 +2,7 @@ package com.xuyifan.projectinit.controller;
 
 import com.xuyifan.commonutils.common.ResultBean;
 import com.xuyifan.projectinit.bean.DatabaseTypeBean;
+import com.xuyifan.projectinit.searchbean.DataTypeSearchBean;
 import com.xuyifan.projectinit.service.DatabaseTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +22,7 @@ public class DatabaseTypeController {
     public ResultBean addData(@RequestBody DatabaseTypeBean databaseTypeBean){
         try {
             databaseTypeService.addData(databaseTypeBean);
-            return new ResultBean();
+            return new ResultBean(databaseTypeBean);
         } catch (Exception e) {
            return new ResultBean().error("添加数据错误");
         }
@@ -54,10 +55,11 @@ public class DatabaseTypeController {
         }
     }
     @GetMapping ("/getDatas")
-    public ResultBean getDatas(String databaseTypeName){
+    public ResultBean getDatas(@RequestBody DataTypeSearchBean searchBean, Integer page, Integer limit){
         try {
-            List<DatabaseTypeBean> datas = databaseTypeService.getDatas(databaseTypeName);
-            return new ResultBean(datas);
+            List<DatabaseTypeBean> datas = databaseTypeService.getDatas(searchBean,page,limit);
+           Integer num= databaseTypeService.getDatasCount(searchBean);
+            return new ResultBean(datas,num);
         } catch (Exception e) {
             return new ResultBean().error("获取数据列表错误");
         }

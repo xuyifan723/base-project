@@ -3,6 +3,7 @@ package com.xuyifan.projectinit.service.impl;
 import com.xuyifan.commonutils.common.UUIDUtils;
 import com.xuyifan.projectinit.bean.DatabaseTypeBean;
 import com.xuyifan.projectinit.mapper.DatabaseTypeMapper;
+import com.xuyifan.projectinit.searchbean.DataTypeSearchBean;
 import com.xuyifan.projectinit.service.DatabaseTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,7 +40,13 @@ public class DatabaseTypeServiceImpl implements DatabaseTypeService {
     }
 
     @Override
-    public List<DatabaseTypeBean> getDatas(String databaseTypeBean) {
-        return databaseTypeMapper.getDatasByLike(databaseTypeBean);
+    public List<DatabaseTypeBean> getDatas(DataTypeSearchBean searchBean, Integer page, Integer limit) {
+        Integer curNumIndex=(page-1)*10;
+        return databaseTypeMapper.getDatasByLike(searchBean.getDataTypeName(),searchBean.getSwitchFlag(),curNumIndex,limit);
+    }
+
+    @Override
+    public Integer getDatasCount(DataTypeSearchBean searchBean) {
+        return databaseTypeMapper.getDatasCount(searchBean.getDataTypeName(),searchBean.getSwitchFlag());
     }
 }

@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <meta http-Equiv="Cache-Control" Content="no-cache" />
-    <meta http-Equiv="Pragma" Content="no-cache" />
-    <meta http-Equiv="Expires" Content="0" />
+    <meta http-Equiv="Cache-Control" Content="no-cache"/>
+    <meta http-equiv="Cache" content="no-cache">
+    <meta http-Equiv="Pragma" Content="no-cache"/>
+    <meta http-Equiv="Expires" Content="0"/>
     <link rel="stylesheet" href="../layui/css/layui.css">
 </head>
 <body>
@@ -14,13 +15,13 @@
         <div class="layui-inline">
             <label class="layui-form-label">数据名称</label>
             <div class="layui-input-inline">
-                <input type="text" name="name"  autocomplete="off" class="layui-input">
+                <input type="text" name="name" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-inline">
             <label class="layui-form-label">是否启用</label>
             <div class="layui-input-block">
-                <input type="checkbox" lay-skin="switch">
+                <input type="checkbox" checked="" name="switchFlag" lay-skin="switch" lay-text="ON|OFF">
             </div>
         </div>
     </div>
@@ -29,11 +30,11 @@
     <div class="layui-form-item">
         <div class="layui-row">
             <div class="layui-col-md10" style="padding-left: 4%">
-                <button class="layui-btn" lay-submit lay-filter="*">立即提交</button>
+                <button class="layui-btn" lay-submit lay-filter="searchList">立即提交</button>
                 <button type="reset" class="layui-btn layui-btn-primary">重置</button>
             </div>
             <div class="layui-col-md2" style="padding-left: 10%">
-                <button class="layui-btn" id="add_databaseType">添加</button>
+                <div class="layui-btn" data-method="addType">添加</div>
             </div>
         </div>
 
@@ -41,7 +42,7 @@
     <!-- 更多表单结构排版请移步文档左侧【页面元素-表单】一项阅览 -->
 </form>
 <hr/>
-<table id="demo" lay-filter="test"></table>
+<table id="dataTypeList" lay-filter="test"></table>
 <script type="text/html" id="barDemo">
     <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
     <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
@@ -49,101 +50,95 @@
 </script>
 
 
-
 </body>
 <script src="../layui/layui.all.js"></script>
-<script src="../common/common.js"></script>
 <script>
-    layui.use(['form', 'table',"layer"], function(){
+    layui.config({
+        base: '/projectinit/layui/common/' //假设这是你存放拓展模块的根目录
+    })
+    layui.use(['form', 'table', "layer", "layuiCommon"], function () {
         var form = layui.form
-            ,layer = layui.layer,
-             table = layui.table;
-        //第一个实例
+            , layer = layui.layer,
+            table = layui.table
+            , layuiCommon = layui.layuiCommon;
+        var $ = layui.$;
+        //列表数据
         table.render({
-            elem: '#demo'
-            ,height: 312
-            ,url: '/projectinit/databaseType/getDatas?databaseTypeName=' //数据接口
-            ,parseData: function(res) { //res 即为原始返回的数据
-                console.log(res)
-                var handleData1 = handleData(res);
-                console.log("kaishi ");
-                console.log(handleData1);
-                console.log("jies")
-               return handleData(res);
-                }
-            ,page: true //开启分页
-            ,cols: [[ //表头
+            id: "dataTypeTable",
+            elem: '#dataTypeList'
+            , url: '/projectinit/databaseType/getDatas?databaseTypeName=' //数据接口
+            , parseData: function (res) { //res 即为原始返回的数据
+                return layuiCommon.handleListData(res);
+            }
+            , text: {
+                none: '暂无相关数据' //默认：无数据。注：该属性为 layui 2.2.5 开始新增
+            }
+            , page: true //开启分页
+            , cols: [[ //表头
                 {field: 'id', title: 'ID', sort: true}
-                ,{field: 'name', title: '名称'}
-                ,{field: 'driverClassName', title: '驱动名'},
-                {fixed: 'right',  align:'center', toolbar: '#barDemo'}
+                , {field: 'name', title: '名称'}
+                , {field: 'driverClassName', title: '驱动名'},
+                {fixed: 'right', align: 'center', toolbar: '#barDemo'}
             ]]
         });
 
-
-
-
-
-        //监听指定开关
-        form.on('switch(switchTest)', function(data){
-            layer.msg('开关checked：'+ (this.checked ? 'true' : 'false'), {
-                offset: '6px'
-            });
-            layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
-        });
         //监听提交
-        form.on('submit(demo1)', function(data){
+        form.on('submit(searchList)', function (data) {
             layer.alert(JSON.stringify(data.field), {
                 title: '最终的提交信息'
             })
             return false;
         });
-
-        //监听表格复选框选择
-        table.on('checkbox(demo)', function(obj){
-            console.log(obj)
-        });
         //监听工具条
-        table.on('tool(demo)', function(obj){
+        table.on('tool(test)', function (obj) {
             var data = obj.data;
-            if(obj.event === 'detail'){
-                layer.msg('ID：'+ data.id + ' 的查看操作');
-            } else if(obj.event === 'del'){
-                layer.confirm('真的删除行么', function(index){
-                    obj.del();
-                    layer.close(index);
+            if (obj.event === 'detail') {
+                layer.open({
+                    type: 2,
+                    title: "查看数据库类型",
+                    area: ['30%', '40%'],
+                    content: 'type/from.html?id=' + data.id + "&method=" + layuiCommon.view //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
                 });
-            } else if(obj.event === 'edit'){
-                layer.alert('编辑行：<br>'+ JSON.stringify(data))
+            } else if (obj.event === 'del') {
+                layer.confirm('真的删除' + data.id + "的数据吗?", function (index) {
+                    var dresult = layuiCommon.HandleData('/projectinit/databaseType/deleteData', {id: data.id});
+                    if (dresult.code != layuiCommon.success) {
+                        layer.msg(dresult.msg);
+                    } else {
+                        layer.msg('数据删除成功，请查看数据');
+                    }
+                    layer.close(index);
+                    table.reload('dataTypeTable', {
+                        page: {curr: 1}
+                    });
+                });
+            } else if (obj.event === 'edit') {
+                layer.open({
+                    type: 2,
+                    title: "修改数据库类型",
+                    area: ['30%', '50%'],
+                    content: 'type/from.html?id=' + data.id + "&method=" + layuiCommon.edit //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
+                });
             }
         });
-
-        var $ = layui.$, active = {
-            getCheckData: function(){ //获取选中数据
-                var checkStatus = table.checkStatus('idTest')
-                    ,data = checkStatus.data;
-                layer.alert(JSON.stringify(data));
-            }
-            ,getCheckLength: function(){ //获取选中数目
-                var checkStatus = table.checkStatus('idTest')
-                    ,data = checkStatus.data;
-                layer.msg('选中了：'+ data.length + ' 个');
-            }
-            ,isAll: function(){ //验证是否全选
-                var checkStatus = table.checkStatus('idTest');
-                layer.msg(checkStatus.isAll ? '全选': '未全选')
-            }
-        };
-
-        $('.demoTable .layui-btn').on('click', function(){
-            var type = $(this).data('type');
-            active[type] ? active[type].call(this) : '';
+        //添加按钮点击事件
+        $('.layui-btn').on('click', function () {
+            var othis = $(this), method = othis.data('method');
+            active[method] ? active[method].call(this, othis) : '';
         });
 
-
-
-
-
+        var active = {
+            addType: function () {
+                var that = this;
+                layer.open({
+                    type: 2,
+                    title: "添加数据库类型",
+                    area: ['30%', '50%'],
+                    content: 'type/from.html?method=' + layuiCommon.add
+                });
+            }
+        }
     });
+
 </script>
 </html>

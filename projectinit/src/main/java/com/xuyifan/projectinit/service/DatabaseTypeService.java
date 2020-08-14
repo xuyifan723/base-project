@@ -1,6 +1,7 @@
 package com.xuyifan.projectinit.service;
 
 import com.xuyifan.projectinit.bean.DatabaseTypeBean;
+import com.xuyifan.projectinit.searchbean.DataTypeSearchBean;
 
 import java.util.List;
 
@@ -17,5 +18,7 @@ public interface DatabaseTypeService {
 
     DatabaseTypeBean getData(String id);
 
-    List<DatabaseTypeBean> getDatas(String databaseTypeName);
+    List<DatabaseTypeBean> getDatas(DataTypeSearchBean searchBean, Integer page, Integer limit);
+
+    Integer getDatasCount(DataTypeSearchBean searchBean);
 }

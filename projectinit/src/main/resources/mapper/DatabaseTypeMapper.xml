@@ -14,10 +14,25 @@
     <select id="getDatasByLike" resultType="com.xuyifan.projectinit.bean.DatabaseTypeBean">
         select
         <include refid="Base_Column_List" />
-        from data_base_type
+        from data_base_type where 1=1
       <if test="name !=null and name!=''">
-          where name like #{name}
+         and  name like #{name}
       </if>
+        <if test="flag!=null">
+          and switch_flag=#{flag}
+        </if>
+         limit  #{curNumIndex}, #{limit}
+    </select>
+    <select id="getDatasCount" resultType="java.lang.Integer">
+        select
+       count(*)
+        from data_base_type where 1=1
+        <if test="name !=null and name!=''">
+            and name like #{name}
+        </if>
+        <if test="flag!=null">
+          and  switch_flag=#{flag}
+        </if>
     </select>
 
     <delete id="deleteData" >
@@ -33,7 +48,7 @@
         )
     </insert>
 
-    <update id="updateData" parameterType="DataDriverBean">
+    <update id="updateData" parameterType="DatabaseTypeBean">
         update data_base_type
         set
             name= #{name}

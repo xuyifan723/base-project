@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta http-Equiv="Cache-Control" Content="no-cache" />
+    <meta http-equiv="Cache" content="no-cache">
+    <meta http-Equiv="Pragma" Content="no-cache" />
+    <meta http-Equiv="Expires" Content="0" />
+    <link rel="stylesheet" href="../../layui/css/layui.css">
+</head>
+<body>
+<form class="layui-form" action="" style="margin-top: 30px;margin-right: 30px" lay-filter="dataTypeForm">
+    <input type="text" name="id" hidden>
+    <div class="layui-form-item">
+        <label class="layui-form-label">数据名称</label>
+        <div class="layui-input-block">
+            <input type="text" name="name" required  lay-verify="required" placeholder="请输入数据库类型名称" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">数据库驱动</label>
+        <div class="layui-input-block">
+            <input type="text" name="driverClassName" required  lay-verify="required" placeholder="请输入驱动名称" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">是否启用</label>
+        <div class="layui-input-block">
+            <input id="Isuse" type="checkbox" checked name="switchFlag" lay-skin="switch"  lay-text="ON|OFF">
+        </div>
+    </div>
+
+    <div class="layui-form-item" id="dataTypeBtn">
+    </div>
+</form>
+</body>
+<script src="../../layui/layui.all.js"></script>
+<script id="btn" type="text/html">
+    {{# if(d.method!=d.view) {  }}
+    <div class="layui-input-block">
+        {{# if(d.method==d.edit){  }}
+        <button class="layui-btn" lay-submit lay-filter="updateDataType">更新</button>
+        {{# }else{  }}
+        <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        {{# }  }}
+    </div>
+    {{#  }  }}
+</script>
+<script>
+    var typeData={
+        id:"",
+        name:"",
+        driverClassName:"",
+        switchFlag:true
+    }
+    layui.config({
+        base: '/projectinit/layui/common/' //假设这是你存放拓展模块的根目录
+    })
+    layui.use(['form',"layuiCommon","laytpl"], function(){
+        var form = layui.form
+            ,layuiCommon=layui.layuiCommon
+            ,laytpl=layui.laytpl,
+             $ = layui.$;
+        //新增提交
+        form.on('submit(formDemo)', function(data){
+
+            typeData.name=data.field.name;
+            typeData.driverClassName=data.field.driverClassName;
+            typeData.switchFlag=true;
+            let result = layuiCommon.post("/projectinit/databaseType/addData",typeData);
+            if (result.code==layuiCommon.success){
+                var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+                parent.layer.msg('添加成功');
+                parent.layui.table.reload('dataTypeTable');
+                parent.layer.close(index); //再执行关闭
+            }else {
+                layer.msg(result.msg);
+                return false;
+            }
+        });
+        form.on('submit(updateDataType)', function(data){
+             var flag= $("#Isuse").attr("checked") == "checked";
+            typeData.id=data.field.id;
+            typeData.name=data.field.name;
+            typeData.driverClassName=data.field.driverClassName;
+            typeData.switchFlag=;
+            let result = layuiCommon.post("/projectinit/databaseType/updateData",typeData);
+            if (result.code==layuiCommon.success){
+                var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+                parent.layer.msg('更新成功');
+                parent.layui.table.reload('dataTypeTable');
+                parent.layer.close(index); //再执行关闭
+            }else {
+                layer.msg(result.msg);
+                return false;
+            }
+        });
+
+      if (layuiCommon.getParamValue("method")!=layuiCommon.add){
+          var id =layuiCommon.getParamValue("id");
+          var result=layuiCommon.HandleData("/projectinit/databaseType/getData",{id:id});
+          if (result.code==layuiCommon.success){
+              var flag='on';
+              if (!result.data.switchFlag){
+                  flag='off';
+              }
+              form.val('dataTypeForm',{
+                  'id':result.data.id,
+                  'name':result.data.name,
+                  'driverClassName':result.data.driverClassName,
+                  'switchFlag':flag
+              })
+          }
+      }
+       var btnData={
+           method:layuiCommon.getParamValue("method"),
+           view:layuiCommon.view,
+           add:layuiCommon.add,
+           edit:layuiCommon.edit
+       }
+        var getTpl = btn.innerHTML
+            ,view = document.getElementById('dataTypeBtn');
+        laytpl(getTpl).render(btnData, function(html){
+            view.innerHTML = html;
+        });
+
+
+    });
+</script>
+</html>
