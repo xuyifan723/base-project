@@ -16,6 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/databaseType")
 public class DatabaseTypeController {
+
     @Autowired
     private DatabaseTypeService databaseTypeService;
     @PostMapping("/addData")
@@ -54,10 +55,10 @@ public class DatabaseTypeController {
             return new ResultBean().error("获取数据错误");
         }
     }
-    @GetMapping ("/getDatas")
-    public ResultBean getDatas(@RequestBody DataTypeSearchBean searchBean, Integer page, Integer limit){
+    @PostMapping ("/getDatas")
+    public ResultBean getDatas(@RequestBody DataTypeSearchBean searchBean){
         try {
-            List<DatabaseTypeBean> datas = databaseTypeService.getDatas(searchBean,page,limit);
+            List<DatabaseTypeBean> datas = databaseTypeService.getDatas(searchBean);
            Integer num= databaseTypeService.getDatasCount(searchBean);
             return new ResultBean(datas,num);
         } catch (Exception e) {

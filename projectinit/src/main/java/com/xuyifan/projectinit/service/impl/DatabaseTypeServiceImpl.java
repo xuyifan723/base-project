@@ -40,9 +40,8 @@ public class DatabaseTypeServiceImpl implements DatabaseTypeService {
     }
 
     @Override
-    public List<DatabaseTypeBean> getDatas(DataTypeSearchBean searchBean, Integer page, Integer limit) {
-        Integer curNumIndex=(page-1)*10;
-        return databaseTypeMapper.getDatasByLike(searchBean.getDataTypeName(),searchBean.getSwitchFlag(),curNumIndex,limit);
+    public List<DatabaseTypeBean> getDatas(DataTypeSearchBean searchBean) {
+        return databaseTypeMapper.getDatasByLike(searchBean.getDataTypeName(),searchBean.getSwitchFlag(),searchBean.getCurNumIndex(),searchBean.getLimit());
     }
 
     @Override

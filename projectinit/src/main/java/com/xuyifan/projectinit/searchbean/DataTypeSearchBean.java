@@ -7,7 +7,7 @@ import lombok.Data;
  * @Date: 2020/8/13
  */
 @Data
-public class DataTypeSearchBean {
+public class DataTypeSearchBean extends PageBean{
     private Boolean switchFlag;
     private String dataTypeName;
 }

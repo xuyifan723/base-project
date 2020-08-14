@@ -18,7 +18,7 @@ public interface DatabaseTypeService {
 
     DatabaseTypeBean getData(String id);
 
-    List<DatabaseTypeBean> getDatas(DataTypeSearchBean searchBean, Integer page, Integer limit);
+    List<DatabaseTypeBean> getDatas(DataTypeSearchBean searchBean);
 
     Integer getDatasCount(DataTypeSearchBean searchBean);
 }

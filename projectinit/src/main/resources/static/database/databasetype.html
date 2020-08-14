@@ -19,9 +19,13 @@
             </div>
         </div>
         <div class="layui-inline">
-            <label class="layui-form-label">是否启用</label>
+            <label class="layui-form-label">状态</label>
             <div class="layui-input-block">
-                <input type="checkbox" checked="" name="switchFlag" lay-skin="switch" lay-text="ON|OFF">
+                <select name="switchFlag" lay-verify="">
+                    <option value="">请选择</option>
+                    <option value="1">启用</option>
+                    <option value="0">关闭</option>
+                </select>
             </div>
         </div>
     </div>
@@ -56,6 +60,10 @@
     layui.config({
         base: '/projectinit/layui/common/' //假设这是你存放拓展模块的根目录
     })
+    var searchBean={
+        name:"",
+        switchFlag:null
+    }
     layui.use(['form', 'table', "layer", "layuiCommon"], function () {
         var form = layui.form
             , layer = layui.layer,
@@ -65,8 +73,11 @@
         //列表数据
         table.render({
             id: "dataTypeTable",
-            elem: '#dataTypeList'
-            , url: '/projectinit/databaseType/getDatas?databaseTypeName=' //数据接口
+            elem: '#dataTypeList',
+             url: '/projectinit/databaseType/getDatas', //数据接口
+            where:{dataTypeName:searchBean.name,switchFlag:searchBean.switchFlag},
+            method:'post',
+            contentType:'application/json'
             , parseData: function (res) { //res 即为原始返回的数据
                 return layuiCommon.handleListData(res);
             }
@@ -78,15 +89,31 @@
                 {field: 'id', title: 'ID', sort: true}
                 , {field: 'name', title: '名称'}
                 , {field: 'driverClassName', title: '驱动名'},
+                 {field: 'switchFlag', title: '驱动名',templet: function(d){
+                            if (d.switchFlag==true){
+                                return '启用';
+                            }else {
+                                return '关闭';
+                            }
+                     }},
                 {fixed: 'right', align: 'center', toolbar: '#barDemo'}
             ]]
         });
 
         //监听提交
         form.on('submit(searchList)', function (data) {
-            layer.alert(JSON.stringify(data.field), {
-                title: '最终的提交信息'
-            })
+            searchBean.name=data.field.name;
+            if (data.field.switchFlag=='0'){
+                searchBean.switchFlag=false
+            }else if (data.field.switchFlag=='1') {
+                searchBean.switchFlag=true
+            }else {
+                searchBean.switchFlag=null;
+            }
+            table.reload('dataTypeTable', {
+                page: {curr: 1},
+                where:{dataTypeName:searchBean.name,switchFlag:searchBean.switchFlag}
+            });
             return false;
         });
         //监听工具条
@@ -109,7 +136,8 @@
                     }
                     layer.close(index);
                     table.reload('dataTypeTable', {
-                        page: {curr: 1}
+                        page: {curr: 1},
+                        where:{dataTypeName:searchBean.name,switchFlag:searchBean.switchFlag}
                     });
                 });
             } else if (obj.event === 'edit') {
